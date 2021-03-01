@@ -1,9 +1,11 @@
-# Fly
+# ABOUT
+## Description
+3D paper airplane-flying pseudo-endless runner. Collect power-ups, catch drafts, upgrade your design, connect with friends around the world.
 
-# Director
+## Director
 Ryan Kann
 
-# Members
+## Members
 Zoe Pham
 Jimmy Connors
 Justin Guo
