@@ -1,11 +1,12 @@
-# ABOUT
-## Description
+# Fly - SGD Spring 2021
+## ABOUT
+### Description
 3D paper airplane-flying pseudo-endless runner. Collect power-ups, catch drafts, upgrade your design, connect with friends around the world.
 
-## Director
+### Director
 Ryan Kann
 
-## Members
+### Members
 * Zoe Pham
 * Jimmy Connors
 * Justin Guo
@@ -17,8 +18,8 @@ Ryan Kann
 * Oliver Song
 * Cory Ooten
 
-# TODO
-## Programming
+## TODO
+### Programming
 * Level design/generation
 * Terrain generator improvements
 * Movement improvements
@@ -27,7 +28,7 @@ Ryan Kann
 * Win condition (reach a goal)
 * Main menu
 
-## Art
+### Art
 * Upgraded airplane models
 * Upgrades attachments (i.e. rockets)
 * Main menu UI elements
@@ -36,13 +37,13 @@ Ryan Kann
 * Intro/throwing sequence
 * Cinematography (using Cinemachine)
 
-## Design
+### Design
 * Decide on upgrades
 * Balance upgrades and plane speeds and speed loss over time
 * Story elements (sending messages to friends around the world?)
 
-# IN PROGRESS
-## Nothing
+## IN PROGRESS
+* Nothing
 
-# COMPLETED
-## Nothing
+## COMPLETED
+* Nothing
