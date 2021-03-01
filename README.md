@@ -21,5 +21,6 @@ Cory Ooten
 * Terrain generator improvements
 * Movement improvements
 * Power-ups and collectibles
-*   TEST
+- TEST
+-   TEST
 * Win condition 
