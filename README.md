@@ -20,30 +20,37 @@ Ryan Kann
 
 ## TODO
 ### Programming
-* Level design/generation
-* Terrain generator improvements
-* Movement improvements
-* Collectibles
-* Upgrades
-* Win condition (reach a goal)
-* Main menu
+* Nothing
 
 ### Art
-* Upgraded airplane models
 * Upgrades attachments (i.e. rockets)
-* Main menu UI elements
 * Terrain assets (i.e. trees, cacti, shrubbery, ponds, etc.)
 * Characters
 * Intro/throwing sequence
 * Cinematography (using Cinemachine)
 
 ### Design
-* Decide on upgrades
-* Balance upgrades and plane speeds and speed loss over time
-* Story elements (sending messages to friends around the world?)
+
+
 
 ## IN PROGRESS
-* Nothing
+### Programming
+* Upgrades - Asad, Michelle
+* Main menu - Alex
+* Terrain generator improvements - Jimmy
+* Movement improvements - Gloria, Oliver, Ethan
+* Collectibles - Justin
+* Win condition (reach a goal) - Ryan, Nick
+
+### Art
+* Upgraded airplane models - Oliver
+* Main menu UI elements - Alex
+
+### Design
+* Level design - Caleb
+* Story elements - Gloria
+* Decide on upgrades - Asad, Michelle
+* Balance upgrades - Asad, Michelle
 
 ## COMPLETED
 * Nothing
