@@ -25,6 +25,50 @@ Ryan Kann
 ### Art
 * Upgrades attachments (i.e. rockets)
 * Terrain assets (i.e. trees, cacti, shrubbery, ponds, etc.)
+    - Washington DC
+        - General
+            - Deciduous trees
+            - Shrubbery
+            - Ponds
+            - Roads
+        - Landmarks
+            - Washington Monument
+            - Pentagon
+            - Capital Building
+    - San Francisco
+        - General
+            - Redwood trees (tall boys)
+            - Animals
+            - Hills
+            - Beaches
+            - Water
+            - Fire
+        - Landmarks
+            - Golden Gate Bridge
+    - Tokyo
+        - General
+            - Temples
+            - Torii gates
+            - Shinto/Buddhist shrines
+            - Ocean
+            - Lotta mountains
+        - Landmarks
+            - Mount Fuji
+    - Giza
+        - General
+            - Sand
+            - Cacti
+            - Dunes
+            - Lizards
+            - Camels
+        - Landmarks
+            - Pyramids of Giza
+    - Athens
+        - General
+            - Archipelagos
+            - Shrines
+        - Landmarks
+            - Parthenon
 * Characters
 * Intro/throwing sequence
 * Cinematography (using Cinemachine)

@@ -1,35 +1,78 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RunManager : MonoBehaviour
 {
+    private bool alive;
 
-    public GameObject canvas;
+    [Header("References")]
+    public GameObject restartUI;
+    public UnityEvent OnRestart;
 
-    private bool restartable;
+    [Header("Goal Info")]
+    public Vector3 goalPosition;
+    public Transform goal;
+    public float goalRadius = 5f;
+    public float goalHeight = 5f;
+
+    [Header("Run Stats")]
+    public float distanceTravelled;
+    public UITextNumber distanceTravelledUI;
+    public float distanceFromGoal;
+    public UITextNumber distanceFromGoalUI;
+    public float maxHeightThisRun;
+    public UITextNumber maxHeightThisRunUI;
+    public float currentHeight;
+    public UITextNumber currentHeightUI;
 
     private void Start()
     {
-        canvas?.SetActive(false);
-        restartable = false;
+        restartUI?.SetActive(false);
+        alive = true;
+        if (goal) goalPosition = goal.position;
 
-        GameManager.instance.playerController.DieEvent.AddListener(PromptRestart);
+        GameManager.instance.playerController.OnDie.AddListener(PromptRestart);
     }
 
     public void PromptRestart()
     {
-        canvas?.SetActive(true);
-        restartable = true;
+
+        print("Die Event Listener Count: " + GameManager.instance.playerController.OnDie.GetPersistentEventCount());
+        restartUI?.SetActive(true);
+        alive = false;
     }
 
     private void Update()
     {
-        if (!restartable) return;
+        
+        if (alive)
+        {
+            currentHeight = GameManager.instance.playerController.transform.position.y;
+            currentHeightUI?.SetNumber(currentHeight);
+
+            maxHeightThisRun = Mathf.Max(maxHeightThisRun, currentHeight);
+            maxHeightThisRunUI?.SetNumber(maxHeightThisRun);
+
+            distanceFromGoal = (goalPosition - GameManager.instance.playerController.transform.position).magnitude;
+            distanceFromGoalUI?.SetNumber(distanceFromGoal);
+            return;
+        }
+        else
+        {
+
+        }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            RestartRun();
         }
+    }
+
+    public void RestartRun()
+    {
+        OnRestart?.Invoke();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }
