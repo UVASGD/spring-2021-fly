@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb; // Rigidbody component (physics)
-    private Transform model; // The model is a child of the "true" plane
+    private Transform model; // The model is a child of the "true" plane. Parent handles actual direction, while the child just simulates banking.
 
     [Header("Init")]
     public float initialSpeed = 10f;
@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        // Initialize variables and references
         rb = GetComponent<Rigidbody>();
         model = transform.GetChild(0);
         speed = initialSpeed;
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Disable all input if plane is grounded
         if (!flying)
         {
             rb.constraints = RigidbodyConstraints.None;
@@ -69,6 +71,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        // Logic for when to change between stalling and flying states
         if (stalling)
         {
             if (speed > stallStopSpeed)
@@ -86,17 +89,19 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+        // Get player input if flying, otherwise set to 0
         roll = stalling || !flying ? 0f : Input.GetAxis("Horizontal"); // z = roll
         pitch = stalling || !flying ? 0f : Input.GetAxis("Vertical"); // x = pitch 
 
-        direction += roll * rollSpeed * Time.fixedDeltaTime;
-        localForward = Quaternion.AngleAxis(direction, Vector3.up) * Vector3.forward;
-        localRight = Vector3.Cross(localForward, Vector3.up);
+        direction += roll * rollSpeed * Time.fixedDeltaTime; // how much to turn this frame
+        localForward = Quaternion.AngleAxis(direction, Vector3.up) * Vector3.forward; // update nose
+        localRight = Vector3.Cross(localForward, Vector3.up); // update wings
 
-        angleOfAttack -= 5f * Time.fixedDeltaTime * (stalling ? 20f : 1f);
-        angleOfAttack -= pitch * pitchSpeed * Time.fixedDeltaTime;
-        angleOfAttack = Mathf.Clamp(angleOfAttack, -80f, 80f);
+        angleOfAttack -= 5f * Time.fixedDeltaTime * (stalling ? 20f : 1f); // automatically dip plane's nose over time. Increased if stalling.
+        angleOfAttack -= pitch * pitchSpeed * Time.fixedDeltaTime; // adjust angle of attack based on user input
+        angleOfAttack = Mathf.Clamp(angleOfAttack, -80f, 80f); // clamp plane so they cant go straight up or down (causes camera glitches otherwise)
 
+        // Increase speed if pointing down, decrease speed if pointing up
         if (angleOfAttack < 0f)
         {
             speed -= angleOfAttack / 45f * Time.fixedDeltaTime * (stalling ? 10f : 1f);
@@ -105,19 +110,21 @@ public class PlayerController : MonoBehaviour
         {
             speed -= angleOfAttack / 20f * Time.fixedDeltaTime;
         }
-        speed = Mathf.Max(0.1f, speed);
+        speed = Mathf.Max(0.1f, speed); // Cap minimum speed in flight to 0.1f (very small forward speed), otherwise causes undefined behavior
 
-        velocity = Quaternion.AngleAxis(angleOfAttack, localRight) * localForward * speed;
-        rb.velocity = velocity;
+        velocity = Quaternion.AngleAxis(angleOfAttack, localRight) * localForward * speed; // rotate target velocity (direction) by angle of attack
+        rb.velocity = velocity; // apply velocity
 
+        // Rotate model for banking
         localUp = Quaternion.AngleAxis(-roll * maxRollDeg, velocity) * Vector3.up;
         model.rotation = Quaternion.LookRotation(velocity, localUp);
 
-        Debug.DrawRay(transform.position, velocity, Color.yellow);
+        Debug.DrawRay(transform.position, velocity, Color.yellow); // Draw a line indicating velocity in the Scene view for debugging purposes
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Might need more advanced logic later, but for now, if you hit anything solid, you die.
         flying = false;
         OnDie?.Invoke();
     }
