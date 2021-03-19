@@ -6,7 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/3rd Party/Polaris - Low Poly Ecosystem/Polaris V2 - Low Poly Terrain
-      Engine/Samples/Pinwheel Studio/Scenes/Demo_00.unity
-    guid: 61b5c6590d9bc37489396cc4f20368fa
+    path: Assets/3rd Party/Sebastian Lague/Scenes/Lush Mountain Range.unity
+    guid: d9f8c2fdf48824faaa2ed178aa5dc8ef
   m_configObjects: {}

@@ -6,49 +6,48 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rb;
-    private Transform model;
+    private Rigidbody rb; // Rigidbody component (physics)
+    private Transform model; // The model is a child of the "true" plane
 
     [Header("Init")]
     public float initialSpeed = 10f;
 
     [Header("Roll")]
-    public float rollSpeed = 1f;
-    public float maxRollDeg = 45f;
+    public float rollSpeed = 1f; // maximum speed of turning
+    public float maxRollDeg = 45f; // maximum turn angle
     
     [Header("Pitch")]
-    public float pitchSpeed = 1f;
-    public float maxPitchDeg = 45f;
+    public float pitchSpeed = 1f; // maximum speed of dipping and climbing
+    public float maxPitchDeg = 45f; // maximum turn angle for dipping and climbing
 
     [Header("Stall")]
-    public float stallStartSpeed = 1f;
-    public float stallStopSpeed = 3f;
-    public float stallStopAngle = -45f;
-    public float stallPitchModifier = 2f;
-    public float stallGravityModifier = 2f;
-    public bool stalling;
-    public UnityEvent<bool> StallEvent;
+    public float stallStartSpeed = 1f; // threshold from going from flying to stalling
+    public float stallStopSpeed = 3f; // once in stalling, threshold to get back to flying
+    public float stallPitchModifier = 2f; // how much faster to lose pitch when stalling
+    public float stallGravityModifier = 2f; // how much faster to lose altitude when stalling
+    public bool stalling; // whether or not the plane is stalling
+    public UnityEvent<bool> StallEvent; // event to invoke arbitrary functions when starting or stopping stalling
 
     [Header("Status")]
-    public bool flying = true;
+    public bool flying = true; // true = in the air, false = grounded
     [HideInInspector]
-    public UnityEvent DieEvent;
+    public UnityEvent OnDie; // event to invoke arbitrary functions upon death/crash
 
     [Header("Debug")]
     public Vector3 velocity;
-    public Vector3 localForward;
-    public Vector3 localRight;
-    public Vector3 localUp;
+    public Vector3 localForward; // always points towards plane's nose
+    public Vector3 localRight; // always points towards plane's right wing
+    public Vector3 localUp; // always perpendicular to the above two
 
     [Space]
 
     public float speed;
     public float direction; //0-360 degrees
-    public float angleOfAttack;
-    public float roll;
-    public float pitch;
+    public float angleOfAttack; // dip/climb
+    public float roll; // banking
+    public float pitch; // turning
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         model = transform.GetChild(0);
@@ -57,6 +56,8 @@ public class PlayerController : MonoBehaviour
         direction = 0f;
         stalling = false;
         flying = true;
+
+        OnDie = new UnityEvent();
     }
 
     private void FixedUpdate()
@@ -118,6 +119,6 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         flying = false;
-        DieEvent?.Invoke();
+        OnDie?.Invoke();
     }
 }
