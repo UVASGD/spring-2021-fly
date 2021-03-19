@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb49c415c73a941729b11c3076268f15, type: 3}
-  m_Name: Lush Mountain Range Height Map Settings
+  m_Name: test height map settings
   m_EditorClassIdentifier: 
   autoUpdate: 1
   noiseSettings:
@@ -27,8 +27,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.002994012
-      value: -0.04346654
+      time: 0.055428073
+      value: -0.13639256
       inSlope: 0.5114178
       outSlope: 0.5114178
       tangentMode: 0
@@ -36,8 +36,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.21946654
-      value: 0.2872514
+      time: 0.1735681
+      value: 0.10872358
       inSlope: 0.23097038
       outSlope: 0.23097038
       tangentMode: 0
@@ -45,17 +45,35 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.7242992
-      value: 0.7055397
-      inSlope: 0.32413742
-      outSlope: 0.32413742
+      time: 0.24202442
+      value: 0.41071337
+      inSlope: 1.6143811
+      outSlope: 1.6143811
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.99850297
-      value: 0.9933111
+      time: 0.461247
+      value: 0.8139703
+      inSlope: -0.23403648
+      outSlope: -0.23403648
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.77181447
+      value: 0.7164598
+      inSlope: 3.7497885
+      outSlope: 3.7497885
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.11218503
+    - serializedVersion: 3
+      time: 0.9827864
+      value: 0.82012385
       inSlope: 1.012341
       outSlope: 1.012341
       tangentMode: 0
