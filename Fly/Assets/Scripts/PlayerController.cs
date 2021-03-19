@@ -7,7 +7,11 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb; // Rigidbody component (physics)
-    private Transform model; // The model is a child of the "true" plane. Parent handles actual direction, while the child just simulates banking.
+
+    // The model is a child of the "true" plane.
+    // Parent handles actual left-right rotation, while child/model visualizes angle of attack and banking
+    // Separation of these important to handle gimbal lock, and overall makes it easier to program.
+    private Transform model; 
 
     [Header("Init")]
     public float initialSpeed = 10f;
