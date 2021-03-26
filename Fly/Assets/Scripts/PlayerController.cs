@@ -119,5 +119,17 @@ public class PlayerController : MonoBehaviour
     {
         flying = false;
         DieEvent?.Invoke();
+     
+    }
+    private void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("Collided With: " + collision.gameObject.name);
+        //make these generic later :)
+        if (collision.gameObject.name == "speedUp(Clone)")
+        {
+            Destroy(collision.gameObject);
+            speed += 20f;
+
+        }
     }
 }

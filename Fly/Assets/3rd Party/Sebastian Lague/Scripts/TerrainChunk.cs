@@ -45,10 +45,15 @@ public class TerrainChunk {
 		meshRenderer = meshObject.AddComponent<MeshRenderer>();
 		meshFilter = meshObject.AddComponent<MeshFilter>();
 		meshCollider = meshObject.AddComponent<MeshCollider>();
+
+        meshObject.AddComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        meshObject.GetComponent<Rigidbody>().useGravity = false;
+        meshObject.GetComponent<Rigidbody>().isKinematic = true;
 		meshRenderer.material = material;
 
 		meshObject.transform.position = new Vector3(position.x,0,position.y);
 		meshObject.transform.parent = parent;
+        
 		SetVisible(false);
 
 		lodMeshes = new LODMesh[detailLevels.Length];

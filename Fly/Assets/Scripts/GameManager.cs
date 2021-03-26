@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     #region REFERENCES
     public PlayerController playerController;
     public RunManager runManager;
+    public PowerUpManager powerUpManager;
     #endregion
 
     // Start is called before the first frame update

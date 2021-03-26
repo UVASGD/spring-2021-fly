@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   runManager: {fileID: 6868053362837362767}
+  powerUpManager: {fileID: 4013343061715171293, guid: dd577b472a0065942b35560773350115,
+    type: 3}
 --- !u!1 &6868053362837362765
 GameObject:
   m_ObjectHideFlags: 0
