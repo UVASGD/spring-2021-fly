@@ -14,6 +14,7 @@ public class TerrainGenerator : MonoBehaviour {
 	public MeshSettings meshSettings;
 	public HeightMapSettings heightMapSettings;
 	public TextureData textureSettings;
+    public PowerUpManager powerUpManager;
 
 	public Transform viewer;
 	public Material mapMaterial;
@@ -27,7 +28,7 @@ public class TerrainGenerator : MonoBehaviour {
 	Dictionary<Vector2, TerrainChunk> terrainChunkDictionary = new Dictionary<Vector2, TerrainChunk>();
 	List<TerrainChunk> visibleTerrainChunks = new List<TerrainChunk>();
 
-	void Start() {
+    void Start() {
 
 		textureSettings.ApplyToMaterial (mapMaterial);
 		textureSettings.UpdateMeshHeights (mapMaterial, heightMapSettings.minHeight, heightMapSettings.maxHeight);
@@ -72,7 +73,8 @@ public class TerrainGenerator : MonoBehaviour {
 						terrainChunkDictionary [viewedChunkCoord].UpdateTerrainChunk ();
 					} else {
 						TerrainChunk newChunk = new TerrainChunk (viewedChunkCoord,heightMapSettings,meshSettings, detailLevels, colliderLODIndex, transform, viewer, mapMaterial);
-						terrainChunkDictionary.Add (viewedChunkCoord, newChunk);
+                        powerUpManager.GenerateObject(newChunk.GetBounds());
+                        terrainChunkDictionary.Add (viewedChunkCoord, newChunk);
 						newChunk.onVisibilityChanged += OnTerrainChunkVisibilityChanged;
 						newChunk.Load ();
 					}

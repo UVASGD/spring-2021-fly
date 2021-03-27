@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4013343061715171282}
-  - component: {fileID: 4013343061715171293}
+  - component: {fileID: 4332539403047791015}
   m_Layer: 0
   m_Name: PowerUpManager
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4013343061715171293
+--- !u!114 &4332539403047791015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45a4dfb02bbd3147af0963540f6845b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpObject: {fileID: 4637585659886990175, guid: 0201a8b60ffee354aaf0a33492575030,
-    type: 3}
+  powerUpObjects:
+  - {fileID: 4637585659886990175, guid: 0201a8b60ffee354aaf0a33492575030, type: 3}
+  - {fileID: 3651204976744036309, guid: 611abb7343949ea43a801b3effbc90a6, type: 3}

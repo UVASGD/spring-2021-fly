@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour
 {
-    public GameObject powerUpObject;
-    private int numberOfPowerUpObjects = 500;
+    public GameObject[] powerUpObjects = new GameObject[2];
+    private int maxNumberOfPowerUpObjects = 4; //max number of powerups in each chunk
+    private int[] probabilitiesToSpawn = {25, 25, 25}; //this should be out of 100
+
     // Start is called before the first frame update
     void Start()
     {
-        GenerateObject(powerUpObject, numberOfPowerUpObjects);
+        powerUpObjects = GameObject.FindGameObjectsWithTag("PowerUp");
     }
 
     // Update is called once per frame
@@ -17,17 +19,29 @@ public class PowerUpManager : MonoBehaviour
     {
         
     }
+    public void GenerateObject(Bounds b)
+    {
+        GenerateObject(powerUpObjects, maxNumberOfPowerUpObjects, b);
+    }
 
     //spawn "n" number of GameObject "o"
-    private void GenerateObject(GameObject o, int n)
+    private void GenerateObject(GameObject[] o, int n, Bounds bounds)
     {
         if (o == null) return;
         for(int i = 0; i < n; i++)
         {
-            GameObject tmp = Instantiate(o);
+            int spawnObjectIndex = (int)Random.Range(0, powerUpObjects.Length);
+            int spawnOrNoSpawn = (int)Random.Range(0, 100);
+            
+            if(spawnOrNoSpawn < probabilitiesToSpawn[spawnObjectIndex])
+            {
+                GameObject tmp = Instantiate(powerUpObjects[spawnObjectIndex]);
 
-            Vector3 position = getVectorInBounds();
-            tmp.gameObject.transform.position = position;
+                Vector3 position = getVectorInBounds(bounds);
+                tmp.gameObject.transform.position = position;
+                //Debug.Log("Made at position: " + position);
+            }
+            
         }
     }
 
@@ -35,11 +49,11 @@ public class PowerUpManager : MonoBehaviour
     /*
      * IN PROGRESS
      */
-    Vector3 getVectorInBounds()
+    Vector3 getVectorInBounds(Bounds bounds)
     {
-        int xrand = (int)Random.Range(-500, 500);
-        int yrand = (int)Random.Range(60, 100);
-        int zrand = (int)Random.Range(-500, 500);
+        int xrand = (int)Random.Range(bounds.min.x, bounds.max.x);
+        int yrand = (int)Random.Range(40, 80);
+        int zrand = (int)Random.Range(bounds.min.y, bounds.max.y);
 
         return new Vector3(xrand, yrand, zrand);
     }

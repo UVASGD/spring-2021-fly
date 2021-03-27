@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -125,11 +126,16 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Collided With: " + collision.gameObject.name);
         //make these generic later :)
-        if (collision.gameObject.name == "speedUp(Clone)")
+
+        if (collision.gameObject.name == "PowerUp(Clone)")
         {
             Destroy(collision.gameObject);
-            speed += 20f;
-
+            speed += 10;
+        }
+        if (collision.gameObject.name == "PowerDown(Clone)")
+        {
+            Destroy(collision.gameObject);
+            speed -= 5;
         }
     }
 }

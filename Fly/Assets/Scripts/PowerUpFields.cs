@@ -5,18 +5,13 @@ using UnityEngine;
 public class PowerUpFields : MonoBehaviour
 {
     private string objectType;
-    private int effect;
+    public int effect;
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    void InitializeFields(string ObjectType, int Effect)
-    {
-        this.objectType = ObjectType;
-        this.effect = Effect;
-    }
 
     // Update is called once per frame
     void Update()
