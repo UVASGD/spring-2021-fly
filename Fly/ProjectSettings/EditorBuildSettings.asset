@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 34ab894c9ae9fce4ea477786398cb851
+  - enabled: 1
     path: Assets/3rd Party/Sebastian Lague/Scenes/Lush Mountain Range.unity
     guid: d9f8c2fdf48824faaa2ed178aa5dc8ef
   m_configObjects: {}

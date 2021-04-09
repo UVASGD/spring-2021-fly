@@ -6,15 +6,23 @@
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
+        _Height("Height", Range(0, 1000)) = 1
+        _Power("Power", Range(0, 4)) = 1
     }
     SubShader
     {
-        Tags { "Queue" = "Transparent" "RenderType" = "Transparent" }
+        Tags { 
+            "RenderType" = "Transparent"
+            "Queue" = "Transparent"
+            "IgnoreProjector" = "True"
+        }
         LOD 200
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows
+        #pragma surface surf Standard fullforwardshadows alpha
 
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
@@ -29,6 +37,8 @@
 
         half _Glossiness;
         half _Metallic;
+        half _Height;
+        half _Power;
         fixed4 _Color;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
@@ -47,7 +57,8 @@
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
             float3 localPos = IN.worldPos - mul(unity_ObjectToWorld, float4(0, 0, 0, 1)).xyz;
-            o.Alpha = localPos.y / 1000.0;
+            //o.Alpha = clamp(pow(1-(localPos.y + _Height / 2)/_Height, _Power), 0, 1);
+            o.Alpha = 0;
         }
         ENDCG
     }
