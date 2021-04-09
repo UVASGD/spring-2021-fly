@@ -124,18 +124,24 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Collided With: " + collision.gameObject.name);
+        Debug.Log("Collided With: " + collision.gameObject.tag);
         //make these generic later :)
+        //if (collision.gameObject.name == "PowerUp(Clone)")
+        //{
+        //    Destroy(collision.gameObject);
+        //    speed += 10;
+        //}
+        //if (collision.gameObject.name == "PowerDown(Clone)")
+        //{
+        //    Destroy(collision.gameObject);
+        //    speed -= 5;
+        //}
 
-        if (collision.gameObject.name == "PowerUp(Clone)")
+        if (collision.gameObject.tag == "PowerUp")
         {
+            PowerUpFields fields = collision.gameObject.GetComponent<PowerUpFields>();
+            speed += fields.effect;
             Destroy(collision.gameObject);
-            speed += 10;
-        }
-        if (collision.gameObject.name == "PowerDown(Clone)")
-        {
-            Destroy(collision.gameObject);
-            speed -= 5;
         }
     }
 }

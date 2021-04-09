@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using System;
 public class TerrainChunk {
 	
@@ -27,6 +28,8 @@ public class TerrainChunk {
 	HeightMapSettings heightMapSettings;
 	MeshSettings meshSettings;
 	Transform viewer;
+
+    List<GameObject> gameObjectsInChunk;
 
     public TerrainChunk(Vector2 coord, HeightMapSettings heightMapSettings, MeshSettings meshSettings, LODInfo[] detailLevels, int colliderLODIndex, Transform parent, Transform viewer, Material material) {
 		this.coord = coord;
@@ -72,7 +75,10 @@ public class TerrainChunk {
 		ThreadedDataRequester.RequestData(() => HeightMapGenerator.GenerateHeightMap (meshSettings.numVertsPerLine, meshSettings.numVertsPerLine, heightMapSettings, sampleCentre), OnHeightMapReceived);
     }
 
-
+    public void SetGameObjectsInChunk(List<GameObject> chunkObjects)
+    {
+        gameObjectsInChunk = chunkObjects;
+    }
 
 	void OnHeightMapReceived(object heightMapObject) {
 		this.heightMap = (HeightMap)heightMapObject;
@@ -149,6 +155,15 @@ public class TerrainChunk {
 
 	public void SetVisible(bool visible) {
 		meshObject.SetActive (visible);
+        if(gameObjectsInChunk != null){
+            foreach (GameObject go in gameObjectsInChunk){
+                if(go != null)
+                {
+                    go.SetActive(visible);
+                }
+            }
+        }
+        
 	}
 
 	public bool IsVisible() {

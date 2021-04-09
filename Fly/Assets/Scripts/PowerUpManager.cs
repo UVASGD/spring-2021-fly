@@ -5,8 +5,9 @@ using UnityEngine;
 public class PowerUpManager : MonoBehaviour
 {
     public GameObject[] powerUpObjects = new GameObject[2];
-    private int maxNumberOfPowerUpObjects = 4; //max number of powerups in each chunk
-    private int[] probabilitiesToSpawn = {25, 25, 25}; //this should be out of 100
+    private int maxNumberOfPowerUpObjects = 6; //max number of powerups in each chunk
+    private int[] probabilitiesToSpawn = {5, 5, 5}; //this should be out of 100
+    private string[] objectNames = {"SpeedUp", "SlowDown", "Unused" }; // third one not used for now
 
     // Start is called before the first frame update
     void Start()
@@ -19,15 +20,16 @@ public class PowerUpManager : MonoBehaviour
     {
         
     }
-    public void GenerateObject(Bounds b)
+    public List<GameObject> GenerateObject(Bounds b)
     {
-        GenerateObject(powerUpObjects, maxNumberOfPowerUpObjects, b);
+        return GenerateObject(powerUpObjects, maxNumberOfPowerUpObjects, b);
     }
 
     //spawn "n" number of GameObject "o"
-    private void GenerateObject(GameObject[] o, int n, Bounds bounds)
+    private List<GameObject> GenerateObject(GameObject[] o, int n, Bounds bounds)
     {
-        if (o == null) return;
+        List<GameObject> gameObjectsList = new List<GameObject>();
+        if (o == null) return gameObjectsList;
         for(int i = 0; i < n; i++)
         {
             int spawnObjectIndex = (int)Random.Range(0, powerUpObjects.Length);
@@ -36,13 +38,14 @@ public class PowerUpManager : MonoBehaviour
             if(spawnOrNoSpawn < probabilitiesToSpawn[spawnObjectIndex])
             {
                 GameObject tmp = Instantiate(powerUpObjects[spawnObjectIndex]);
-
+                gameObjectsList.Add(tmp);
                 Vector3 position = getVectorInBounds(bounds);
                 tmp.gameObject.transform.position = position;
                 //Debug.Log("Made at position: " + position);
             }
             
         }
+        return gameObjectsList;
     }
 
     // Return a Vector3 that's above the floor and below the skyine

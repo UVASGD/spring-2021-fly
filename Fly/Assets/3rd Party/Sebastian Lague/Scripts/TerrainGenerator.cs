@@ -73,7 +73,8 @@ public class TerrainGenerator : MonoBehaviour {
 						terrainChunkDictionary [viewedChunkCoord].UpdateTerrainChunk ();
 					} else {
 						TerrainChunk newChunk = new TerrainChunk (viewedChunkCoord,heightMapSettings,meshSettings, detailLevels, colliderLODIndex, transform, viewer, mapMaterial);
-                        powerUpManager.GenerateObject(newChunk.GetBounds());
+                        List<GameObject> gameObjectsInChunkList = powerUpManager.GenerateObject(newChunk.GetBounds());
+                        newChunk.SetGameObjectsInChunk(gameObjectsInChunkList);
                         terrainChunkDictionary.Add (viewedChunkCoord, newChunk);
 						newChunk.onVisibilityChanged += OnTerrainChunkVisibilityChanged;
 						newChunk.Load ();

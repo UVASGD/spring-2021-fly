@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUpFields : MonoBehaviour
 {
-    private string objectType;
+    private string powerUpName;
     public int effect;
     // Start is called before the first frame update
     void Start()
@@ -18,9 +18,9 @@ public class PowerUpFields : MonoBehaviour
     {
         
     }
-    string getObjectType()
+    string getPowerUpName()
     {
-        return this.objectType;
+        return this.powerUpName;
     }
     int getEffect()
     {
