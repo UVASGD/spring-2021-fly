@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -131,5 +132,27 @@ public class PlayerController : MonoBehaviour
         // Might need more advanced logic later, but for now, if you hit anything solid, you die.
         flying = false;
         OnDie?.Invoke();
+    }
+    private void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("Collided With: " + collision.gameObject.tag);
+        //make these generic later :)
+        //if (collision.gameObject.name == "PowerUp(Clone)")
+        //{
+        //    Destroy(collision.gameObject);
+        //    speed += 10;
+        //}
+        //if (collision.gameObject.name == "PowerDown(Clone)")
+        //{
+        //    Destroy(collision.gameObject);
+        //    speed -= 5;
+        //}
+
+        if (collision.gameObject.tag == "PowerUp")
+        {
+            PowerUpFields fields = collision.gameObject.GetComponent<PowerUpFields>();
+            speed += fields.effect;
+            Destroy(collision.gameObject);
+        }
     }
 }

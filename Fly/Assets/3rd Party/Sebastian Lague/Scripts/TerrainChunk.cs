@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-
+using System.Collections.Generic;
+using System;
 public class TerrainChunk {
 	
 	const float colliderGenerationDistanceThreshold = 5;
@@ -28,7 +29,9 @@ public class TerrainChunk {
 	MeshSettings meshSettings;
 	Transform viewer;
 
-	public TerrainChunk(Vector2 coord, HeightMapSettings heightMapSettings, MeshSettings meshSettings, LODInfo[] detailLevels, int colliderLODIndex, Transform parent, Transform viewer, Material material) {
+    List<GameObject> gameObjectsInChunk;
+
+    public TerrainChunk(Vector2 coord, HeightMapSettings heightMapSettings, MeshSettings meshSettings, LODInfo[] detailLevels, int colliderLODIndex, Transform parent, Transform viewer, Material material) {
 		this.coord = coord;
 		this.detailLevels = detailLevels;
 		this.colliderLODIndex = colliderLODIndex;
@@ -40,15 +43,19 @@ public class TerrainChunk {
 		Vector2 position = coord * meshSettings.meshWorldSize ;
 		bounds = new Bounds(position,Vector2.one * meshSettings.meshWorldSize );
 
-
-		meshObject = new GameObject("Terrain Chunk");
+        meshObject = new GameObject("Terrain Chunk");
 		meshRenderer = meshObject.AddComponent<MeshRenderer>();
 		meshFilter = meshObject.AddComponent<MeshFilter>();
 		meshCollider = meshObject.AddComponent<MeshCollider>();
+
+        meshObject.AddComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        meshObject.GetComponent<Rigidbody>().useGravity = false;
+        meshObject.GetComponent<Rigidbody>().isKinematic = true;
 		meshRenderer.material = material;
 
 		meshObject.transform.position = new Vector3(position.x,0,position.y);
 		meshObject.transform.parent = parent;
+        
 		SetVisible(false);
 
 		lodMeshes = new LODMesh[detailLevels.Length];
@@ -66,9 +73,12 @@ public class TerrainChunk {
 
 	public void Load() {
 		ThreadedDataRequester.RequestData(() => HeightMapGenerator.GenerateHeightMap (meshSettings.numVertsPerLine, meshSettings.numVertsPerLine, heightMapSettings, sampleCentre), OnHeightMapReceived);
-	}
+    }
 
-
+    public void SetGameObjectsInChunk(List<GameObject> chunkObjects)
+    {
+        gameObjectsInChunk = chunkObjects;
+    }
 
 	void OnHeightMapReceived(object heightMapObject) {
 		this.heightMap = (HeightMap)heightMapObject;
@@ -93,7 +103,6 @@ public class TerrainChunk {
 
 			if (visible) {
 				int lodIndex = 0;
-
 				for (int i = 0; i < detailLevels.Length - 1; i++) {
 					if (viewerDstFromNearestEdge > detailLevels [i].visibleDstThreshold) {
 						lodIndex = i + 1;
@@ -146,11 +155,25 @@ public class TerrainChunk {
 
 	public void SetVisible(bool visible) {
 		meshObject.SetActive (visible);
+        if(gameObjectsInChunk != null){
+            foreach (GameObject go in gameObjectsInChunk){
+                if(go != null)
+                {
+                    go.SetActive(visible);
+                }
+            }
+        }
+        
 	}
 
 	public bool IsVisible() {
 		return meshObject.activeSelf;
 	}
+
+    public Bounds GetBounds()
+    {
+        return bounds;
+    }
 
 }
 
