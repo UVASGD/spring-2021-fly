@@ -7,13 +7,17 @@ public class PlayerManager : MonoBehaviour
     public GameObject playerPrefab;
     public Player activePlayer;
 
-    public void SpawnPlayerAtPosition(Vector3 position)
+    public Player SpawnPlayerAtPosition(Vector3 position)
     {
         activePlayer = Instantiate(playerPrefab, position, Quaternion.identity, transform).GetComponent<Player>();
+        activePlayer.modelController.SetActiveModel(Model.Type.FlatSpace);
+        return activePlayer;
     }
 
-    public void SpawnPlayerAtObject(GameObject obj)
+    public Player SpawnPlayerAtObject(GameObject obj)
     {
         activePlayer = Instantiate(playerPrefab, obj.transform.position, obj.transform.rotation, transform).GetComponent<Player>();
+        activePlayer.modelController.SetActiveModel(Model.Type.FlatSpace);
+        return activePlayer;
     }
 }

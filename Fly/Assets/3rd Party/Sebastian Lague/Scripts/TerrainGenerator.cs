@@ -28,19 +28,37 @@ public class TerrainGenerator : MonoBehaviour {
 	Dictionary<Vector2, TerrainChunk> terrainChunkDictionary = new Dictionary<Vector2, TerrainChunk>();
 	List<TerrainChunk> visibleTerrainChunks = new List<TerrainChunk>();
 
-    void Start() {
+	private bool generated;
 
-		textureSettings.ApplyToMaterial (mapMaterial);
-		textureSettings.UpdateMeshHeights (mapMaterial, heightMapSettings.minHeight, heightMapSettings.maxHeight);
+	[Header("Debug")]
+	[SerializeField]
+	private bool debugMode;
 
-		float maxViewDst = detailLevels [detailLevels.Length - 1].visibleDstThreshold;
+    void Start() 
+	{
+		generated = false;
+        if (debugMode)
+        {
+			GenerateTerrain();
+        }
+	}
+
+	public void GenerateTerrain()
+    {
+		textureSettings.ApplyToMaterial(mapMaterial);
+		textureSettings.UpdateMeshHeights(mapMaterial, heightMapSettings.minHeight, heightMapSettings.maxHeight);
+
+		float maxViewDst = detailLevels[detailLevels.Length - 1].visibleDstThreshold;
 		meshWorldSize = meshSettings.meshWorldSize;
 		chunksVisibleInViewDst = Mathf.RoundToInt(maxViewDst / meshWorldSize);
 
-		UpdateVisibleChunks ();
+		UpdateVisibleChunks();
+		generated = true;
 	}
 
 	void Update() {
+		if (!generated) return;
+
 		viewerPosition = new Vector2 (viewer.position.x, viewer.position.z);
 
 		if (viewerPosition != viewerPositionOld) {

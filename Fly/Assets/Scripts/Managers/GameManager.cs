@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     #region REFERENCES
     public PlayerManager playerManager;
     public RunManager runManager;
-    public TerrainGenerator terrainGenerator;
+    public MapManager mapManager;
     #endregion
 
     // Start is called before the first frame update
@@ -26,5 +26,28 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            StartLevel(MapType.LushMountainRange);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            StartLevel(MapType.Desert);
+        }
+    }
+
+    public void StartLevel(MapType map)
+    {
+        Player player = playerManager.SpawnPlayerAtPosition(new Vector3(0f, 50f, 0f));
+        MapSettings settings = mapManager.GenerateMap(mapManager.mapSettingsList.mapsDict[map], player.transform);
+
+        // Get goal position from the map settings polar coordinates
+        Vector3 goalPosition = Quaternion.Euler(0f, settings.goalRotationFromForward, 0f) * new Vector3(0f, 0f, settings.goalDistance);
+        runManager.InitRun(goalPosition);
+        runManager.StartRun();
     }
 }

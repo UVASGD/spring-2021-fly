@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class RunManager : MonoBehaviour
 {
-    private bool alive;
+    private bool runStarted;
+    private bool runEnded;
 
     [Header("References")]
     public GameObject restartUI;
@@ -13,9 +14,9 @@ public class RunManager : MonoBehaviour
 
     [Header("Goal Info")]
     public Vector3 goalPosition;
-    public Transform goal;
-    public float goalRadius = 5f;
-    public float goalHeight = 5f;
+    public Goal goal;
+    [SerializeField]
+    private GameObject goalPrefab;
 
     [Header("Run Stats")]
     public float distanceTravelled;
@@ -30,22 +31,33 @@ public class RunManager : MonoBehaviour
     private void Start()
     {
         restartUI?.SetActive(false);
-        alive = true;
-        if (goal) goalPosition = goal.position;
-
-        GameManager.instance.playerManager.activePlayer.playerController.OnDeath.AddListener(PromptRestart);
+        runStarted = false;
+        runEnded = false;
     }
 
-    public void PromptRestart()
+    // Always call this before StartRun()
+    public void InitRun(Vector3 goalPosition)
     {
+        goal = Instantiate(goalPrefab, goalPosition, Quaternion.identity).GetComponent<Goal>();
+        this.goalPosition = goalPosition;
+        GameManager.instance.playerManager.activePlayer.playerController.OnDeath.AddListener(StopRun);
+    }
+
+    public void StartRun()
+    {
+        runStarted = true;
+    }
+
+    public void StopRun()
+    {
+        runEnded = true;
         restartUI?.SetActive(true);
-        alive = false;
     }
 
     private void Update()
     {
         
-        if (alive)
+        if (runStarted && !runEnded)
         {
             currentHeight = GameManager.instance.playerManager.activePlayer.transform.position.y;
             currentHeightUI?.SetNumber(currentHeight);
@@ -57,20 +69,13 @@ public class RunManager : MonoBehaviour
             distanceFromGoalUI?.SetNumber(distanceFromGoal);
             return;
         }
-        else
+        
+        if (runEnded)
         {
-
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(0);
+            }
         }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RestartRun();
-        }
-    }
-
-    public void RestartRun()
-    {
-        OnRestart?.Invoke();
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }
