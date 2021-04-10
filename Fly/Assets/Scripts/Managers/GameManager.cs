@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region REFERENCES
-    public PlayerController playerController;
+    public PlayerManager playerManager;
     public RunManager runManager;
     public TerrainGenerator terrainGenerator;
     #endregion

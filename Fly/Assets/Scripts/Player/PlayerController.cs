@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     // The model is a child of the "true" plane.
     // Parent handles actual left-right rotation, while child/model visualizes angle of attack and banking
     // Separation of these important to handle gimbal lock, and overall makes it easier to program.
-    private Transform model; 
+    public Transform model; 
 
     [Header("Init")]
     public float initialSpeed = 10f;
@@ -31,12 +31,12 @@ public class PlayerController : MonoBehaviour
     public float stallPitchModifier = 2f; // how much faster to lose pitch when stalling
     public float stallGravityModifier = 2f; // how much faster to lose altitude when stalling
     public bool stalling; // whether or not the plane is stalling
-    public UnityEvent<bool> StallEvent; // event to invoke arbitrary functions when starting or stopping stalling
+    public UnityEvent<bool> OnStall; // event to invoke arbitrary functions when starting or stopping stalling
 
     [Header("Status")]
     public bool flying = true; // true = in the air, false = grounded
     [HideInInspector]
-    public UnityEvent OnDie; // event to invoke arbitrary functions upon death/crash
+    public UnityEvent OnDeath; // event to invoke arbitrary functions upon death/crash
 
     [Header("Debug")]
     public Vector3 velocity;
@@ -52,18 +52,15 @@ public class PlayerController : MonoBehaviour
     public float roll; // banking
     public float pitch; // turning
 
-    private void Awake()
+    private void Start()
     {
         // Initialize variables and references
         rb = GetComponent<Rigidbody>();
-        model = transform.GetChild(0);
         speed = initialSpeed;
         angleOfAttack = 0f;
         direction = 0f;
         stalling = false;
         flying = true;
-
-        OnDie = new UnityEvent();
     }
 
     private void FixedUpdate()
@@ -82,7 +79,7 @@ public class PlayerController : MonoBehaviour
             if (speed > stallStopSpeed)
             {
                 stalling = false;
-                StallEvent?.Invoke(false);
+                OnStall?.Invoke(false);
             }
         }
         else
@@ -90,7 +87,7 @@ public class PlayerController : MonoBehaviour
             if (speed < stallStartSpeed)
             {
                 stalling = true;
-                StallEvent?.Invoke(true);
+                OnStall?.Invoke(true);
             }
         }
         
@@ -131,7 +128,7 @@ public class PlayerController : MonoBehaviour
     {
         // Might need more advanced logic later, but for now, if you hit anything solid, you die.
         flying = false;
-        OnDie?.Invoke();
+        OnDeath?.Invoke();
     }
     private void OnTriggerEnter(Collider collision)
     {

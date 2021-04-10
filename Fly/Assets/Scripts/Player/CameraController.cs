@@ -10,7 +10,6 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.playerController.OnDie.AddListener(SetDeadCam);
         GameManager.instance.runManager.OnRestart.AddListener(SetAliveCam);
     }
 

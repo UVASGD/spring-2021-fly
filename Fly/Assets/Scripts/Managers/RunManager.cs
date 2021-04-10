@@ -33,13 +33,11 @@ public class RunManager : MonoBehaviour
         alive = true;
         if (goal) goalPosition = goal.position;
 
-        GameManager.instance.playerController.OnDie.AddListener(PromptRestart);
+        GameManager.instance.playerManager.activePlayer.playerController.OnDeath.AddListener(PromptRestart);
     }
 
     public void PromptRestart()
     {
-
-        print("Die Event Listener Count: " + GameManager.instance.playerController.OnDie.GetPersistentEventCount());
         restartUI?.SetActive(true);
         alive = false;
     }
@@ -49,13 +47,13 @@ public class RunManager : MonoBehaviour
         
         if (alive)
         {
-            currentHeight = GameManager.instance.playerController.transform.position.y;
+            currentHeight = GameManager.instance.playerManager.activePlayer.transform.position.y;
             currentHeightUI?.SetNumber(currentHeight);
 
             maxHeightThisRun = Mathf.Max(maxHeightThisRun, currentHeight);
             maxHeightThisRunUI?.SetNumber(maxHeightThisRun);
 
-            distanceFromGoal = (goalPosition - GameManager.instance.playerController.transform.position).magnitude;
+            distanceFromGoal = (goalPosition - GameManager.instance.playerManager.activePlayer.transform.position).magnitude;
             distanceFromGoalUI?.SetNumber(distanceFromGoal);
             return;
         }

@@ -29,6 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6868053362837362766}
+  - {fileID: 1771749350423356815}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44,10 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c039aa528ce1d024b95b63cba0a78d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  player: {fileID: 0}
   runManager: {fileID: 6868053362837362767}
-  powerUpManager: {fileID: 4013343061715171293, guid: dd577b472a0065942b35560773350115,
-    type: 3}
+  terrainGenerator: {fileID: 0}
 --- !u!1 &6868053362837362765
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +92,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e354d9b7f866ad4898376659a02f154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 6868053363778018956}
+  restartUI: {fileID: 0}
+  OnRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  goalPosition: {x: 0, y: 0, z: 0}
+  goal: {fileID: 0}
+  goalRadius: 5
+  goalHeight: 5
+  distanceTravelled: 0
+  distanceTravelledUI: {fileID: 0}
+  distanceFromGoal: 0
+  distanceFromGoalUI: {fileID: 0}
+  maxHeightThisRun: 0
+  maxHeightThisRunUI: {fileID: 0}
+  currentHeight: 0
+  currentHeightUI: {fileID: 0}
 --- !u!1 &6868053363601230361
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,3 +340,48 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &8181443459232495937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771749350423356815}
+  - component: {fileID: 618502683308949565}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1771749350423356815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8181443459232495937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6868053362602513018}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &618502683308949565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8181443459232495937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a086a956172e5074eaddc2ae4ebd385d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 2292457183050106209, guid: 697d576302e2a9a40a82fcd4de40ef50,
+    type: 3}
