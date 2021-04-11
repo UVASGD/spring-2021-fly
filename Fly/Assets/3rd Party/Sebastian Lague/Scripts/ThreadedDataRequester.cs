@@ -10,7 +10,7 @@ public class ThreadedDataRequester : MonoBehaviour {
 	Queue<ThreadInfo> dataQueue = new Queue<ThreadInfo>();
 
 	void Awake() {
-		instance = FindObjectOfType<ThreadedDataRequester> ();
+		instance = this;
 	}
 
 	public static void RequestData(Func<object> generateData, Action<object> callback) {
@@ -30,7 +30,7 @@ public class ThreadedDataRequester : MonoBehaviour {
 		
 
 	void Update() {
-		if (dataQueue.Count > 0) {
+		if (dataQueue.Count > 0 && GameManager.instance.mapManager.terrainGenerator.generated) {
 			for (int i = 0; i < dataQueue.Count; i++) {
 				ThreadInfo threadInfo = dataQueue.Dequeue ();
 				threadInfo.callback (threadInfo.parameter);
