@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class TerrainGenerator : MonoBehaviour {
 
+	public static TerrainGenerator instance;
+
 	const float viewerMoveThresholdForChunkUpdate = 25f;
 	const float sqrViewerMoveThresholdForChunkUpdate = viewerMoveThresholdForChunkUpdate * viewerMoveThresholdForChunkUpdate;
 
@@ -28,7 +30,8 @@ public class TerrainGenerator : MonoBehaviour {
 	Dictionary<Vector2, TerrainChunk> terrainChunkDictionary = new Dictionary<Vector2, TerrainChunk>();
 	List<TerrainChunk> visibleTerrainChunks = new List<TerrainChunk>();
 
-	private bool generated;
+	[HideInInspector]
+	public bool generated;
 
 	[Header("Debug")]
 	[SerializeField]
@@ -36,6 +39,15 @@ public class TerrainGenerator : MonoBehaviour {
 
     void Start() 
 	{
+		if (instance == null)
+        {
+			instance = this;
+        }
+        else
+        {
+			Destroy(instance.gameObject);
+        }
+
 		generated = false;
         if (debugMode)
         {
@@ -57,7 +69,19 @@ public class TerrainGenerator : MonoBehaviour {
 	}
 
 	void Update() {
+		
 		if (!generated) return;
+		if (viewer == null)
+        {
+			if (GameManager.instance.playerManager.activePlayer != null)
+            {
+				viewer = GameManager.instance.playerManager.activePlayer.transform;
+            }
+            else
+            {
+				viewer = new GameObject("Viewer").transform;
+            }
+        }
 
 		viewerPosition = new Vector2 (viewer.position.x, viewer.position.z);
 

@@ -14,8 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapSettingsList:
   - map: 0
-    heightMapSettings: {fileID: 0}
-    meshSettings: {fileID: 0}
-    textureData: {fileID: 0}
-    goalDistance: 0
+    heightMapSettings: {fileID: 11400000, guid: 740a13ca91e454c51aeb1f625a396eca,
+      type: 2}
+    meshSettings: {fileID: 11400000, guid: 46ff57af49f874fe2bd2a350a99d063c, type: 2}
+    textureData: {fileID: 11400000, guid: addd6b0c4581e4f73b0395a4943b9f57, type: 2}
+    goalDistance: 1000
     goalRotationFromForward: 0
+  - map: 1
+    heightMapSettings: {fileID: 11400000, guid: 8a5a8b8a3a41cd94790498e52adf1c4c,
+      type: 2}
+    meshSettings: {fileID: 11400000, guid: 98ec34bde7d8deb479e43a26ee6052f9, type: 2}
+    textureData: {fileID: 11400000, guid: 8e8dff4e69b33224ea2262e0ae6128f5, type: 2}
+    goalDistance: 500
+    goalRotationFromForward: 45

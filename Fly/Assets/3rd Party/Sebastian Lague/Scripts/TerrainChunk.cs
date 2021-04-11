@@ -89,7 +89,14 @@ public class TerrainChunk {
 
 	Vector2 viewerPosition {
 		get {
-			return new Vector2 (viewer.position.x, viewer.position.z);
+			if (viewer != null)
+            {
+				return new Vector2(viewer.position.x, viewer.position.z);
+			}
+            else
+            {
+				return Vector2.zero;
+            }
 		}
 	}
 

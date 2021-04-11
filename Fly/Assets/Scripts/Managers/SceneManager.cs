@@ -8,6 +8,9 @@ public class SceneManager : MonoBehaviour
     // Singleton (ensure that only one exists)
     public static SceneManager instance;
 
+    [Header("Scene")]
+    public int currentSceneBuildIndex;
+
     [Header("Transition")]
     [Range(0.1f, 5f)] [SerializeField] private float duration = 1f;
     [SerializeField] private TransitionDirection direction;
@@ -43,6 +46,8 @@ public class SceneManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        currentSceneBuildIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
 
         transitionTransform = transitionImage.GetComponent<RectTransform>();
         transitionTransform.gameObject.SetActive(false);
@@ -89,7 +94,8 @@ public class SceneManager : MonoBehaviour
         }
 
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(buildIndex); // Load the new scene
-
+        currentSceneBuildIndex = buildIndex;
+        
         t = 0f;
         while (t < 1f)
         {
@@ -123,6 +129,7 @@ public class SceneManager : MonoBehaviour
         }
 
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(buildIndex); // Load the new scene
+        currentSceneBuildIndex = buildIndex;
 
         t = 0f;
         transitionImage.fillClockwise = !clockwise;
@@ -142,7 +149,7 @@ public class SceneManager : MonoBehaviour
         if (!debugMode) return;
         if (Input.GetKeyDown(KeyCode.T))
         {
-            LoadScene(0, type);
+            LoadNextScene(type);
         }
     }
 }

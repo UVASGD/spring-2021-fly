@@ -287,15 +287,16 @@ MonoBehaviour:
       m_Calls: []
   goalPosition: {x: 0, y: 0, z: 0}
   goal: {fileID: 0}
-  goalPrefab: {fileID: 0}
+  goalPrefab: {fileID: 6197404415421229052, guid: 0e9d2d9ad93682f449b0e241354acac8,
+    type: 3}
   distanceTravelled: 0
   distanceTravelledUI: {fileID: 0}
   distanceFromGoal: 0
-  distanceFromGoalUI: {fileID: 0}
+  distanceFromGoalUI: {fileID: 5182207515598032071}
   maxHeightThisRun: 0
   maxHeightThisRunUI: {fileID: 0}
   currentHeight: 0
-  currentHeightUI: {fileID: 0}
+  currentHeightUI: {fileID: 5182207515060687431}
 --- !u!1 &5182207514751118845
 GameObject:
   m_ObjectHideFlags: 0

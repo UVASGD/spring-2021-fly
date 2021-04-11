@@ -2,17 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[SerializeField]
+public class PowerUp
+{
+    public int spawnDensityPerChunk; // How many should spawn per chunk?
+    public GameObject prefab; // Select the proper prefab from the Assets folder
+}
+
 public class PowerUpManager : MonoBehaviour
 {
-    public GameObject[] powerUpObjects = new GameObject[2];
+    
+
+    public List<GameObject> powerUpObjects;
     private int maxNumberOfPowerUpObjects = 6; //max number of powerups in each chunk
     private int[] probabilitiesToSpawn = {5, 5, 5}; //this should be out of 100
-    private string[] objectNames = {"SpeedUp", "SlowDown", "Unused" }; // third one not used for now
 
     // Start is called before the first frame update
     void Start()
     {
-        powerUpObjects = GameObject.FindGameObjectsWithTag("PowerUp");
+
     }
 
     // Update is called once per frame
@@ -26,13 +34,13 @@ public class PowerUpManager : MonoBehaviour
     }
 
     //spawn "n" number of GameObject "o"
-    private List<GameObject> GenerateObject(GameObject[] o, int n, Bounds bounds)
+    private List<GameObject> GenerateObject(List<GameObject> o, int n, Bounds bounds)
     {
         List<GameObject> gameObjectsList = new List<GameObject>();
         if (o == null) return gameObjectsList;
         for(int i = 0; i < n; i++)
         {
-            int spawnObjectIndex = (int)Random.Range(0, powerUpObjects.Length);
+            int spawnObjectIndex = (int)Random.Range(0, powerUpObjects.Count);
             int spawnOrNoSpawn = (int)Random.Range(0, 100);
             
             if(spawnOrNoSpawn < probabilitiesToSpawn[spawnObjectIndex])

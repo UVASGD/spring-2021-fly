@@ -12,7 +12,11 @@ public class GameManager : MonoBehaviour
     public PlayerManager playerManager;
     public RunManager runManager;
     public MapManager mapManager;
+    public SceneManager sceneManager;
     #endregion
+
+    [SerializeField]
+    private bool debugMode;
 
     // Start is called before the first frame update
     void Awake()
@@ -30,6 +34,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (!debugMode) return;
+        if (sceneManager.currentSceneBuildIndex == 0) return; // Can't start game on title screen
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             StartLevel(MapType.LushMountainRange);

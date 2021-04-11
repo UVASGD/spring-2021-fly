@@ -5,7 +5,7 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     public MapSettingsList mapSettingsList;
-    public TerrainGenerator terrainGenerator;
+    public TerrainGenerator terrainGenerator { get => TerrainGenerator.instance; }
 
     private void Awake()
     {
@@ -15,10 +15,16 @@ public class MapManager : MonoBehaviour
     // Spawn the player before you call this and pass it in as the viewer
     public MapSettings GenerateMap(MapSettings settings, Transform viewer)
     {
-        terrainGenerator.meshSettings = settings.meshSettings;
-        terrainGenerator.heightMapSettings = settings.heightMapSettings;
-        terrainGenerator.textureSettings = settings.textureData;
         terrainGenerator.viewer = viewer;
+
+        if (!terrainGenerator.generated)
+        {
+            terrainGenerator.meshSettings = settings.meshSettings;
+            terrainGenerator.heightMapSettings = settings.heightMapSettings;
+            terrainGenerator.textureSettings = settings.textureData;
+            terrainGenerator.GenerateTerrain();
+        }
+        
         return settings;
     }
 }
