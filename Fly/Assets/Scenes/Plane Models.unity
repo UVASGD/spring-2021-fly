@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.005
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.3018868, g: 0.20574722, b: 0.19223924, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 471ee65e6e962a34e97218a0e9e039f7, type: 2}
   m_HaloStrength: 0.5
@@ -364,8 +364,11 @@ MonoBehaviour:
   meshSettings: {fileID: 11400000, guid: 46ff57af49f874fe2bd2a350a99d063c, type: 2}
   heightMapSettings: {fileID: 11400000, guid: 740a13ca91e454c51aeb1f625a396eca, type: 2}
   textureSettings: {fileID: 11400000, guid: addd6b0c4581e4f73b0395a4943b9f57, type: 2}
+  powerUpManager: {fileID: 0}
   viewer: {fileID: 6321375573721154097}
   mapMaterial: {fileID: 2100000, guid: b0872f84cf3c7441d893168677410c73, type: 2}
+  generated: 0
+  debugMode: 0
 --- !u!114 &1008436977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,11 +961,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 80240800, guid: 697d576302e2a9a40a82fcd4de40ef50, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000013979556
+      value: 0.000000013979556
       objectReference: {fileID: 0}
     - target: {fileID: 80240800, guid: 697d576302e2a9a40a82fcd4de40ef50, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000010914907
+      value: -0.000000010914907
       objectReference: {fileID: 0}
     - target: {fileID: 80240800, guid: 697d576302e2a9a40a82fcd4de40ef50, type: 3}
       propertyPath: m_LocalPosition.y
@@ -996,12 +999,12 @@ PrefabInstance:
     - target: {fileID: 859173123155635830, guid: 697d576302e2a9a40a82fcd4de40ef50,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000013979556
+      value: 0.000000013979556
       objectReference: {fileID: 0}
     - target: {fileID: 859173123155635830, guid: 697d576302e2a9a40a82fcd4de40ef50,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000010914907
+      value: -0.000000010914907
       objectReference: {fileID: 0}
     - target: {fileID: 859173123155635830, guid: 697d576302e2a9a40a82fcd4de40ef50,
         type: 3}
