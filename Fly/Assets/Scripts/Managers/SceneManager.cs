@@ -152,4 +152,9 @@ public class SceneManager : MonoBehaviour
             LoadNextScene(type);
         }
     }
+
+    public void LoadLevel(int level)
+    {
+        LoadScene(level, TransitionType.Slide);
+    }
 }
