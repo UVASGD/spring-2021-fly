@@ -60,8 +60,10 @@ public class Model
 
     public enum Type
     {
-        FlatSpace,
-        Needle,
-        StingRay,
+        Classic,
+        BigFlat,
+        Needlenose,
+        Stingray,
+        Cobra,
     }
 }

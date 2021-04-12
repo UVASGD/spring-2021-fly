@@ -26,4 +26,4 @@ MonoBehaviour:
     meshSettings: {fileID: 11400000, guid: 98ec34bde7d8deb479e43a26ee6052f9, type: 2}
     textureData: {fileID: 11400000, guid: 8e8dff4e69b33224ea2262e0ae6128f5, type: 2}
     goalDistance: 500
-    goalRotationFromForward: 45
+    goalRotationFromForward: 0

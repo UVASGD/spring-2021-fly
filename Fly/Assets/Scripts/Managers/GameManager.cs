@@ -38,17 +38,29 @@ public class GameManager : MonoBehaviour
         if (sceneManager.currentSceneBuildIndex == 0) return; // Can't start game on title screen
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            StartLevel(MapType.LushMountainRange);
+            StartLevel(MapType.Desert, Model.Type.Classic);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            StartLevel(MapType.Desert);
+            StartLevel(MapType.Desert, Model.Type.BigFlat);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            StartLevel(MapType.Desert, Model.Type.Needlenose);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            StartLevel(MapType.Desert, Model.Type.Stingray);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            StartLevel(MapType.Desert, Model.Type.Cobra);
         }
     }
 
-    public void StartLevel(MapType map)
+    public void StartLevel(MapType map, Model.Type playerModel)
     {
-        Player player = playerManager.SpawnPlayerAtPosition(new Vector3(0f, 50f, 0f));
+        Player player = playerManager.SpawnPlayerAtPosition(new Vector3(0f, 50f, 0f), playerModel);
         MapSettings settings = mapManager.GenerateMap(mapManager.mapSettingsList.mapsDict[map], player.transform);
 
         // Get goal position from the map settings polar coordinates
