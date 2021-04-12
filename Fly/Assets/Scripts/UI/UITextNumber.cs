@@ -14,6 +14,6 @@ public class UITextNumber : MonoBehaviour
 
     public void SetNumber(float number, int decimalPlaces = 1)
     {
-        textField.SetText(number.ToString($"F{decimalPlaces}"));
+        textField?.SetText(number.ToString($"F{decimalPlaces}"));
     }
 }
