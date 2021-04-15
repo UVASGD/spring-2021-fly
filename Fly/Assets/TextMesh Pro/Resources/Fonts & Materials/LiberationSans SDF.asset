@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LiberationSans SDF Material
-  m_Shader: {fileID: 4800000, guid: eaa3484529cb5694e979b39bfd707e2d, type: 3}
+  m_Shader: {fileID: 4800000, guid: 481ba43cd8d04c54e8f1c9f97801d83c, type: 3}
   m_ShaderKeywords: OUTLINE_ON
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -75,6 +75,8 @@ Material:
     - _ScaleY: 1
     - _ShaderFlags: 0
     - _Sharpness: 0
+    - _SketchAmp: 1
+    - _SketchFreq: 1
     - _SpecularPower: 2
     - _Stencil: 0
     - _StencilComp: 8

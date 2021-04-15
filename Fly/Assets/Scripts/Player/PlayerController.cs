@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     public float angleOfAttack; // dip/climb
     public float roll; // banking
     public float pitch; // turning
+    public float velocityDecrease;
+    public float fuel;
 
     private void Start()
     {
@@ -61,6 +63,8 @@ public class PlayerController : MonoBehaviour
         direction = 0f;
         stalling = false;
         flying = true;
+        velocityDecrease = 1f;
+        fuel = 100f;
     }
 
     private void FixedUpdate()
@@ -116,6 +120,22 @@ public class PlayerController : MonoBehaviour
 
         velocity = Quaternion.AngleAxis(angleOfAttack, localRight) * localForward * speed; // rotate target velocity (direction) by angle of attack
         rb.velocity = velocity; // apply velocity
+
+        if (fuel <= 0)
+        {
+            transform.position += new Vector3(0, -.10f, 0);
+            if (velocityDecrease < 8)
+            {
+                velocity += velocityDecrease * Vector3.down;
+                velocityDecrease += .01f;
+            }
+        }
+        if (fuel > 0)
+        {
+            fuel -= .05f;
+        }
+
+        Debug.Log("fuel: " + fuel + ", velocityDecrease: " + velocityDecrease + ", speed: " + speed);
 
         // Rotate model for banking
         localUp = Quaternion.AngleAxis(-roll * maxRollDeg, velocity) * Vector3.up;
