@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     // Parent handles actual left-right rotation, while child/model visualizes angle of attack and banking
     // Separation of these important to handle gimbal lock, and overall makes it easier to program.
     public Transform model; 
+    // need initialized plane Type
 
     [Header("Init")]
     public float initialSpeed = 10f;
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
     [Space]
 
     public float speed;
+    public float thrustSpeed;
     public float direction; //0-360 degrees
     public float angleOfAttack; // dip/climb
     public float roll; // banking
@@ -99,6 +101,15 @@ public class PlayerController : MonoBehaviour
         roll = stalling || !flying ? 0f : Input.GetAxis("Horizontal"); // z = roll
         pitch = stalling || !flying ? 0f : Input.GetAxis("Vertical"); // x = pitch 
 
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            thrustSpeed = speed;
+            speed = 106f;
+            Debug.Log(speed);
+        }
+        else if (Input.GetKeyUp(KeyCode.Space)) {
+            speed = thrustSpeed;
+        }
+
         direction += roll * rollSpeed * Time.fixedDeltaTime; // how much to turn this frame
         localForward = Quaternion.AngleAxis(direction, Vector3.up) * Vector3.forward; // update nose
         localRight = Vector3.Cross(localForward, Vector3.up); // update wings
@@ -123,7 +134,9 @@ public class PlayerController : MonoBehaviour
 
         if (fuel <= 0)
         {
+            //TODO change so varies with Type
             transform.position += new Vector3(0, -.10f, 0);
+            //Debug.Log(Type.Classic.getWeight());
             if (velocityDecrease < 8)
             {
                 velocity += velocityDecrease * Vector3.down;
@@ -135,7 +148,7 @@ public class PlayerController : MonoBehaviour
             fuel -= .05f;
         }
 
-        Debug.Log("fuel: " + fuel + ", velocityDecrease: " + velocityDecrease + ", speed: " + speed);
+        //Debug.Log("fuel: " + fuel + ", velocityDecrease: " + velocityDecrease + ", speed: " + speed);
 
         // Rotate model for banking
         localUp = Quaternion.AngleAxis(-roll * maxRollDeg, velocity) * Vector3.up;
