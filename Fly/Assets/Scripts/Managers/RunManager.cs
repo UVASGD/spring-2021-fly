@@ -24,6 +24,7 @@ public class RunManager : MonoBehaviour
     public UITextNumber maxHeightThisRunUI;
     public UITextNumber currentHeightUI;
     public GameObject restartUI;
+    public UITextNumber fuelUI;
 
     [Header("Stats")]
     public float distanceTravelled;
@@ -73,6 +74,9 @@ public class RunManager : MonoBehaviour
 
             distanceFromGoal = (goalPosition - GameManager.instance.playerManager.activePlayer.transform.position).magnitude;
             distanceFromGoalUI?.SetNumber(distanceFromGoal);
+
+            fuelUI?.SetNumber(GameManager.instance.playerManager.activePlayer.playerController.fuel);
+
             return;
         }
         

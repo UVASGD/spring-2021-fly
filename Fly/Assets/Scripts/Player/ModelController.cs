@@ -66,4 +66,31 @@ public class Model
         Stingray,
         Cobra,
     }
+    
+
 }
+    /*static class UpgradablePropertiesMethods {
+        //getWeight()
+        //getVelocityDecrease()
+        //getFuelUse()
+        
+
+        public static float getWeight(this Type type1) {
+            switch (type) {
+                case Type.Classic:
+                    return -0.1f;
+                case Type.BigFlat:
+                    return -0.2f;
+                case Type.Needlenose:
+                    return -0.3f;
+                case Type.Stingray:
+                    return -0.4f;
+                case Type.Cobra:
+                    return -0.5f;
+                default:
+                    return 100f;
+            }
+        }
+    }
+    */
+    
