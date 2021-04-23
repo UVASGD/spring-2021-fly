@@ -12,6 +12,8 @@ public enum MapType
 [System.Serializable]
 public class MapSettings
 {
+    public string name;
+    public Sprite image;
     public MapType map;
 
     [Header("Generation Settings")]

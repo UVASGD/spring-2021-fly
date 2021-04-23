@@ -18,6 +18,26 @@ Ryan Kann
 * Oliver Song
 * Cory Ooten
 
+### Design
+- Weight
+  - Description: Causes the plane to descend slower.
+  - Tiers: 1, 2, 3 -> Plane dips fewer degrees per second
+- Aerodynamics
+  - Description: Reduces drag, retaining speed better.
+  - Tiers: 1, 2, 3 -> Multiplier for velocity decrease when climbing goes down (lower rate of decrease)
+- Rocket Science
+  - Description: Uncovers the power of rocketry! Hold space to boost.
+  - Tiers: 1, 2, 3 -> more fuel
+- Durability
+  - Description: Hazards affect the plane much less.
+  - Tiers: 1, 2, 3 -> Reduce slow-down/stun duration
+- Landing Gear
+  - Description: Unlocks the ability to bounce off the ground once.
+  - Tiers: 1, 2, 3 -> Increase the recovery height
+- Design
+  - Description: Improve the efficiency of your plane
+  - Tiers: 1, 2, 3, 4, 5 -> Slightly boost all of the multipliers by a flat rate
+
 ## TODO
 ### Programming
 * Nothing
