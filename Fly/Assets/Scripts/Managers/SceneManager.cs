@@ -33,6 +33,7 @@ public class SceneManager : MonoBehaviour
     {
         Slide,
         RadialWipe,
+        Fade,
     }
 
     private void Awake()
@@ -53,7 +54,7 @@ public class SceneManager : MonoBehaviour
         transitionTransform.gameObject.SetActive(false);
     }
 
-    public static void LoadNextScene(TransitionType type = TransitionType.Slide)
+    public void LoadNextScene(TransitionType type = TransitionType.Slide)
     {
         int currentBuildIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
         int sceneCount = UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
@@ -61,14 +62,16 @@ public class SceneManager : MonoBehaviour
         LoadScene(nextSceneIndex, type);
     }
 
-    public static void LoadScene(int buildIndex, TransitionType type = TransitionType.Slide)
+    public void LoadScene(int buildIndex, TransitionType type = TransitionType.Slide)
     {
-        if (instance.transitioning) return;
-        instance.transitioning = true;
+        if (transitioning) return;
+        transitioning = true;
         if (type == TransitionType.Slide)
-            instance.StartCoroutine(instance.LoadSceneSlide(buildIndex));
+            StartCoroutine(LoadSceneSlide(buildIndex));
         else if (type == TransitionType.RadialWipe)
-            instance.StartCoroutine(instance.LoadSceneRadialWipe(buildIndex));
+            StartCoroutine(LoadSceneRadialWipe(buildIndex));
+        else if (type == TransitionType.Fade)
+            StartCoroutine(LoadSceneFade(buildIndex));
     }
 
     private IEnumerator LoadSceneSlide(int buildIndex)
@@ -144,12 +147,75 @@ public class SceneManager : MonoBehaviour
         transitioning = false;
     }
 
+    private IEnumerator LoadSceneFade(int buildIndex)
+    {
+        transitionTransform.gameObject.SetActive(true);
+        transitionTransform.anchoredPosition = Vector2.zero;
+
+        float t = 0f;
+        Color start = transitionImage.color;
+        start.a = 0f;
+        Color end = start;
+        start.a = 1f;
+
+        // Interpolate between start and end colors
+        while (t < 1f)
+        {
+            float tweenedT = tween.Evaluate(t); // Applies tween to lerp. AKA smooth~~~
+            transitionImage.color = Color.Lerp(start, end, tweenedT);
+            t += Time.deltaTime / duration; // t goes from 0 to 1 linearly over the duration
+            yield return new WaitForEndOfFrame(); // Stop coroutine until next frame
+        }
+
+        if (buildIndex < 0)
+        {
+            Quit(immediate: true);
+        }
+
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(buildIndex); // Load the new scene
+        currentSceneBuildIndex = buildIndex;
+
+        t = 0f;
+        while (t < 1f)
+        {
+            float tweenedT = tween.Evaluate(t); // Applies tween to lerp. AKA smooth~~~
+            transitionImage.fillAmount = Mathf.Lerp(1f, 0f, tweenedT);
+            transitionImage.color = Color.Lerp(end, start, tweenedT);
+            t += Time.deltaTime / duration; // t goes from 0 to 1 linearly over the duration
+            yield return new WaitForEndOfFrame(); // Stop coroutine until next frame
+        }
+        transitionTransform.gameObject.SetActive(false);
+        transitioning = false;
+    }
+
     private void Update()
     {
         if (!debugMode) return;
         if (Input.GetKeyDown(KeyCode.T))
         {
             LoadNextScene(type);
+        }
+    }
+
+    public void LoadLevel(int level)
+    {
+        LoadScene(level, TransitionType.Slide);
+    }
+
+    public void Quit(bool immediate = false)
+    {
+        if (immediate)
+        {
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #elif UNITY_WEBGL
+            #else
+            Application.Quit();
+            #endif
+        }
+        else
+        {
+            LoadScene(-1, TransitionType.Fade);
         }
     }
 }

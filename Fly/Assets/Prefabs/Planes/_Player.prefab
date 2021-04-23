@@ -178,7 +178,7 @@ MonoBehaviour:
   m_FocusTracking: 1
   m_FocusTarget: {fileID: 0}
   m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 62a6d81950da0e742a4d1534d18863be, type: 2}
+  m_Profile: {fileID: 0}
 --- !u!64 &5364080401687973823
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -522,7 +522,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5742941796211745190}
-  m_LocalRotation: {x: 0.61541224, y: -0.000000013979556, z: 0.000000010914907, w: 0.78820544}
+  m_LocalRotation: {x: 0.61541224, y: 0.000000013979556, z: -0.000000010914907, w: 0.78820544}
   m_LocalPosition: {x: 0, y: 20, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1018,7 +1018,7 @@ PrefabInstance:
     - target: {fileID: 2292457183050106214, guid: f6e0bace8e8d9d643853a3900c3d0275,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2292457183050106214, guid: f6e0bace8e8d9d643853a3900c3d0275,
         type: 3}

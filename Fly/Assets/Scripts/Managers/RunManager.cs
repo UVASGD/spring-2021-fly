@@ -84,7 +84,7 @@ public class RunManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                SceneManager.LoadScene(0);
+                SceneManager.instance.LoadScene(0);
             }
         }
     }
