@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class TerrainChunk {
 	
@@ -9,6 +10,8 @@ public class TerrainChunk {
 	GameObject meshObject;
 	Vector2 sampleCentre;
 	Bounds bounds;
+
+    List<GameObject> thingsToGenerate = new List<GameObject>();
 
 	MeshRenderer meshRenderer;
 	MeshFilter meshFilter;
@@ -28,20 +31,31 @@ public class TerrainChunk {
 	MeshSettings meshSettings;
 	Transform viewer;
 
-	public TerrainChunk(Vector2 coord, HeightMapSettings heightMapSettings, MeshSettings meshSettings, LODInfo[] detailLevels, int colliderLODIndex, Transform parent, Transform viewer, Material material) {
-		this.coord = coord;
-		this.detailLevels = detailLevels;
-		this.colliderLODIndex = colliderLODIndex;
-		this.heightMapSettings = heightMapSettings;
-		this.meshSettings = meshSettings;
-		this.viewer = viewer;
+    public TerrainChunk(Vector2 coord, HeightMapSettings heightMapSettings, MeshSettings meshSettings, LODInfo[] detailLevels, int colliderLODIndex, Transform parent, Transform viewer, Material material, List<ThingToGenerate> things) {
+        this.coord = coord;
+        this.detailLevels = detailLevels;
+        this.colliderLODIndex = colliderLODIndex;
+        this.heightMapSettings = heightMapSettings;
+        this.meshSettings = meshSettings;
+        this.viewer = viewer;
 
-		sampleCentre = coord * meshSettings.meshWorldSize / meshSettings.meshScale;
-		Vector2 position = coord * meshSettings.meshWorldSize ;
-		bounds = new Bounds(position,Vector2.one * meshSettings.meshWorldSize );
+        sampleCentre = coord * meshSettings.meshWorldSize / meshSettings.meshScale;
+        Vector2 position = coord * meshSettings.meshWorldSize;
+        bounds = new Bounds(position, Vector2.one * meshSettings.meshWorldSize);
+
+        foreach (ThingToGenerate thing in things)
+        {
+            int numToGen = (int)(thing.minPerChunk + (Random.value * (thing.maxPerChunk + 1 - thing.minPerChunk)));
+
+            for (int i = 0; i < numToGen; i++)
+            {
+                Vector3 positionToGen = new Vector3(position.x + Random.Range(-1 * bounds.extents[0], bounds.extents[0]), 0, position.y + Random.Range(-1 * bounds.extents[0], bounds.extents[0]));
+                this.thingsToGenerate.Add(GameObject.Instantiate(thing.thingGenerating, positionToGen, Quaternion.identity, parent));
+            }
+        }
 
 
-		meshObject = new GameObject("Terrain Chunk");
+        meshObject = new GameObject("Terrain Chunk");
 		meshRenderer = meshObject.AddComponent<MeshRenderer>();
 		meshFilter = meshObject.AddComponent<MeshFilter>();
 		meshCollider = meshObject.AddComponent<MeshCollider>();
@@ -144,9 +158,12 @@ public class TerrainChunk {
 		}
 	}
 
-	public void SetVisible(bool visible) {
-		meshObject.SetActive (visible);
-	}
+    public void SetVisible(bool visible) {
+        meshObject.SetActive(visible);
+        foreach (GameObject thingToGenerate in thingsToGenerate) {
+            thingToGenerate.SetActive(visible);
+        }
+    }
 
 	public bool IsVisible() {
 		return meshObject.activeSelf;
