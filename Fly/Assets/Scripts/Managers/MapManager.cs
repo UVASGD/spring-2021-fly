@@ -19,9 +19,6 @@ public class MapManager : MonoBehaviour
 
         if (!terrainGenerator.generated)
         {
-            terrainGenerator.meshSettings = settings.meshSettings;
-            terrainGenerator.heightMapSettings = settings.heightMapSettings;
-            terrainGenerator.textureSettings = settings.textureData;
             terrainGenerator.GenerateTerrain();
         }
         
