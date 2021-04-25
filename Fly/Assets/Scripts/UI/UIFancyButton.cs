@@ -20,6 +20,7 @@ public class UIFancyButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        image.material = Instantiate(image.material);
         material = image.material;
         highlighting = false;
         t = 0f;

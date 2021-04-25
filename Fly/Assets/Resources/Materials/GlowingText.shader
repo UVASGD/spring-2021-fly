@@ -6,7 +6,7 @@ Shader "UI/Default Glowing"
     {
         _MainTex("Sprite Texture", 2D) = "white" {}
         _HighTex("Highlight Texture", 2D) = "white" {}
-        _Blend("Blend value", Range(0,1)) = 0.0
+        [PerRenderData]_Blend("Blend value", Range(0,1)) = 0.0
         _Color("Tint", Color) = (1,1,1,1)
 
         _StencilComp("Stencil Comparison", Float) = 8
