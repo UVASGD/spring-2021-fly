@@ -54,15 +54,23 @@ public class SceneManager : MonoBehaviour
         transitionTransform.gameObject.SetActive(false);
     }
 
-    public void LoadNextScene(TransitionType type = TransitionType.Slide)
+    public void LoadNextScene()
     {
         int currentBuildIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
         int sceneCount = UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
         int nextSceneIndex = (currentBuildIndex + 1) % sceneCount;
-        LoadScene(nextSceneIndex, type);
+        LoadScene(nextSceneIndex);
     }
 
-    public void LoadScene(int buildIndex, TransitionType type = TransitionType.Slide)
+    public void LoadScene(string sceneName)
+    {
+        if (transitioning) return;
+        int buildIndex = UnityEngine.SceneManagement.SceneUtility.GetBuildIndexByScenePath(sceneName);
+        print($"Loading {sceneName} at buildIndex {buildIndex}");
+        LoadScene(buildIndex);
+    }
+
+    public void LoadScene(int buildIndex)
     {
         if (transitioning) return;
         transitioning = true;
@@ -193,13 +201,13 @@ public class SceneManager : MonoBehaviour
         if (!debugMode) return;
         if (Input.GetKeyDown(KeyCode.T))
         {
-            LoadNextScene(type);
+            LoadNextScene();
         }
     }
 
     public void LoadLevel(int level)
     {
-        LoadScene(level, TransitionType.Slide);
+        LoadScene(level);
     }
 
     public void Quit(bool immediate = false)
@@ -215,7 +223,8 @@ public class SceneManager : MonoBehaviour
         }
         else
         {
-            LoadScene(-1, TransitionType.Fade);
+            type = TransitionType.Fade;
+            LoadScene(-1);
         }
     }
 }

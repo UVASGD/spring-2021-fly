@@ -30,7 +30,7 @@ public class ThreadedDataRequester : MonoBehaviour {
 		
 
 	void Update() {
-		if (dataQueue.Count > 0 && GameManager.instance.mapManager.terrainGenerator.generated) {
+		if (dataQueue.Count > 0) {
 			for (int i = 0; i < dataQueue.Count; i++) {
 				ThreadInfo threadInfo = dataQueue.Dequeue ();
 				threadInfo.callback (threadInfo.parameter);

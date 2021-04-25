@@ -4,60 +4,79 @@ using UnityEngine;
 
 public class ModelController : MonoBehaviour, ISavable
 {
-    public List<Model> models;
+    public ModelList modelList; // ScriptableObject found somewhere in Assets folder
     public Model activeModel;
+
+    private void Start()
+    {
+        Load();
+        modelList.Init();
+    }
+
+    public void SetActiveModel(Model model)
+    {
+        if (transform.childCount > 0)
+        {
+            Destroy(transform.GetComponentInChildren<GameObject>());
+        }
+        GameObject obj = Instantiate(model.prefab, transform);
+        Player.instance.playerController.model = obj.transform;
+    }
+
+    public void SyncActiveModel()
+    {
+        SetActiveModel(activeModel);
+    }
 
     public void Load()
     {
         if (PlayerPrefs.HasKey("planeModel"))
         {
             int index = PlayerPrefs.GetInt("planeModel");
-            activeModel = models[index];
+            activeModel = modelList.models[index];
             SyncActiveModel();
         }
         else
         {
-            throw new System.NullReferenceException();
+            activeModel = modelList.models[0];
+            SyncActiveModel();
         }
     }
 
     public void Save()
     {
-        int index = models.IndexOf(activeModel);
+        int index = modelList.models.IndexOf(activeModel);
         PlayerPrefs.SetInt("planeModel", index);
     }
+}
 
-    public void SetActiveModel(Model.Type type)
+[CreateAssetMenu(fileName = "Model List", menuName = "ScriptableObjects/Model List")]
+public class ModelList : ScriptableObject
+{
+    public List<Model> models;
+    public Dictionary<Model.Type, Model> modelMap;
+
+    // Set up dictionary for intuitive reference by type
+    public void Init()
     {
-        foreach (var model in models)
+        modelMap = new Dictionary<Model.Type, Model>();
+
+        foreach (var item in models)
         {
-            if (model.type == type)
-            {
-                model.gameObject.SetActive(true);
-                activeModel = model;
-            }
-            else
-            {
-                model.gameObject.SetActive(false);
-            }
+            modelMap.Add(item.type, item);
         }
-        Player.instance.playerController.model = activeModel.gameObject.transform;
     }
-
-    public void SyncActiveModel()
-    {
-        SetActiveModel(activeModel.type);
-    }
-
-    
 }
 
 [System.Serializable]
 public class Model
 {
     public Type type;
-    public GameObject gameObject;
+    public Stats stats;
+    public GameObject prefab;
 
+
+    #region DEFINITIONS
     public enum Type
     {
         Classic,
@@ -67,30 +86,19 @@ public class Model
         Cobra,
     }
     
-
-}
-    /*static class UpgradablePropertiesMethods {
-        //getWeight()
-        //getVelocityDecrease()
-        //getFuelUse()
-        
-
-        public static float getWeight(this Type type1) {
-            switch (type) {
-                case Type.Classic:
-                    return -0.1f;
-                case Type.BigFlat:
-                    return -0.2f;
-                case Type.Needlenose:
-                    return -0.3f;
-                case Type.Stingray:
-                    return -0.4f;
-                case Type.Cobra:
-                    return -0.5f;
-                default:
-                    return 100f;
-            }
-        }
+    [System.Serializable]
+    public class Stats
+    {
+        [Range(0f, 2f)]
+        public float weightMultiplier;
+        [Range(0f, 2f)]
+        public float initialVelocityMultiplier;
+        [Range(0f, 2f)]
+        public float dragMultiplier;
+        [Range(0f, 2f)]
+        public float fuelMultiplier;
+        [Range(0f, 2f)]
+        public float bounceHeightMultiplier;
     }
-    */
-    
+    #endregion
+}

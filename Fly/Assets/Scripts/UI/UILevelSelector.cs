@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UILevelSelector : MonoBehaviour
+public class UILevelSelector : MonoBehaviour, ISavable
 {
     public MapSettingsList mapList;
     public GameObject UILevelPrefab;
@@ -19,6 +19,7 @@ public class UILevelSelector : MonoBehaviour
     {
         currentIndex = 0;
         levelCount = 0;
+        int unlockedCount = 0;
 
         mapSettingsList = new List<MapSettings>();
         mapUIList = new List<GameObject>();
@@ -49,6 +50,14 @@ public class UILevelSelector : MonoBehaviour
 
             element.SetActive(levelCount == 1);
         }
+
+        // If no maps unlocked, unlock the first one
+        if (unlockedCount == 0)
+        {
+            mapSettingsList[0].locked = false;
+            mapSettingsList[0].Save();
+            mapUIList[0].transform.Find("LockPanel").gameObject.SetActive(false);
+        }
     }
 
     public void NextLevel()
@@ -63,5 +72,38 @@ public class UILevelSelector : MonoBehaviour
         mapUIList[currentIndex].SetActive(false);
         currentIndex = (currentIndex - 1) + (currentIndex > 0 ? 0 : levelCount);
         mapUIList[currentIndex].SetActive(true);
+    }
+
+    public void ConfirmLevel()
+    {
+        MapSettings settings = mapSettingsList[currentIndex];
+        if (settings.locked)
+        {
+            OnInvalidLevel();
+            return;
+        }
+        GameManager.instance.mapSettings = settings;
+        SceneManager.instance.LoadScene(settings.scene);
+    }
+
+    public void OnInvalidLevel()
+    {
+        print("INVALID LEVEL");
+    }
+
+    public void Save()
+    {
+        foreach (var item in mapSettingsList)
+        {
+            item.Save();
+        }
+    }
+
+    public void Load()
+    {
+        foreach (var item in mapSettingsList)
+        {
+            item.Load();
+        }
     }
 }
