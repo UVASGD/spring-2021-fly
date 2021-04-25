@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public SceneManager sceneManager;
     #endregion
 
+    [HideInInspector]
     public MapSettings mapSettings;
 
     [SerializeField]
@@ -34,44 +35,38 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void LoadLevel(string name)
     {
-        if (!debugMode) return;
-        if (sceneManager.currentSceneBuildIndex == 0) return; // Can't start game on title screen
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-        }
+        if (SceneManager.instance.transitioning) return;
+        SceneManager.instance.LoadScene(name);
+        StartCoroutine(LoadLevelCR());
     }
 
-    public void LoadLevel()
+    private IEnumerator LoadLevelCR()
     {
-
+        yield return new WaitForEndOfFrame();
+        while (SceneManager.instance.transitioning)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForEndOfFrame();
+        InitLevel();
     }
 
     public void InitLevel()
     {
         Player player = playerManager.SpawnPlayerAtPosition(new Vector3(0f, 50f, 0f));
-
-    }
-
-    public void StartLevel()
-    {
+        player.modelController.Init();
+        player.modelController.SyncActiveModel();
+        FindObjectOfType<TerrainGenerator>().viewer = player.transform;
 
         // Get goal position from the map settings polar coordinates
         Vector3 goalPosition = Quaternion.Euler(0f, mapSettings.goalRotationFromForward, 0f) * new Vector3(0f, 0f, mapSettings.goalDistance);
         runManager.InitRun(goalPosition);
+    }
+
+    public void StartLevel()
+    {
         runManager.StartRun();
     }
 

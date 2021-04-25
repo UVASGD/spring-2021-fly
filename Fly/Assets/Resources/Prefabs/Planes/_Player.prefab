@@ -421,20 +421,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cec89aea34d1d040b9388e132e73537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  models:
-  - type: 0
-    gameObject: {fileID: 0}
-  - type: 1
-    gameObject: {fileID: 0}
-  - type: 2
-    gameObject: {fileID: 0}
-  - type: 3
-    gameObject: {fileID: 0}
-  - type: 4
-    gameObject: {fileID: 0}
+  modelList: {fileID: 11400000, guid: 3c1ce3f1b158ab245bec39848228a342, type: 2}
   activeModel:
     type: 0
-    gameObject: {fileID: 0}
+    stats:
+      weightMultiplier: 0
+      initialVelocityMultiplier: 0
+      dragMultiplier: 0
+      fuelMultiplier: 0
+      bounceHeightMultiplier: 0
+    prefab: {fileID: 0}
 --- !u!1 &4230382663855258528
 GameObject:
   m_ObjectHideFlags: 0

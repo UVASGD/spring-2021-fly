@@ -18,7 +18,8 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private AnimationCurve tween;
     [SerializeField] private Image transitionImage;
     private RectTransform transitionTransform;
-    private bool transitioning;
+    
+    [HideInInspector] public bool transitioning;
 
     [Header("Debug")]
     [SerializeField] private bool debugMode = false;

@@ -27,23 +27,18 @@ public class UILevelSelector : MonoBehaviour, ISavable
         foreach (var item in mapList.mapSettingsList)
         {
             levelCount++;
+
+            item.Load(); // load to remember if level is completed/locked
+            if (!item.locked) unlockedCount++;
+
             GameObject element = Instantiate(UILevelPrefab, transform);
             Image image = element.GetComponentInChildren<Image>();
             TMP_Text text = element.GetComponentInChildren<TMP_Text>();
 
-            if (item.image != null)
-            {
-                image.sprite = item.image;
-            }
-
-            if (item.name != "")
-            {
-                text.SetText(item.name);
-            }
-            else
-            {
-                text.SetText("Level " + levelCount);
-            }
+            image.sprite = item.image;
+            text.SetText(item.name == "" ? "Level " + levelCount : item.name);
+            element.transform.Find("LockPanel").gameObject.SetActive(item.locked);
+            element.transform.Find("CompletePanel").gameObject.SetActive(item.completed);
 
             mapSettingsList.Add(item);
             mapUIList.Add(element);
@@ -83,7 +78,7 @@ public class UILevelSelector : MonoBehaviour, ISavable
             return;
         }
         GameManager.instance.mapSettings = settings;
-        SceneManager.instance.LoadScene(settings.scene);
+        GameManager.instance.LoadLevel(settings.scene);
     }
 
     public void OnInvalidLevel()

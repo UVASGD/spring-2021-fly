@@ -9,9 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2292457183050106214}
-  - component: {fileID: 2292457183050106212}
-  - component: {fileID: 2292457183050106215}
-  - component: {fileID: 796735772378941766}
   m_Layer: 0
   m_Name: Classic
   m_TagString: Untagged
@@ -34,75 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &2292457183050106212
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2292457183050106209}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 64
-  m_CollisionDetection: 0
---- !u!114 &2292457183050106215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2292457183050106209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71deaeaa41066fe4cb1f1ebe5c993ec8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model: {fileID: 0}
-  initialSpeed: 32
-  rollSpeed: 30
-  maxRollDeg: 30
-  pitchSpeed: 30
-  maxPitchDeg: 45
-  stallStartSpeed: 1
-  stallStopSpeed: 10
-  stallPitchModifier: 2
-  stallGravityModifier: 2
-  stalling: 0
-  flying: 1
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  velocity: {x: 0, y: 0, z: 0}
-  localForward: {x: 0, y: 0, z: 0}
-  localRight: {x: 0, y: 0, z: 0}
-  localUp: {x: 0, y: 0, z: 0}
-  speed: 0
-  thrustSpeed: 0
-  direction: 0
-  angleOfAttack: 0
-  roll: 0
-  pitch: 0
-  velocityDecrease: 0
-  fuel: 0
---- !u!114 &796735772378941766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2292457183050106209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62de0ac38eccec94c9cb4ef9336bda06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aliveCamera: {fileID: 0}
-  deadCamera: {fileID: 0}
 --- !u!65 &3956380754898359362
 BoxCollider:
   m_ObjectHideFlags: 0

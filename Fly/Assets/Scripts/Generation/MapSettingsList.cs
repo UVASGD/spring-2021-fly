@@ -1,20 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 [System.Serializable]
-public class MapSettings
+public class MapSettings : ISavable
 {
+    [Header("General")]
     public string name;
     public Sprite image;
-    
-    [Scene]
-    public string scene;
+
     public bool locked;
     public bool completed;
 
-    [Header("Goal Settings")]
+    [Scene]
+    public string scene;
+
+
+    [Header("Goal")]
     // Store goal location in polar coordinates
     public float goalDistance;
     public float goalRotationFromForward;

@@ -5,9 +5,9 @@ using UnityEngine;
 public class ModelController : MonoBehaviour, ISavable
 {
     public ModelList modelList; // ScriptableObject found somewhere in Assets folder
-    public Model activeModel;
+    [HideInInspector] public Model activeModel;
 
-    private void Start()
+    public void Init()
     {
         Load();
         modelList.Init();
@@ -17,9 +17,15 @@ public class ModelController : MonoBehaviour, ISavable
     {
         if (transform.childCount > 0)
         {
-            Destroy(transform.GetComponentInChildren<GameObject>());
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
         }
         GameObject obj = Instantiate(model.prefab, transform);
+        obj.transform.localPosition = Vector3.zero;
+        obj.transform.localRotation = Quaternion.identity;
+
         Player.instance.playerController.model = obj.transform;
     }
 
@@ -48,57 +54,4 @@ public class ModelController : MonoBehaviour, ISavable
         int index = modelList.models.IndexOf(activeModel);
         PlayerPrefs.SetInt("planeModel", index);
     }
-}
-
-[CreateAssetMenu(fileName = "Model List", menuName = "ScriptableObjects/Model List")]
-public class ModelList : ScriptableObject
-{
-    public List<Model> models;
-    public Dictionary<Model.Type, Model> modelMap;
-
-    // Set up dictionary for intuitive reference by type
-    public void Init()
-    {
-        modelMap = new Dictionary<Model.Type, Model>();
-
-        foreach (var item in models)
-        {
-            modelMap.Add(item.type, item);
-        }
-    }
-}
-
-[System.Serializable]
-public class Model
-{
-    public Type type;
-    public Stats stats;
-    public GameObject prefab;
-
-
-    #region DEFINITIONS
-    public enum Type
-    {
-        Classic,
-        BigFlat,
-        Needlenose,
-        Stingray,
-        Cobra,
-    }
-    
-    [System.Serializable]
-    public class Stats
-    {
-        [Range(0f, 2f)]
-        public float weightMultiplier;
-        [Range(0f, 2f)]
-        public float initialVelocityMultiplier;
-        [Range(0f, 2f)]
-        public float dragMultiplier;
-        [Range(0f, 2f)]
-        public float fuelMultiplier;
-        [Range(0f, 2f)]
-        public float bounceHeightMultiplier;
-    }
-    #endregion
 }
