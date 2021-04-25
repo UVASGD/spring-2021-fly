@@ -60,17 +60,17 @@ public class SceneDrawer : PropertyDrawer
             if (editorScene.path.IndexOf(sceneObjectName) != -1)
             {
                 path = editorScene.path;
-                obj = AssetDatabase.LoadAssetAtPath(editorScene.path, typeof(SceneAsset)) as SceneAsset;
-                break;
+                return AssetDatabase.LoadAssetAtPath(editorScene.path, typeof(SceneAsset)) as SceneAsset;
+                //obj = AssetDatabase.LoadAssetAtPath(editorScene.path, typeof(SceneAsset)) as SceneAsset;
             }
         }
         if (obj != null)
         {
-            if (path.Contains("Scenes/Levels"))
-            {
-                Debug.LogWarning("Scene [" + sceneObjectName + "] cannot be used. Must be in 'Assets/Scenes/Levels' folder");
-                return null;
-            }
+            //if (path.Contains("Scenes/Levels"))
+            //{
+            //    Debug.LogWarning("Scene [" + sceneObjectName + "] cannot be used. Must be in 'Assets/Scenes/Levels' folder");
+            //    return null;
+            //}
             return obj;
         }
 

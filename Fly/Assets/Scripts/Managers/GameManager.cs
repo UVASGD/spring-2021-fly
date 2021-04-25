@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
     #endregion
 
     [HideInInspector]
-    public MapSettings mapSettings;
+    public List<MapSettings> mapSettingsList;
+    [HideInInspector]
+    public MapSettings currentMapSettings;
 
     [SerializeField]
     private bool debugMode;
@@ -61,7 +63,7 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<TerrainGenerator>().viewer = player.transform;
 
         // Get goal position from the map settings polar coordinates
-        Vector3 goalPosition = Quaternion.Euler(0f, mapSettings.goalRotationFromForward, 0f) * new Vector3(0f, 0f, mapSettings.goalDistance);
+        Vector3 goalPosition = Quaternion.Euler(0f, currentMapSettings.goalRotationFromForward, 0f) * new Vector3(0f, 0f, currentMapSettings.goalDistance);
         runManager.InitRun(goalPosition);
     }
 
@@ -84,5 +86,27 @@ public class GameManager : MonoBehaviour
         {
             item.Load();
         }
+    }
+
+    public void UnlockNextLevel()
+    {
+        int currentIndex = mapSettingsList.IndexOf(currentMapSettings);
+        mapSettingsList[currentIndex].completed = true;
+        mapSettingsList[currentIndex].Save();
+
+        if (currentIndex < mapSettingsList.Count - 1)
+        {
+            mapSettingsList[currentIndex + 1].locked = false;
+            mapSettingsList[currentIndex + 1].Save();
+        }
+        else
+        {
+            EndGame();
+        }
+    }
+
+    public void EndGame()
+    {
+        print("ALl LEVELS COMPLETED!");
     }
 }

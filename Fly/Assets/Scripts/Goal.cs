@@ -21,19 +21,24 @@ public class Goal : MonoBehaviour
 
     private void Update()
     {
-        fromPosition = transform.position;
-        toPosition = target.position;
-        print(target.position);
-        direction = Vector3.ProjectOnPlane(fromPosition - toPosition, cam.transform.forward).normalized;
-        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        print(angle);
-        uiTransform.localEulerAngles = Vector3.forward * angle;
 
-        Vector3 targetPositionScreenPoint = cam.WorldToScreenPoint(toPosition);
-        bool isOffScreen = targetPositionScreenPoint.x <= 0 ||
-                            targetPositionScreenPoint.x >= Screen.width ||
-                            targetPositionScreenPoint.y <= 0 || 
-                            targetPositionScreenPoint.y >= Screen.height;
+
+
+
+
+        //fromPosition = transform.position;
+        //toPosition = target.position;
+        //print(target.position);
+        //direction = Vector3.ProjectOnPlane(fromPosition - toPosition, cam.transform.forward).normalized;
+        //angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //print(angle);
+        //uiTransform.localEulerAngles = Vector3.forward * angle;
+
+        //Vector3 targetPositionScreenPoint = cam.WorldToScreenPoint(toPosition);
+        //bool isOffScreen = targetPositionScreenPoint.x <= 0 ||
+        //                    targetPositionScreenPoint.x >= Screen.width ||
+        //                    targetPositionScreenPoint.y <= 0 || 
+        //                    targetPositionScreenPoint.y >= Screen.height;
     }
 
     private void OnDrawGizmos()

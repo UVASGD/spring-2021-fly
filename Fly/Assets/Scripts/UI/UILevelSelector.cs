@@ -11,7 +11,10 @@ public class UILevelSelector : MonoBehaviour, ISavable
 
     public int levelCount;
     public int currentIndex;
-    public List<MapSettings> mapSettingsList;
+    public List<MapSettings> mapSettingsList { 
+        get => GameManager.instance.mapSettingsList;
+        set => GameManager.instance.mapSettingsList = value;
+    }
     public List<GameObject> mapUIList;
 
     // Start is called before the first frame update
@@ -77,7 +80,7 @@ public class UILevelSelector : MonoBehaviour, ISavable
             OnInvalidLevel();
             return;
         }
-        GameManager.instance.mapSettings = settings;
+        GameManager.instance.currentMapSettings = settings;
         GameManager.instance.LoadLevel(settings.scene);
     }
 
