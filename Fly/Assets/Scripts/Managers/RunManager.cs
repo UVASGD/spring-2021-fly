@@ -43,6 +43,8 @@ public class RunManager : MonoBehaviour
     // Always call this before StartRun()
     public void InitRun(Vector3 goalPosition)
     {
+        runStarted = false;
+        runEnded = false;
         runCanvas?.gameObject.SetActive(true);
         goal = Instantiate(goalPrefab, goalPosition, Quaternion.identity).GetComponent<Goal>();
         this.goalPosition = goalPosition;
@@ -55,7 +57,7 @@ public class RunManager : MonoBehaviour
         Transform parent = player.transform.parent;
         player.transform.SetParent(null);
         player.transform.position = parent.position;
-        player.transform.eulerAngles = new Vector3(15f, 0f, 0f);
+        player.transform.rotation = Quaternion.identity;
         player.cameraController.SetAliveCam();
         runStarted = true;
     }

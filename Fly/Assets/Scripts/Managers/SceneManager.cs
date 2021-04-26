@@ -20,6 +20,7 @@ public class SceneManager : MonoBehaviour
     private RectTransform transitionTransform;
     
     [HideInInspector] public bool transitioning;
+    [HideInInspector] public bool sceneLoaded;
 
     [Header("Debug")]
     [SerializeField] private bool debugMode = false;
@@ -85,6 +86,7 @@ public class SceneManager : MonoBehaviour
 
     private IEnumerator LoadSceneSlide(int buildIndex)
     {
+        sceneLoaded = false;
         transitionTransform.gameObject.SetActive(true);
         float t = 0f;
         int direction = (this.direction == TransitionDirection.LeftRight ? -1 : 1);
@@ -107,7 +109,10 @@ public class SceneManager : MonoBehaviour
 
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(buildIndex); // Load the new scene
         currentSceneBuildIndex = buildIndex;
-        
+
+        yield return new WaitForEndOfFrame();
+        sceneLoaded = true;
+
         t = 0f;
         while (t < 1f)
         {
@@ -117,11 +122,13 @@ public class SceneManager : MonoBehaviour
             yield return new WaitForEndOfFrame(); // Stop coroutine until next frame
         }
         transitionTransform.gameObject.SetActive(false);
+        sceneLoaded = false;
         transitioning = false;
     }
 
     private IEnumerator LoadSceneRadialWipe(int buildIndex)
     {
+        sceneLoaded = false;
         transitionTransform.gameObject.SetActive(true);
         transitionTransform.anchoredPosition = Vector2.zero;
 
@@ -143,6 +150,9 @@ public class SceneManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(buildIndex); // Load the new scene
         currentSceneBuildIndex = buildIndex;
 
+        yield return new WaitForEndOfFrame();
+        sceneLoaded = true;
+
         t = 0f;
         transitionImage.fillClockwise = !clockwise;
         while (t < 1f)
@@ -153,11 +163,13 @@ public class SceneManager : MonoBehaviour
             yield return new WaitForEndOfFrame(); // Stop coroutine until next frame
         }
         transitionTransform.gameObject.SetActive(false);
+        sceneLoaded = false;
         transitioning = false;
     }
 
     private IEnumerator LoadSceneFade(int buildIndex)
     {
+        sceneLoaded = false;
         transitionTransform.gameObject.SetActive(true);
         transitionTransform.anchoredPosition = Vector2.zero;
 
@@ -184,6 +196,9 @@ public class SceneManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(buildIndex); // Load the new scene
         currentSceneBuildIndex = buildIndex;
 
+        yield return new WaitForEndOfFrame();
+        sceneLoaded = true;
+
         t = 0f;
         while (t < 1f)
         {
@@ -194,6 +209,7 @@ public class SceneManager : MonoBehaviour
             yield return new WaitForEndOfFrame(); // Stop coroutine until next frame
         }
         transitionTransform.gameObject.SetActive(false);
+        sceneLoaded = false;
         transitioning = false;
     }
 

@@ -49,11 +49,13 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadLevelCR()
     {
         yield return new WaitForEndOfFrame();
-        while (SceneManager.instance.transitioning)
+        while (!SceneManager.instance.sceneLoaded && SceneManager.instance.transitioning)
         {
             yield return new WaitForEndOfFrame();
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
         InitLevel();
     }
 
@@ -69,9 +71,9 @@ public class GameManager : MonoBehaviour
         GameObject throwPoint = GameObject.FindWithTag("ThrowPoint");
 
         Player player = playerManager.SpawnPlayerAtObject(throwPoint);
+        player.transform.position = throwPoint.transform.position;
+        player.transform.rotation = throwPoint.transform.rotation;
         player.transform.SetParent(throwPoint.transform);
-        player.transform.localPosition = Vector3.zero;
-        player.transform.localRotation = Quaternion.identity;
         player.cameraController.SetThrowCam(thrower.transform);
         player.modelController.Init();
         player.modelController.SyncActiveModel();
@@ -80,12 +82,13 @@ public class GameManager : MonoBehaviour
         // Get goal position from the map settings polar coordinates
         Vector3 goalPosition = Quaternion.Euler(0f, currentMapSettings.goalRotationFromForward, 0f) * new Vector3(0f, 0f, currentMapSettings.goalDistance);
         runManager.InitRun(goalPosition);
-        Invoke("StartLevel", 1f);
+        Invoke("StartLevel", 3f);
     }
 
     public void StartLevel()
     {
-        runManager.StartRun();
+        FindObjectOfType<Thrower>().Throw();
+        runManager.Invoke("StartRun", 1f);
     }
 
     public void Save()

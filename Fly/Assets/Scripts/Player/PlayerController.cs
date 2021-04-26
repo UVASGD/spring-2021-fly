@@ -163,6 +163,7 @@ public class PlayerController : MonoBehaviour
     {
         // Might need more advanced logic later, but for now, if you hit anything solid, you die.
         flying = false;
+        Player.instance.cameraController.SetDeadCam();
         OnDeath?.Invoke();
     }
     private void OnTriggerEnter(Collider collision)
@@ -181,6 +182,7 @@ public class PlayerController : MonoBehaviour
         //}
         if (collision.CompareTag("Finish"))
         {
+            //GameManager.instance.runManager.StopRun();
             GameManager.instance.UnlockNextLevel();
             SceneManager.instance.LoadScene(0);
         }
