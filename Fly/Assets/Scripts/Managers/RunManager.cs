@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class RunManager : MonoBehaviour
 {
-    private bool runStarted;
-    private bool runEnded;
+    public bool runStarted;
+    public bool runEnded;
 
     [Header("Events")]
     public UnityEvent OnRestart;
@@ -51,6 +51,12 @@ public class RunManager : MonoBehaviour
 
     public void StartRun()
     {
+        Player player = GameManager.instance.playerManager.activePlayer;
+        Transform parent = player.transform.parent;
+        player.transform.SetParent(null);
+        player.transform.position = parent.position;
+        player.transform.eulerAngles = new Vector3(15f, 0f, 0f);
+        player.cameraController.SetAliveCam();
         runStarted = true;
     }
 

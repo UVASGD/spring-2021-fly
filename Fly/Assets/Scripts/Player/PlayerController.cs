@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (model == null) return;
+        if (model == null || !GameManager.instance.runManager.runStarted) return;
 
         // Disable all input if plane is grounded
         if (!flying)

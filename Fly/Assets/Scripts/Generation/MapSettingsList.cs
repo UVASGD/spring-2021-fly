@@ -14,6 +14,8 @@ public class MapSettings : ISavable
     public bool locked;
     public bool completed;
 
+    public GameObject character;
+
     [Scene]
     public string scene;
 

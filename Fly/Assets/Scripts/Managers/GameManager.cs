@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public List<MapSettings> mapSettingsList;
     [HideInInspector]
     public MapSettings currentMapSettings;
+    [HideInInspector]
+    public TerrainGenerator currentTerrainGenerator;
 
     [SerializeField]
     private bool debugMode;
@@ -51,20 +53,34 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(1f);
         InitLevel();
     }
 
     public void InitLevel()
     {
-        Player player = playerManager.SpawnPlayerAtPosition(new Vector3(0f, 50f, 0f));
+        currentTerrainGenerator = FindObjectOfType<TerrainGenerator>();
+        GameObject thrower = Instantiate(currentMapSettings.character, Vector3.up * 100f, Quaternion.identity);
+        PutObjectOnTerrain putter = thrower.GetComponent<PutObjectOnTerrain>();
+        putter.heightMapSettings = currentTerrainGenerator.heightMapSettings;
+        putter.meshSettings = currentTerrainGenerator.meshSettings;
+        putter.SnapToTerrain();
+
+        GameObject throwPoint = GameObject.FindWithTag("ThrowPoint");
+
+        Player player = playerManager.SpawnPlayerAtObject(throwPoint);
+        player.transform.SetParent(throwPoint.transform);
+        player.transform.localPosition = Vector3.zero;
+        player.transform.localRotation = Quaternion.identity;
+        player.cameraController.SetThrowCam(thrower.transform);
         player.modelController.Init();
         player.modelController.SyncActiveModel();
-        FindObjectOfType<TerrainGenerator>().viewer = player.transform;
+        currentTerrainGenerator.viewer = player.transform;
 
         // Get goal position from the map settings polar coordinates
         Vector3 goalPosition = Quaternion.Euler(0f, currentMapSettings.goalRotationFromForward, 0f) * new Vector3(0f, 0f, currentMapSettings.goalDistance);
         runManager.InitRun(goalPosition);
+        Invoke("StartLevel", 1f);
     }
 
     public void StartLevel()
@@ -107,6 +123,6 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        print("ALl LEVELS COMPLETED!");
+        print("ALL LEVELS COMPLETED!");
     }
 }

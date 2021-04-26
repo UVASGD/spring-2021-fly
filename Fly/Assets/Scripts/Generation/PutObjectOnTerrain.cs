@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PutObjectOnTerrain : MonoBehaviour
 {
-    public Transform tf;
     public MeshSettings meshSettings;
     public HeightMapSettings heightMapSettings;
     // Start is called before the first frame update
@@ -13,11 +12,16 @@ public class PutObjectOnTerrain : MonoBehaviour
 
     void Start()
     {
+        SnapToTerrain();
+    }
+
+    public void SnapToTerrain()
+    {
         float meshWorldSize = meshSettings.meshWorldSize;
-        float xPos = tf.position.x;
-        float zPos = tf.position.z;
+        float xPos = transform.position.x;
+        float zPos = transform.position.z;
         Vector2 thisLocation = new Vector2(xPos, zPos);
-        float[,] hm = Noise.GenerateNoiseMap(1,1,heightMapSettings.noiseSettings,thisLocation);
+        float[,] hm = Noise.GenerateNoiseMap(1, 1, heightMapSettings.noiseSettings, thisLocation);
         float height = hm[0, 0];
         AnimationCurve heightCurve_threadsafe = new AnimationCurve(heightMapSettings.heightCurve.keys);
         height *= heightCurve_threadsafe.Evaluate(height) * heightMapSettings.heightMultiplier;
