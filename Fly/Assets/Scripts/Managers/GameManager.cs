@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
             yield return new WaitForEndOfFrame();
         }
