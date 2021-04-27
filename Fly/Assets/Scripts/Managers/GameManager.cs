@@ -65,9 +65,7 @@ public class GameManager : MonoBehaviour
         currentTerrainGenerator = FindObjectOfType<TerrainGenerator>();
         GameObject thrower = Instantiate(currentMapSettings.character, Vector3.up * 100f, Quaternion.identity);
         PutObjectOnTerrain putter = thrower.GetComponent<PutObjectOnTerrain>();
-        putter.heightMapSettings = currentTerrainGenerator.heightMapSettings;
-        putter.meshSettings = currentTerrainGenerator.meshSettings;
-        putter.SnapToTerrain();
+        putter.SnapToTerrain(currentTerrainGenerator.meshSettings, currentTerrainGenerator.heightMapSettings);
 
         GameObject throwPoint = GameObject.FindWithTag("ThrowPoint");
 

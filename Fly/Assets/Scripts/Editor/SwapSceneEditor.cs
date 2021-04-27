@@ -5,23 +5,28 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 public class SwapSceneEditor : Editor
 {
-    public static int index;
-    public static int lastIndex;
+    private static int index = 0;
 
-    [MenuItem("Tools/Swap Scenes %T")]
-    public static void SwapScenes()
+    [MenuItem("Tools/Previous Scene %#T")]
+    public static void PreviousScene()
     {
-        if (index != 0)
-        {
-            lastIndex = index;
-            index = 0;
-        }
-        else
-        {
-            index = lastIndex;
-        }
+        EditorBuildSettingsScene[] scenes = EditorBuildSettings.scenes;
+        index--;
+        if (index < 0) index += scenes.Length;
+        OpenScene(scenes[index]);
+    }
 
+    [MenuItem("Tools/Next Scene %T")]
+    public static void NextScene()
+    {
+        EditorBuildSettingsScene[] scenes = EditorBuildSettings.scenes;
+        index = (index + 1) % scenes.Length;
+        OpenScene(scenes[index]);
+    }
+
+    private static void OpenScene(EditorBuildSettingsScene scene)
+    {
         EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
-        EditorSceneManager.OpenScene(EditorSceneManager.GetSceneByBuildIndex(index).path);
+        EditorSceneManager.OpenScene(scene.path);
     }
 }
