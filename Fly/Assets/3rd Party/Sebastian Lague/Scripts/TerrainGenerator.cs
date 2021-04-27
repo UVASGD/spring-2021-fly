@@ -21,7 +21,9 @@ public class TerrainGenerator : MonoBehaviour {
 	public Transform viewer;
 	public Material mapMaterial;
 
-	Vector2 viewerPosition;
+    public List<TerrainObject> terrainObjects;
+
+    Vector2 viewerPosition;
 	Vector2 viewerPositionOld;
 
 	float meshWorldSize;
@@ -114,8 +116,8 @@ public class TerrainGenerator : MonoBehaviour {
 					if (terrainChunkDictionary.ContainsKey (viewedChunkCoord)) {
 						terrainChunkDictionary [viewedChunkCoord].UpdateTerrainChunk ();
 					} else {
-						TerrainChunk newChunk = new TerrainChunk (viewedChunkCoord,heightMapSettings,meshSettings, detailLevels, colliderLODIndex, transform, viewer, mapMaterial);
-                        List<GameObject> gameObjectsInChunkList = powerUpManager.GenerateObject(newChunk.GetBounds());
+						TerrainChunk newChunk = new TerrainChunk (viewedChunkCoord,heightMapSettings,meshSettings, detailLevels, colliderLODIndex, transform, viewer, mapMaterial, terrainObjects);
+						List<GameObject> gameObjectsInChunkList = powerUpManager.GenerateObject(newChunk.GetBounds());
                         newChunk.SetGameObjectsInChunk(gameObjectsInChunkList);
                         terrainChunkDictionary.Add (viewedChunkCoord, newChunk);
 						newChunk.onVisibilityChanged += OnTerrainChunkVisibilityChanged;

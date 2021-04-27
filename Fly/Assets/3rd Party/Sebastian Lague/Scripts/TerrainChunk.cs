@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Random = UnityEngine.Random;
+
 public class TerrainChunk {
 	
 	const float colliderGenerationDistanceThreshold = 5;
@@ -10,6 +12,8 @@ public class TerrainChunk {
 	GameObject meshObject;
 	Vector2 sampleCentre;
 	Bounds bounds;
+
+    List<TerrainObject> terrainObjects;
 
 	MeshRenderer meshRenderer;
 	MeshFilter meshFilter;
@@ -31,17 +35,21 @@ public class TerrainChunk {
 
     List<GameObject> gameObjectsInChunk;
 
-    public TerrainChunk(Vector2 coord, HeightMapSettings heightMapSettings, MeshSettings meshSettings, LODInfo[] detailLevels, int colliderLODIndex, Transform parent, Transform viewer, Material material) {
+    public TerrainChunk(Vector2 coord, HeightMapSettings heightMapSettings, MeshSettings meshSettings, LODInfo[] detailLevels, int colliderLODIndex, Transform parent, Transform viewer, Material material, List<TerrainObject> terrainObjects) {
 		this.coord = coord;
 		this.detailLevels = detailLevels;
 		this.colliderLODIndex = colliderLODIndex;
 		this.heightMapSettings = heightMapSettings;
 		this.meshSettings = meshSettings;
 		this.viewer = viewer;
+		this.terrainObjects = terrainObjects;
 
-		sampleCentre = coord * meshSettings.meshWorldSize / meshSettings.meshScale;
-		Vector2 position = coord * meshSettings.meshWorldSize ;
-		bounds = new Bounds(position,Vector2.one * meshSettings.meshWorldSize );
+		gameObjectsInChunk = new List<GameObject>();
+
+        sampleCentre = coord * meshSettings.meshWorldSize / meshSettings.meshScale;
+        Vector2 position = coord * meshSettings.meshWorldSize;
+		//bounds = new Bounds(position, Vector2.one * meshSettings.meshWorldSize);
+		Vector2 size = Vector2.one * meshSettings.meshWorldSize / 2f;
 
         meshObject = new GameObject("Terrain Chunk");
 		meshRenderer = meshObject.AddComponent<MeshRenderer>();
@@ -55,7 +63,22 @@ public class TerrainChunk {
 
 		meshObject.transform.position = new Vector3(position.x,0,position.y);
 		meshObject.transform.parent = parent;
-        
+
+		foreach (TerrainObject obj in terrainObjects)
+		{
+			int numToGen = (int)(obj.minPerChunk + (Random.value * (obj.maxPerChunk + 1 - obj.minPerChunk)));
+
+			for (int i = 0; i < numToGen; i++)
+			{
+				Vector3 positionToGen = new Vector3(Random.Range(-size.x, size.x), 0, Random.Range(-size.y, size.y));
+				GameObject instance = GameObject.Instantiate(obj.prefab, meshObject.transform);
+				instance.SetActive(true);
+				instance.transform.localPosition = positionToGen;
+				instance.transform.localEulerAngles = new Vector3(0f, Random.Range(0f, 360f), 0f);
+				gameObjectsInChunk.Add(instance);
+			}
+		}
+
 		SetVisible(false);
 
 		lodMeshes = new LODMesh[detailLevels.Length];
@@ -162,14 +185,12 @@ public class TerrainChunk {
 
 	public void SetVisible(bool visible) {
 		meshObject.SetActive (visible);
-        if(gameObjectsInChunk != null){
-            foreach (GameObject go in gameObjectsInChunk){
-                if(go != null)
-                {
-                    go.SetActive(visible);
-                }
-            }
-        }
+  //      if(gameObjectsInChunk != null){
+		//	foreach (GameObject obj in gameObjectsInChunk)
+		//	{
+		//		obj.SetActive(visible);
+		//	}
+		//}
         
 	}
 
