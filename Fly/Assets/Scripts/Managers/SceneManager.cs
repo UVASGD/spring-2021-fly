@@ -177,7 +177,7 @@ public class SceneManager : MonoBehaviour
         Color start = transitionImage.color;
         start.a = 0f;
         Color end = start;
-        start.a = 1f;
+        end.a = 1f;
 
         // Interpolate between start and end colors
         while (t < 1f)

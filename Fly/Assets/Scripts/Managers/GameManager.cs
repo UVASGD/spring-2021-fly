@@ -53,9 +53,10 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
+        for (int i = 0; i < 5; i++)
+        {
+            yield return new WaitForEndOfFrame();
+        }
         InitLevel();
     }
 
