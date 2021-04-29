@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LoadLevel()
+    {
+        LoadLevel(currentMapSettings.scene);
+    }
+
     public void LoadLevel(string name)
     {
         if (SceneManager.instance.transitioning) return;

@@ -148,4 +148,14 @@ public class MenuManager : MonoBehaviour
     {
         GameManager.instance.sceneManager.Quit(immediate);
     }
+
+    public void LoadScene(int buildIndex)
+    {
+        GameManager.instance.sceneManager.LoadScene(buildIndex);
+    }
+
+    public void LoadActiveLevelScene()
+    {
+        GameManager.instance.LoadLevel();
+    }
 }
