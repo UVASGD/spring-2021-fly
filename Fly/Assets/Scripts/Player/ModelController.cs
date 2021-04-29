@@ -4,66 +4,54 @@ using UnityEngine;
 
 public class ModelController : MonoBehaviour, ISavable
 {
-    public List<Model> models;
-    public Model activeModel;
+    public ModelList modelList; // ScriptableObject found somewhere in Assets folder
+    [HideInInspector] public Model activeModel;
+
+    public void Init()
+    {
+        Load();
+        modelList.Init();
+    }
+
+    public void SetActiveModel(Model model)
+    {
+        if (transform.childCount > 0)
+        {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        GameObject obj = Instantiate(model.prefab, transform);
+        obj.transform.localPosition = Vector3.zero;
+        obj.transform.localRotation = Quaternion.identity;
+
+        Player.instance.playerController.model = obj.transform;
+    }
+
+    public void SyncActiveModel()
+    {
+        SetActiveModel(activeModel);
+    }
 
     public void Load()
     {
         if (PlayerPrefs.HasKey("planeModel"))
         {
             int index = PlayerPrefs.GetInt("planeModel");
-            activeModel = models[index];
+            activeModel = modelList.models[index];
             SyncActiveModel();
         }
         else
         {
-            throw new System.NullReferenceException();
+            activeModel = modelList.models[0];
+            SyncActiveModel();
         }
     }
 
     public void Save()
     {
-        int index = models.IndexOf(activeModel);
+        int index = modelList.models.IndexOf(activeModel);
         PlayerPrefs.SetInt("planeModel", index);
-    }
-
-    public void SetActiveModel(Model.Type type)
-    {
-        foreach (var model in models)
-        {
-            if (model.type == type)
-            {
-                model.gameObject.SetActive(true);
-                activeModel = model;
-            }
-            else
-            {
-                model.gameObject.SetActive(false);
-            }
-        }
-        Player.instance.playerController.model = activeModel.gameObject.transform;
-    }
-
-    public void SyncActiveModel()
-    {
-        SetActiveModel(activeModel.type);
-    }
-
-    
-}
-
-[System.Serializable]
-public class Model
-{
-    public Type type;
-    public GameObject gameObject;
-
-    public enum Type
-    {
-        Classic,
-        BigFlat,
-        Needlenose,
-        Stingray,
-        Cobra,
     }
 }

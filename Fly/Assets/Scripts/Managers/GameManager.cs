@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,9 +12,15 @@ public class GameManager : MonoBehaviour
     #region REFERENCES
     public PlayerManager playerManager;
     public RunManager runManager;
-    public MapManager mapManager;
     public SceneManager sceneManager;
     #endregion
+
+    [HideInInspector]
+    public List<MapSettings> mapSettingsList;
+    [HideInInspector]
+    public MapSettings currentMapSettings;
+    [HideInInspector]
+    public TerrainGenerator currentTerrainGenerator;
 
     [SerializeField]
     private bool debugMode;
@@ -32,40 +39,92 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void LoadLevel(string name)
     {
-        if (!debugMode) return;
-        if (sceneManager.currentSceneBuildIndex == 0) return; // Can't start game on title screen
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (SceneManager.instance.transitioning) return;
+        SceneManager.instance.LoadScene(name);
+        StartCoroutine(LoadLevelCR());
+    }
+
+    private IEnumerator LoadLevelCR()
+    {
+        yield return new WaitForEndOfFrame();
+        while (!SceneManager.instance.sceneLoaded && SceneManager.instance.transitioning)
         {
-            StartLevel(MapType.Desert, Model.Type.Classic);
+            yield return new WaitForEndOfFrame();
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        for (int i = 0; i < 10; i++)
         {
-            StartLevel(MapType.Desert, Model.Type.BigFlat);
+            yield return new WaitForEndOfFrame();
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        InitLevel();
+    }
+
+    public void InitLevel()
+    {
+        currentTerrainGenerator = FindObjectOfType<TerrainGenerator>();
+        GameObject thrower = Instantiate(currentMapSettings.character, Vector3.up * 100f, Quaternion.identity);
+        PutObjectOnTerrain putter = thrower.GetComponent<PutObjectOnTerrain>();
+        putter.SnapToTerrain(currentTerrainGenerator.meshSettings, currentTerrainGenerator.heightMapSettings);
+
+        GameObject throwPoint = GameObject.FindWithTag("ThrowPoint");
+
+        Player player = playerManager.SpawnPlayerAtObject(throwPoint);
+        player.transform.position = throwPoint.transform.position;
+        player.transform.rotation = throwPoint.transform.rotation;
+        player.transform.SetParent(throwPoint.transform);
+        player.cameraController.SetThrowCam(thrower.transform);
+        player.modelController.Init();
+        player.modelController.SyncActiveModel();
+        currentTerrainGenerator.viewer = player.transform;
+
+        // Get goal position from the map settings polar coordinates
+        Vector3 goalPosition = Quaternion.Euler(0f, currentMapSettings.goalRotationFromForward, 0f) * new Vector3(0f, 0f, currentMapSettings.goalDistance);
+        runManager.InitRun(goalPosition);
+        Invoke("StartLevel", 3f);
+    }
+
+    public void StartLevel()
+    {
+        FindObjectOfType<Thrower>().Throw();
+        runManager.Invoke("StartRun", 1f);
+    }
+
+    public void Save()
+    {
+        foreach (var item in FindObjectsOfType<MonoBehaviour>().OfType<ISavable>())
         {
-            StartLevel(MapType.Desert, Model.Type.Needlenose);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            StartLevel(MapType.Desert, Model.Type.Stingray);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            StartLevel(MapType.Desert, Model.Type.Cobra);
+            item.Save();
         }
     }
 
-    public void StartLevel(MapType map, Model.Type playerModel)
+    public void Load()
     {
-        Player player = playerManager.SpawnPlayerAtPosition(new Vector3(0f, 50f, 0f), playerModel);
-        MapSettings settings = mapManager.GenerateMap(mapManager.mapSettingsList.mapsDict[map], player.transform);
+        foreach (var item in FindObjectsOfType<MonoBehaviour>().OfType<ISavable>())
+        {
+            item.Load();
+        }
+    }
 
-        // Get goal position from the map settings polar coordinates
-        Vector3 goalPosition = Quaternion.Euler(0f, settings.goalRotationFromForward, 0f) * new Vector3(0f, 0f, settings.goalDistance);
-        runManager.InitRun(goalPosition);
-        runManager.StartRun();
+    public void UnlockNextLevel()
+    {
+        int currentIndex = mapSettingsList.IndexOf(currentMapSettings);
+        mapSettingsList[currentIndex].completed = true;
+        mapSettingsList[currentIndex].Save();
+
+        if (currentIndex < mapSettingsList.Count - 1)
+        {
+            mapSettingsList[currentIndex + 1].locked = false;
+            mapSettingsList[currentIndex + 1].Save();
+        }
+        else
+        {
+            EndGame();
+        }
+    }
+
+    public void EndGame()
+    {
+        print("ALL LEVELS COMPLETED!");
     }
 }

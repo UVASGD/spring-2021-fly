@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class RunManager : MonoBehaviour
 {
-    private bool runStarted;
-    private bool runEnded;
+    public bool runStarted;
+    public bool runEnded;
 
     [Header("Events")]
     public UnityEvent OnRestart;
@@ -43,6 +43,8 @@ public class RunManager : MonoBehaviour
     // Always call this before StartRun()
     public void InitRun(Vector3 goalPosition)
     {
+        runStarted = false;
+        runEnded = false;
         runCanvas?.gameObject.SetActive(true);
         goal = Instantiate(goalPrefab, goalPosition, Quaternion.identity).GetComponent<Goal>();
         this.goalPosition = goalPosition;
@@ -51,6 +53,12 @@ public class RunManager : MonoBehaviour
 
     public void StartRun()
     {
+        Player player = GameManager.instance.playerManager.activePlayer;
+        Transform parent = player.transform.parent;
+        player.transform.SetParent(null);
+        player.transform.position = parent.position;
+        player.transform.rotation = Quaternion.identity;
+        player.cameraController.SetAliveCam();
         runStarted = true;
     }
 

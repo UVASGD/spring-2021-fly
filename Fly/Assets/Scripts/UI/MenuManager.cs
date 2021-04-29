@@ -143,4 +143,9 @@ public class MenuManager : MonoBehaviour
         lastIndex = index;
         transitioning = false;
     }
+
+    public void Quit(bool immediate)
+    {
+        GameManager.instance.sceneManager.Quit(immediate);
+    }
 }
