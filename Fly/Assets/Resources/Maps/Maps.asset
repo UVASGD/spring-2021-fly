@@ -16,42 +16,48 @@ MonoBehaviour:
   - name: Washington D.C.
     image: {fileID: 21300000, guid: 3003cc05618c66d46b48202b15dbe77c, type: 3}
     locked: 0
-    completed: 0
+    completed: 1
     character: {fileID: 6751569644906231479, guid: 30c7a79b94b19b34baa80d09c2ba3cc8,
       type: 3}
+    landmark: {fileID: 919132149155446097, guid: 14fad4c3cc4c0f54fb7054caddf5226c,
+      type: 3}
     scene: Level1
-    goalDistance: 100
+    goalDistance: 1000
     goalRotationFromForward: 0
   - name: San Francisco
     image: {fileID: 21300000, guid: 2c99aca275a13ef4994afdf1baf0f9cd, type: 3}
-    locked: 1
-    completed: 0
+    locked: 0
+    completed: 1
     character: {fileID: 6751569644906231479, guid: 30c7a79b94b19b34baa80d09c2ba3cc8,
       type: 3}
+    landmark: {fileID: 0}
     scene: Level2
-    goalDistance: 500
+    goalDistance: 2000
     goalRotationFromForward: 0
   - name: Tokyo
     image: {fileID: 21300000, guid: 446b2ae7fcbc4d74db1cb3ddafc55238, type: 3}
-    locked: 1
+    locked: 0
     completed: 0
     character: {fileID: 0}
+    landmark: {fileID: 0}
     scene: 
-    goalDistance: 500
+    goalDistance: 4000
     goalRotationFromForward: 0
   - name: Giza
     image: {fileID: 21300000, guid: 4b09b56fc5a958f46b3e8b768c94a31f, type: 3}
     locked: 1
     completed: 0
     character: {fileID: 0}
+    landmark: {fileID: 0}
     scene: 
-    goalDistance: 500
+    goalDistance: 8000
     goalRotationFromForward: 0
   - name: Athens
     image: {fileID: 21300000, guid: 05f05158f439b254da3c65328c06464c, type: 3}
     locked: 1
     completed: 0
     character: {fileID: 0}
+    landmark: {fileID: 0}
     scene: Level2
-    goalDistance: 500
+    goalDistance: 16000
     goalRotationFromForward: 0

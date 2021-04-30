@@ -554,12 +554,12 @@ PrefabInstance:
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
       propertyPath: terrainObjects.Array.data[0].maxPerChunk
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
       propertyPath: terrainObjects.Array.data[0].minPerChunk
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1146112098501361429, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}

@@ -15,6 +15,7 @@ public class MapSettings : ISavable
     public bool completed;
 
     public GameObject character;
+    public GameObject landmark;
 
     [Scene]
     public string scene;

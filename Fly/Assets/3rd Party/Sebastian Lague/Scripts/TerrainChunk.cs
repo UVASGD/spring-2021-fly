@@ -78,6 +78,9 @@ public class TerrainChunk
 
 		maxViewDst = detailLevels[detailLevels.Length - 1].visibleDstThreshold;
 
+		// Don't create gameobjects on the starting chunk
+		if (coord.sqrMagnitude < Mathf.Epsilon * Mathf.Epsilon) return;
+
 		// Instantiate terrain objects
 		float size = meshSettings.meshWorldSize / 2f;
 		foreach (TerrainObject obj in terrainObjects)
@@ -103,8 +106,6 @@ public class TerrainChunk
 				instance.transform.localPosition = positionToGen;
 				instance.transform.localEulerAngles = new Vector3(0f, Random.Range(0f, 360f), 0f);
 				gameObjectsInChunk.Add(instance);
-
-				//Debug.Log($"Created object at {instance.transform.localPosition}");
 			}
 		}
 
