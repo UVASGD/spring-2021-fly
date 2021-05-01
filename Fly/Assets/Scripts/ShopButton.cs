@@ -1,17 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShopButton : MonoBehaviour, ISavable
 {
-    public ShopButton prereq;
+    public ShopButton successor;
+    public TieredUpgrade.Type upgradeType;
+    public float upgradeCost;
     public GameObject lockedOverlay;
     public GameObject purchasedOverlay;
+    public TMP_Text moneyField;
 
     public bool locked;
     public bool purchased;
 
     public bool autoUnlock;
+
+    private void Start()
+    {
+        if (upgradeCost == 0)
+        {
+            moneyField.SetText("");
+
+        }
+        else
+        {
+            moneyField.SetText(upgradeCost.ToString());
+        }
+    }
 
     public void Load()
     {
@@ -25,6 +42,7 @@ public class ShopButton : MonoBehaviour, ISavable
         else
         {
             locked = !autoUnlock;
+            Save();
         }
 
         if (PlayerPrefs.HasKey(purchasedKey))
@@ -60,10 +78,23 @@ public class ShopButton : MonoBehaviour, ISavable
             purchasedOverlay.SetActive(false);
             lockedOverlay.SetActive(false);
         }
+        Save();
     }
 
     public void TryPurchase()
     {
-
+        if (locked) return;
+        float currentMoney = MoneyManager.instance.money;
+        if (currentMoney >= upgradeCost)
+        {
+            MoneyManager.instance.SubtractMoney(upgradeCost);
+            purchased = true;
+            UpdateButton();
+            if (successor)
+            {
+                successor.locked = false;
+                successor.UpdateButton();
+            }
+        }
     }
 }

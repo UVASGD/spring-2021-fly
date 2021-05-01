@@ -47,12 +47,17 @@ public class MoneyManager : MonoBehaviour, ISavable
 
     public void SetMoney(float value)
     {
-        money = value;
+        money = Mathf.Max(0f, value);
         OnMoneyChanged?.Invoke(value);
     }
 
     public void AddMoney(float value)
     {
         SetMoney(money + value);
+    }
+
+    public void SubtractMoney(float value)
+    {
+        SetMoney(money - value);
     }
 }

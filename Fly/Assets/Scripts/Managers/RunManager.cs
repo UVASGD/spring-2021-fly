@@ -29,6 +29,8 @@ public class RunManager : MonoBehaviour
     public float maxHeightThisRun;
     public float currentHeight;
 
+
+
     private void Start()
     {
         runStarted = false;
@@ -60,17 +62,19 @@ public class RunManager : MonoBehaviour
 
     public void StopRun()
     {
+        if (runEnded) return;
         runEnded = true;
         runCanvas?.gameObject.SetActive(false);
-        MoneyManager.instance.AddMoney(Mathf.Floor(distanceTravelled / 100f));
+        MoneyManager.instance.AddMoney(Mathf.Floor(distanceTravelled / 10f));
         SceneManager.instance.LoadScene(1);
     }
 
     public void CompleteRun()
     {
+        if (runEnded) return;
         runEnded = true;
         runCanvas?.gameObject.SetActive(false);
-        MoneyManager.instance.AddMoney(Mathf.Floor(distanceTravelled / 100f * 2f));
+        MoneyManager.instance.AddMoney(Mathf.Floor(distanceTravelled / 10f * 2f));
         SceneManager.instance.LoadScene(0);
     }
 
@@ -89,7 +93,25 @@ public class RunManager : MonoBehaviour
 
             fuelUI?.SetNumber(GameManager.instance.playerManager.activePlayer.playerController.fuel);
 
-            return;
+
+            float meshWorldSize = GameManager.instance.currentTerrainGenerator.meshSettings.meshWorldSize;
+            float xPos = GameManager.instance.playerManager.activePlayer.transform.position.x;
+            float zPos = GameManager.instance.playerManager.activePlayer.transform.position.z;
+
+            Vector2 thisLocation = new Vector2(xPos, zPos);
+            float[,] hm = Noise.GenerateNoiseMap(1, 1,
+                GameManager.instance.currentTerrainGenerator.heightMapSettings.noiseSettings,
+                thisLocation);
+            float height = hm[0, 0];
+            AnimationCurve heightCurve_threadsafe = new AnimationCurve(GameManager.instance.currentTerrainGenerator.heightMapSettings.heightCurve.keys);
+            height *= heightCurve_threadsafe.Evaluate(height) * GameManager.instance.currentTerrainGenerator.heightMapSettings.heightMultiplier;
+
+            if (GameManager.instance.playerManager.activePlayer.transform.position.y < height)
+            {
+                StopRun();
+            }
         }
+
+        
     }
 }

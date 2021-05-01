@@ -10,19 +10,23 @@ public class UpgradeManager : MonoBehaviour, ISavable
 
     public void Load()
     {
-        foreach (var item in tieredUpgradeList.upgrades)
+        for (int i = 0; i < tieredUpgradeList.upgrades.Count; i++)
         {
-            string key = item.type.ToString();
+            string key = tieredUpgradeList.upgrades[i].type.ToString();
             if (PlayerPrefs.HasKey(key))
             {
-                
+                tieredUpgradeList.upgrades[i].activeTierIndex = PlayerPrefs.GetInt(key);
             }
         }
     }
 
     public void Save()
     {
-
+        for (int i = 0; i < tieredUpgradeList.upgrades.Count; i++)
+        {
+            string key = tieredUpgradeList.upgrades[i].type.ToString();
+            PlayerPrefs.SetInt(key, tieredUpgradeList.upgrades[i].activeTierIndex);
+        }
     }
 
     // Start is called before the first frame update
@@ -32,9 +36,15 @@ public class UpgradeManager : MonoBehaviour, ISavable
         else Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetUpgradeTier(TieredUpgrade.Type type, int tier)
     {
-        
+        for (int i = 0; i < tieredUpgradeList.upgrades.Count; i++)
+        {
+            if (tieredUpgradeList.upgrades[i].type == type)
+            {
+                tieredUpgradeList.upgrades[i].activeTierIndex = tier;
+            }
+        }
+        Save();
     }
 }

@@ -128,6 +128,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 576761792}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -747,6 +752,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 513328074}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -1367,6 +1377,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 513328074}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -2160,6 +2175,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 151106652}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -2421,6 +2441,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 407122471}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 99999
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -2617,6 +2642,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 967283658}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -2903,6 +2933,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 407122471}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 99999
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -3228,6 +3263,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 513328074}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -3730,6 +3770,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 151106652}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -3991,6 +4036,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 407122471}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 99999
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -4187,6 +4237,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1472911328}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -4505,6 +4560,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 513328074}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -4701,6 +4761,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1472911328}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -5077,6 +5142,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 576761792}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -5651,6 +5721,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 967283658}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 7000
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -5981,6 +6056,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 151106652}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -6183,6 +6263,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 576761792}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -6842,6 +6927,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1472911328}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -7038,6 +7128,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 967283658}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeCost
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -7234,6 +7329,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 513328074}
     m_Modifications:
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: autoUnlock
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
