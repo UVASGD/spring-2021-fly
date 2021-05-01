@@ -371,7 +371,7 @@ MonoBehaviour:
   localRight: {x: 0, y: 0, z: 0}
   localUp: {x: 0, y: 0, z: 0}
   speed: 0
-  thrustSpeed: 0
+  thrustSpeed: 5
   direction: 0
   angleOfAttack: 0
   roll: 0

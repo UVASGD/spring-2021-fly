@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1626141561755012879}
   - component: {fileID: 9023376172200838537}
   - component: {fileID: 342702898430063139}
+  - component: {fileID: 8964544812040996796}
   m_Layer: 0
   m_Name: NurbsPath
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,6 +80,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8964544812040996796
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237907124051539586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2073062303095333546, guid: cac5294497b77e34eb4730e2a7768c2a, type: 3}
 --- !u!1 &1505993833984780816
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,9 +105,10 @@ GameObject:
   - component: {fileID: 4651663294837718787}
   - component: {fileID: 5275868569210067535}
   - component: {fileID: 8800821998604380238}
+  - component: {fileID: 5305273897720961967}
   m_Layer: 0
   m_Name: Plateform
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,6 +176,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &5305273897720961967
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505993833984780816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2774126422492548416, guid: cac5294497b77e34eb4730e2a7768c2a, type: 3}
 --- !u!1 &1910285522469255384
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,9 +201,10 @@ GameObject:
   - component: {fileID: 3631997791322960121}
   - component: {fileID: 6951950946390770810}
   - component: {fileID: 2825058914061146487}
+  - component: {fileID: 1108428776460746502}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,6 +270,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1108428776460746502
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910285522469255384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2124705421725058983, guid: cac5294497b77e34eb4730e2a7768c2a, type: 3}
 --- !u!1 &1974144356578105849
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,9 +295,10 @@ GameObject:
   - component: {fileID: 9084221047315407150}
   - component: {fileID: 3907895402998877150}
   - component: {fileID: 5521571039834778349}
+  - component: {fileID: 4553418775502228975}
   m_Layer: 0
   m_Name: Details 2
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,6 +364,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4553418775502228975
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974144356578105849}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1529773007081140584, guid: cac5294497b77e34eb4730e2a7768c2a, type: 3}
 --- !u!1 &2954780299470963519
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,9 +389,10 @@ GameObject:
   - component: {fileID: 6675075983103968291}
   - component: {fileID: 1058707409688657316}
   - component: {fileID: 5980482817129080206}
+  - component: {fileID: 1547167435990744620}
   m_Layer: 0
   m_Name: NurbsPath.002
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -397,6 +458,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1547167435990744620
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954780299470963519}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2145793981142062404, guid: cac5294497b77e34eb4730e2a7768c2a, type: 3}
 --- !u!1 &5514271877487998448
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,9 +483,10 @@ GameObject:
   - component: {fileID: 1775591518967773811}
   - component: {fileID: 5761357846129813703}
   - component: {fileID: 4315059214314357494}
+  - component: {fileID: 847209150191623819}
   m_Layer: 0
   m_Name: Details
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -476,6 +552,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &847209150191623819
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514271877487998448}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2049521110059383518, guid: cac5294497b77e34eb4730e2a7768c2a, type: 3}
 --- !u!1 &6052127169167429546
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,9 +577,10 @@ GameObject:
   - component: {fileID: 7094762203775455824}
   - component: {fileID: 8295273536495358638}
   - component: {fileID: 4617315605611432635}
+  - component: {fileID: 6781754782848275666}
   m_Layer: 0
   m_Name: Height parts
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,6 +646,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6781754782848275666
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6052127169167429546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 631752682906111552, guid: cac5294497b77e34eb4730e2a7768c2a, type: 3}
 --- !u!1 &6835368431466290009
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,6 +669,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6167622459660419555}
+  - component: {fileID: 8599152062870244245}
   m_Layer: 0
   m_Name: Golden_Gate
   m_TagString: Untagged
@@ -593,6 +699,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8599152062870244245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6835368431466290009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75da3215f7c8fa469dd7e357cb5bb53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8664095030642363706
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,9 +722,10 @@ GameObject:
   - component: {fileID: 2235963635932282835}
   - component: {fileID: 7940537470709551343}
   - component: {fileID: 9148142696860637445}
+  - component: {fileID: 6305984529608180345}
   m_Layer: 0
   m_Name: Height part 2
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -672,3 +791,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6305984529608180345
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664095030642363706}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 631752682906111552, guid: cac5294497b77e34eb4730e2a7768c2a, type: 3}

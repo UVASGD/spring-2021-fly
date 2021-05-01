@@ -122,6 +122,31 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!21 &361978268
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hidden/FogPlus
+  m_Shader: {fileID: 4800000, guid: 39ef0b8c9be96494d9f8b2f2c54a28c5, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!1 &682624588
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,6 +455,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 1709025327, guid: 3beda629157a9414fad297f61f9fb89d, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6868053362602513016, guid: 3beda629157a9414fad297f61f9fb89d,
         type: 3}
       propertyPath: m_Name
@@ -563,6 +592,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 8a5a8b8a3a41cd94790498e52adf1c4c,
         type: 2}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1146112098501361429, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
       propertyPath: m_RootOrder

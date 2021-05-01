@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Monkey : MonoBehaviour
 {
-    [Range(0f, 1f)]
-    public float spawnProbability = 0.2f;
+    private float spawnProbability = 0.2f;
     
     [Header("Projectile")]
     public GameObject projectilePrefab;
@@ -21,7 +20,12 @@ public class Monkey : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("ThrowAtPlayer", Random.Range(0f, throwRate), throwRate);   
+        InvokeRepeating("ThrowAtPlayer", Random.Range(throwRate, throwRate * 2f), throwRate);
+        spawnProbability = Mathf.Clamp01(1 / (1 + Mathf.Exp(-transform.position.z / 1000f))); // More spawn further along
+        if (Random.value > spawnProbability)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void ThrowAtPlayer()

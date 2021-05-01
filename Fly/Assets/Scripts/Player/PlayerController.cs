@@ -83,7 +83,14 @@ public class PlayerController : MonoBehaviour
         flying = true;
         velocityDecrease = 1f * dragMultiplier;
         //TODO find out if you can call before playing
-        fuel = 100f;
+        if (scienceMultiplier == 0)
+        {
+            fuel = 0;
+        }
+        else
+        {
+            fuel = 100f;
+        }
         drag = 0.02f;
     }
 
@@ -170,31 +177,17 @@ public class PlayerController : MonoBehaviour
     {
         // Might need more advanced logic later, but for now, if you hit anything solid, you die.
 
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Obstacle"))
         {
             flying = false;
             Player.instance.cameraController.SetDeadCam();
             OnDeath?.Invoke();
-            //Debug.Log("hi");
         }
     }
     private void OnTriggerEnter(Collider collision)
     {
-        //Debug.Log("Collided With: " + collision.gameObject.tag);
-        //make these generic later :)
-        //if (collision.gameObject.name == "PowerUp(Clone)")
-        //{
-        //    Destroy(collision.gameObject);
-        //    speed += 10;
-        //}
-        //if (collision.gameObject.name == "PowerDown(Clone)")
-        //{
-        //    Destroy(collision.gameObject);
-        //    speed -= 5;
-        //}
         if (collision.CompareTag("Finish"))
         {
-            //GameManager.instance.runManager.StopRun();
             GameManager.instance.UnlockNextLevel();
             GameManager.instance.runManager.CompleteRun();
         }
@@ -204,28 +197,13 @@ public class PlayerController : MonoBehaviour
             speed += fields.effect;
             Destroy(collision.gameObject);
         }
-        else if (collision.CompareTag("Ground"))
-        {
-            //change back to 0
-            if (spunkMultiplier == 1000)
-            {
-                flying = false;
-                Player.instance.cameraController.SetDeadCam();
-                OnDeath?.Invoke();
-            }
-            else
-            {
-                angleOfAttack *= -1;
-                velocity.y *= -1;
-            }
-        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.name.Contains("cloud"))
+        if (other.gameObject.CompareTag("Hazard"))
         {
-            rb.velocity -= rb.velocity.normalized * 5 / gritMultiplier * Time.deltaTime;
+            rb.velocity -= rb.velocity.normalized * 10f / gritMultiplier * Time.deltaTime;
         }
     }
 

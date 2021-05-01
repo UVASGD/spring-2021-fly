@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 3067991670389720163}
   - component: {fileID: -8930701899377579618}
   m_Layer: 0
-  m_Name: Sequoia1
+  m_Name: MonkeTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 1183481147851711096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 3891850911041398711}
   - {fileID: 2101929005367967149}
@@ -196,6 +196,7 @@ Transform:
   - {fileID: 8326704058506907328}
   - {fileID: 4205900236506234349}
   - {fileID: 6911595834793968447}
+  - {fileID: 6041688361555421097}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -213,19 +214,19 @@ LODGroup:
   m_AnimateCrossFading: 1
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.722
+  - screenRelativeHeight: 0.15663405
     fadeTransitionWidth: 0.25
     renderers:
     - renderer: {fileID: 5752742849442022902}
-  - screenRelativeHeight: 0.54399997
+  - screenRelativeHeight: 0.07748313
     fadeTransitionWidth: 0.25
     renderers:
     - renderer: {fileID: 2078982156983902242}
-  - screenRelativeHeight: 0.36599997
+  - screenRelativeHeight: 0.041410018
     fadeTransitionWidth: 0.25
     renderers:
     - renderer: {fileID: 6050820262531725938}
-  - screenRelativeHeight: 0.18799998
+  - screenRelativeHeight: 0.020482095
     fadeTransitionWidth: 0.25
     renderers:
     - renderer: {fileID: 8473841877288785518}
@@ -326,6 +327,50 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &6896107773776786833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6041688361555421097}
+  - component: {fileID: 3489036315327093123}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Hazard
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6041688361555421097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6896107773776786833}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 77.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3977387913096032775}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &3489036315327093123
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6896107773776786833}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 30
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7174289449608123894
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +464,7 @@ GameObject:
   - component: {fileID: 4691854015858424406}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -586,6 +631,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3977387913096032775}
     m_Modifications:
+    - target: {fileID: 3249564635205145737, guid: 5076ec7417135cc49af166c82400b02a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8068a94ec3c8efe468bad50c9e09eb2d, type: 2}
     - target: {fileID: 6076863385336206853, guid: 5076ec7417135cc49af166c82400b02a,
         type: 3}
       propertyPath: m_RootOrder
@@ -594,7 +644,7 @@ PrefabInstance:
     - target: {fileID: 6076863385336206853, guid: 5076ec7417135cc49af166c82400b02a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.47
+      value: 4.99
       objectReference: {fileID: 0}
     - target: {fileID: 6076863385336206853, guid: 5076ec7417135cc49af166c82400b02a,
         type: 3}
@@ -641,12 +691,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6947898546806690255, guid: 5076ec7417135cc49af166c82400b02a,
+        type: 3}
+      propertyPath: maxDistance
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 7956311955148714710, guid: 5076ec7417135cc49af166c82400b02a,
         type: 3}
       propertyPath: m_Name
       value: Monkey
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5456622989247663654, guid: 5076ec7417135cc49af166c82400b02a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5076ec7417135cc49af166c82400b02a, type: 3}
 --- !u!4 &4205900236506234349 stripped
 Transform:
