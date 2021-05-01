@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     private float dragMultiplier;
     private float scienceMultiplier;
     private float designMultiplier;
+    private float gritMultiplier;
 
     // YOUR CODE HERE
 
@@ -178,9 +179,14 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Might need more advanced logic later, but for now, if you hit anything solid, you die.
-        flying = false;
-        Player.instance.cameraController.SetDeadCam();
-        OnDeath?.Invoke();
+
+        if (collision.gameObject.tag == "Ground")
+        {
+            flying = false;
+            Player.instance.cameraController.SetDeadCam();
+            OnDeath?.Invoke();
+            //Debug.Log("hi");
+        }
     }
     private void OnTriggerEnter(Collider collision)
     {
@@ -208,6 +214,10 @@ public class PlayerController : MonoBehaviour
             speed += fields.effect;
             Destroy(collision.gameObject);
         }
+        else if (collision.gameObject.name.Contains("cloud"))
+        {
+            speed -= 5 / gritMultiplier;
+        }
     }
 
     public void SyncUpgrades()
@@ -217,5 +227,6 @@ public class PlayerController : MonoBehaviour
         dipOverTimeMultiplier = upgrades[0].tiers[upgrades[0].activeTierIndex].value * designMultiplier;
         dragMultiplier = upgrades[1].tiers[upgrades[1].activeTierIndex].value * designMultiplier;
         scienceMultiplier = upgrades[4].tiers[upgrades[4].activeTierIndex].value * designMultiplier;
+        gritMultiplier = upgrades[2].tiers[upgrades[2].activeTierIndex].value * designMultiplier;
     }
 }
