@@ -8,11 +8,17 @@ public class UIMoney : MonoBehaviour
 
     private void Start()
     {
+        MoneyManager.instance.OnMoneyChanged.AddListener(UpdateMoney);
         UpdateMoney();
     }
 
     public void UpdateMoney()
     {
         textNumber.SetNumber(MoneyManager.instance.money, 0);
+    }
+
+    public void UpdateMoney(float value)
+    {
+        textNumber.SetNumber(value, 0);
     }
 }

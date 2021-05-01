@@ -28,6 +28,7 @@ public class ShopButton : MonoBehaviour, ISavable
         {
             moneyField.SetText(upgradeCost.ToString());
         }
+        Load();
     }
 
     public void Load()
@@ -42,14 +43,12 @@ public class ShopButton : MonoBehaviour, ISavable
         else
         {
             locked = !autoUnlock;
-            Save();
         }
 
         if (PlayerPrefs.HasKey(purchasedKey))
         {
             purchased = PlayerPrefs.GetInt(purchasedKey) == 0 ? false : true;
         }
-        
         UpdateButton();
     }
 
@@ -83,7 +82,7 @@ public class ShopButton : MonoBehaviour, ISavable
 
     public void TryPurchase()
     {
-        if (locked) return;
+        if (locked || purchased) return;
         float currentMoney = MoneyManager.instance.money;
         if (currentMoney >= upgradeCost)
         {
