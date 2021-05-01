@@ -89,10 +89,39 @@ public class TerrainChunk
 
 			for (int i = 0; i < numToGen; i++)
 			{
-				Vector3 positionToGen = new Vector3(Random.Range(-size, size), 0, Random.Range(-size, size));
+                Vector3 positionToGen;
+                if (obj.spawnInMiddle)
+                {
+                    positionToGen = new Vector3(0, obj.defaultYPosition, 0);
+                }
+                else
+                {
+                    positionToGen = new Vector3(Random.Range(-size, size), obj.defaultYPosition, Random.Range(-size, size));
+                }
+                
 
-				// Skip generation if too close to existing object
-				Collider[] colliders = Physics.OverlapSphere(positionToGen, 5f);
+                //if the y is supposed to snap to the ground or if the y is restricted, we need to calculate height to spawn at
+                if (obj.restrictYSpawn || obj.SnapToGround)
+                {
+                    float meshWorldSize = meshSettings.meshWorldSize;
+                    Vector2 thisLocation = new Vector2(position.x + positionToGen.x, position.y + positionToGen.z);
+                    float[,] hm = Noise.GenerateNoiseMap(1, 1, heightMapSettings.noiseSettings, thisLocation);
+                    float height = hm[0, 0];
+                    AnimationCurve heightCurve_threadsafe = new AnimationCurve(heightMapSettings.heightCurve.keys);
+                    height *= heightCurve_threadsafe.Evaluate(height) * heightMapSettings.heightMultiplier;
+
+                    if(height > obj.maxYSpawn || height < obj.minYSpawn)
+                    {
+                        continue;
+                    }
+                    if (obj.SnapToGround)
+                    {
+                        positionToGen = new Vector3(positionToGen.x, height, positionToGen.z);
+                    }
+                }
+
+                // Skip generation if too close to existing object
+                Collider[] colliders = Physics.OverlapSphere(positionToGen, 5f);
 				foreach (var collider in colliders)
 				{
 					if (!collider.gameObject.name.Contains("Chunk"))
