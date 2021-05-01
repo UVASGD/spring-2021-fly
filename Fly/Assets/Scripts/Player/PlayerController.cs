@@ -62,24 +62,23 @@ public class PlayerController : MonoBehaviour
     private float dragMultiplier;
     private float scienceMultiplier;
     private float designMultiplier;
-
-    // YOUR CODE HERE
-
-
+    private float gritMultiplier;
+    private float spunkMultiplier;
     #endregion
 
-    private void Start()
+    void Init()
     {
         // Initialize variables and references
         rb = GetComponent<Rigidbody>();
-        speed = initialSpeed;
+        //change back to 1
+        speed = initialSpeed * designMultiplier;
         angleOfAttack = 0f;
         direction = 0f;
         stalling = false;
         flying = true;
-        velocityDecrease = 1f;
+        velocityDecrease = 1f * dragMultiplier;
         //TODO find out if you can call before playing
-        fuel = 100f * scienceMultiplier;
+        fuel = 100f;
         drag = 0.02f;
     }
 
@@ -117,15 +116,6 @@ public class PlayerController : MonoBehaviour
         roll = stalling || !flying ? 0f : Input.GetAxis("Horizontal"); // z = roll
         pitch = stalling || !flying ? 0f : Input.GetAxis("Vertical"); // x = pitch 
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            thrustSpeed = speed;
-            speed = 106f;
-            Debug.Log(speed);
-        }
-        else if (Input.GetKeyUp(KeyCode.Space)) {
-            speed = thrustSpeed;
-        }
-
         direction += roll * rollSpeed * Time.fixedDeltaTime; // how much to turn this frame
         localForward = Quaternion.AngleAxis(direction, Vector3.up) * Vector3.forward; // update nose
         localRight = Vector3.Cross(localForward, Vector3.up); // update wings
@@ -148,39 +138,40 @@ public class PlayerController : MonoBehaviour
         speed -= drag * dragMultiplier;
 
         velocity = Quaternion.AngleAxis(angleOfAttack, localRight) * localForward * speed; // rotate target velocity (direction) by angle of attack
-        rb.velocity = velocity; // apply velocity
 
-        if (fuel <= 0)
+        if (Input.GetKey(KeyCode.Space))
         {
-            //TODO change so varies with Type
-            transform.position += new Vector3(0, -.10f, 0);
-            //Debug.Log(Type.Classic.getWeight());
-            if (velocityDecrease < 8)
+            if (fuel > 0f)
             {
-                velocity += velocityDecrease * Vector3.down;
-                velocityDecrease += .01f;
+                fuel -= 25f / scienceMultiplier * Time.deltaTime;
+                velocity += velocity.normalized * thrustSpeed * Time.fixedDeltaTime;
+            }
+            else
+            {
+                fuel = 0f;
             }
         }
-        if (fuel > 0)
-        {
-            fuel -= .05f;
-        }
 
-        //Debug.Log("fuel: " + fuel + ", velocityDecrease: " + velocityDecrease + ", speed: " + speed);
+        velocity -= velocity.normalized * velocityDecrease * Time.fixedDeltaTime;
+
+        rb.velocity = velocity; // apply velocity
 
         // Rotate model for banking
         localUp = Quaternion.AngleAxis(-roll * maxRollDeg, velocity) * Vector3.up;
         model.rotation = Quaternion.LookRotation(velocity, localUp);
-
-        Debug.DrawRay(transform.position, velocity, Color.yellow); // Draw a line indicating velocity in the Scene view for debugging purposes
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         // Might need more advanced logic later, but for now, if you hit anything solid, you die.
-        flying = false;
-        Player.instance.cameraController.SetDeadCam();
-        OnDeath?.Invoke();
+
+        if (collision.gameObject.tag == "Ground")
+        {
+            flying = false;
+            Player.instance.cameraController.SetDeadCam();
+            OnDeath?.Invoke();
+            //Debug.Log("hi");
+        }
     }
     private void OnTriggerEnter(Collider collision)
     {
@@ -208,6 +199,29 @@ public class PlayerController : MonoBehaviour
             speed += fields.effect;
             Destroy(collision.gameObject);
         }
+        else if (collision.CompareTag("Ground"))
+        {
+            //change back to 0
+            if (spunkMultiplier == 1000)
+            {
+                flying = false;
+                Player.instance.cameraController.SetDeadCam();
+                OnDeath?.Invoke();
+            }
+            else
+            {
+                angleOfAttack *= -1;
+                velocity.y *= -1;
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.name.Contains("cloud"))
+        {
+            rb.velocity -= rb.velocity.normalized * 5 / gritMultiplier * Time.deltaTime;
+        }
     }
 
     public void SyncUpgrades()
@@ -217,5 +231,7 @@ public class PlayerController : MonoBehaviour
         dipOverTimeMultiplier = upgrades[0].tiers[upgrades[0].activeTierIndex].value * designMultiplier;
         dragMultiplier = upgrades[1].tiers[upgrades[1].activeTierIndex].value * designMultiplier;
         scienceMultiplier = upgrades[4].tiers[upgrades[4].activeTierIndex].value * designMultiplier;
+        gritMultiplier = upgrades[2].tiers[upgrades[2].activeTierIndex].value * designMultiplier;
+        spunkMultiplier = upgrades[3].tiers[upgrades[3].activeTierIndex].value * designMultiplier;
     }
 }

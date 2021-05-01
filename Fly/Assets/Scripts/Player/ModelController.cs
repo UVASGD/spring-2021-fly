@@ -11,6 +11,9 @@ public class ModelController : MonoBehaviour, ISavable
     {
         Load();
         modelList.Init();
+        int index = UpgradeManager.instance.tieredUpgradeList.upgrades[5].activeTierIndex;
+        print("INDEX: " + index);
+        activeModel = modelList.models[index];
     }
 
     public void SetActiveModel(Model model)

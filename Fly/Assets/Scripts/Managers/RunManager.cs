@@ -57,6 +57,7 @@ public class RunManager : MonoBehaviour
         player.transform.position = parent.position;
         player.transform.rotation = Quaternion.identity;
         player.cameraController.SetAliveCam();
+        player.playerController.SyncUpgrades();
         runStarted = true;
     }
 
@@ -91,7 +92,7 @@ public class RunManager : MonoBehaviour
                 GameManager.instance.playerManager.activePlayer.transform.position.z).magnitude;
             distanceTravelledUI?.SetNumber(distanceTravelled, 0);
 
-            fuelUI?.SetNumber(GameManager.instance.playerManager.activePlayer.playerController.fuel);
+            fuelUI?.SetNumber(GameManager.instance.playerManager.activePlayer.playerController.fuel, 0);
 
 
             float meshWorldSize = GameManager.instance.currentTerrainGenerator.meshSettings.meshWorldSize;

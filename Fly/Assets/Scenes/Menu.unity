@@ -822,6 +822,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 889648061472930301, guid: 3beda629157a9414fad297f61f9fb89d,
+        type: 3}
+      propertyPath: tieredUpgradeList
+      value: 
+      objectReference: {fileID: 11400000, guid: 09dbcdd51d60d904a954b7a4b375b877,
+        type: 2}
     - target: {fileID: 3641012702778257301, guid: 3beda629157a9414fad297f61f9fb89d,
         type: 3}
       propertyPath: startingMoney
@@ -831,6 +837,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6868053362602513017, guid: 3beda629157a9414fad297f61f9fb89d,
+        type: 3}
+      propertyPath: debugMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6868053362602513018, guid: 3beda629157a9414fad297f61f9fb89d,
         type: 3}

@@ -7,6 +7,7 @@ public class ShopButton : MonoBehaviour, ISavable
 {
     public ShopButton successor;
     public TieredUpgrade.Type upgradeType;
+    public int upgradeTier;
     public float upgradeCost;
     public GameObject lockedOverlay;
     public GameObject purchasedOverlay;
@@ -28,6 +29,7 @@ public class ShopButton : MonoBehaviour, ISavable
         {
             moneyField.SetText(upgradeCost.ToString());
         }
+        Load();
     }
 
     public void Load()
@@ -42,14 +44,12 @@ public class ShopButton : MonoBehaviour, ISavable
         else
         {
             locked = !autoUnlock;
-            Save();
         }
 
         if (PlayerPrefs.HasKey(purchasedKey))
         {
             purchased = PlayerPrefs.GetInt(purchasedKey) == 0 ? false : true;
         }
-        
         UpdateButton();
     }
 
@@ -83,11 +83,12 @@ public class ShopButton : MonoBehaviour, ISavable
 
     public void TryPurchase()
     {
-        if (locked) return;
+        if (locked || purchased) return;
         float currentMoney = MoneyManager.instance.money;
         if (currentMoney >= upgradeCost)
         {
             MoneyManager.instance.SubtractMoney(upgradeCost);
+            UpgradeManager.instance.SetUpgradeTier(upgradeType, upgradeTier);
             purchased = true;
             UpdateButton();
             if (successor)

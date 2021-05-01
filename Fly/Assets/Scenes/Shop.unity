@@ -130,8 +130,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 1322891804}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -322,6 +337,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 146497586}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &146497588 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 146497586}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310638cb13f81d34a90bac0a2e4c185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &151106651
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,6 +784,16 @@ PrefabInstance:
       propertyPath: upgradeCost
       value: 5000
       objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -946,6 +983,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 172659226}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &172659228 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 172659226}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310638cb13f81d34a90bac0a2e4c185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &312059632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,8 +1428,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 1135299474}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: autoUnlock
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -1586,6 +1655,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 389891532}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &389891534 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 389891532}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310638cb13f81d34a90bac0a2e4c185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &395767344
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,8 +2258,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 959695691}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: autoUnlock
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -2443,8 +2539,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: locked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 1012091481}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -2635,6 +2751,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 578521899}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &578521901 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 578521899}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310638cb13f81d34a90bac0a2e4c185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &633077533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2646,6 +2774,16 @@ PrefabInstance:
         type: 3}
       propertyPath: upgradeCost
       value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -2836,6 +2974,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 633077533}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &633077535 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 633077533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310638cb13f81d34a90bac0a2e4c185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &678298793
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,8 +3085,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: locked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 578521901}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -3265,8 +3435,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 172659228}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -3457,6 +3642,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 836563979}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &836563981 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 836563979}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310638cb13f81d34a90bac0a2e4c185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &850653225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3772,8 +3969,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 1771714146}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -3964,6 +4171,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 959695689}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &959695691 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 959695689}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310638cb13f81d34a90bac0a2e4c185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &967283657
 GameObject:
   m_ObjectHideFlags: 0
@@ -4038,8 +4257,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: locked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -4230,6 +4464,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1012091479}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1012091481 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1012091479}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310638cb13f81d34a90bac0a2e4c185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1051120628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4239,8 +4485,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 1185030243}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: autoUnlock
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -4562,8 +4828,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 836563981}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -4754,6 +5035,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1135299472}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1135299474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1135299472}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310638cb13f81d34a90bac0a2e4c185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1185030241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4763,8 +5056,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 2119910512}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -4955,6 +5263,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1185030241}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1185030243 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1185030241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310638cb13f81d34a90bac0a2e4c185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1230044840
 GameObject:
   m_ObjectHideFlags: 0
@@ -5147,6 +5467,16 @@ PrefabInstance:
       propertyPath: upgradeCost
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -5336,6 +5666,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1322891802}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1322891804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1322891802}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310638cb13f81d34a90bac0a2e4c185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1427992209
 GameObject:
   m_ObjectHideFlags: 0
@@ -5723,8 +6065,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 633077535}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 7000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -5915,6 +6272,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1567093704}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1567093706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1567093704}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310638cb13f81d34a90bac0a2e4c185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1751481699
 GameObject:
   m_ObjectHideFlags: 0
@@ -6058,8 +6427,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 959695691}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -6250,6 +6629,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1771714144}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1771714146 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1771714144}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310638cb13f81d34a90bac0a2e4c185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1783093503 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6738753476504615083, guid: 0de0667956e1e354882e44ce79080e3b,
@@ -6265,8 +6656,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 146497588}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: autoUnlock
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -6932,6 +7343,16 @@ PrefabInstance:
       propertyPath: upgradeCost
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
@@ -7121,6 +7542,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2119910510}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2119910512 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2119910510}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310638cb13f81d34a90bac0a2e4c185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2136513725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7130,8 +7563,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 1567093706}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: autoUnlock
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: upgradeCost
       value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeTier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
@@ -7331,8 +7784,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
+      propertyPath: purchased
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: successor
+      value: 
+      objectReference: {fileID: 389891534}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
       propertyPath: autoUnlock
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201709703480461329, guid: 0de0667956e1e354882e44ce79080e3b,
+        type: 3}
+      propertyPath: upgradeType
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4435072586319615056, guid: 0de0667956e1e354882e44ce79080e3b,
         type: 3}
