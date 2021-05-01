@@ -7,6 +7,7 @@ public class ShopButton : MonoBehaviour, ISavable
 {
     public ShopButton successor;
     public TieredUpgrade.Type upgradeType;
+    public int upgradeTier;
     public float upgradeCost;
     public GameObject lockedOverlay;
     public GameObject purchasedOverlay;
@@ -87,6 +88,7 @@ public class ShopButton : MonoBehaviour, ISavable
         if (currentMoney >= upgradeCost)
         {
             MoneyManager.instance.SubtractMoney(upgradeCost);
+            UpgradeManager.instance.SetUpgradeTier(upgradeType, upgradeTier);
             purchased = true;
             UpdateButton();
             if (successor)
