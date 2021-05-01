@@ -66,6 +66,11 @@ public class PlayerController : MonoBehaviour
     private float spunkMultiplier;
     #endregion
 
+    private void Awake()
+    {
+        Init();
+    }
+
     void Init()
     {
         // Initialize variables and references
@@ -233,5 +238,6 @@ public class PlayerController : MonoBehaviour
         scienceMultiplier = upgrades[4].tiers[upgrades[4].activeTierIndex].value * designMultiplier;
         gritMultiplier = upgrades[2].tiers[upgrades[2].activeTierIndex].value * designMultiplier;
         spunkMultiplier = upgrades[3].tiers[upgrades[3].activeTierIndex].value * designMultiplier;
+        Init();
     }
 }

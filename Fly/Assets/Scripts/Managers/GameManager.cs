@@ -145,4 +145,9 @@ public class GameManager : MonoBehaviour
     {
         print("ALL LEVELS COMPLETED!");
     }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.Save();
+    }
 }

@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 0}
-  initialSpeed: 32
+  initialSpeed: 40
   rollSpeed: 30
   maxRollDeg: 30
   pitchSpeed: 30
@@ -378,6 +378,7 @@ MonoBehaviour:
   pitch: 0
   velocityDecrease: 0
   fuel: 0
+  drag: 0
 --- !u!1 &2629335270665272754
 GameObject:
   m_ObjectHideFlags: 0
