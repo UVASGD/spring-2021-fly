@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     private float dragMultiplier;
     private float scienceMultiplier;
     private float designMultiplier;
+    private float spunkMultiplier;
 
     // YOUR CODE HERE
 
@@ -72,7 +73,8 @@ public class PlayerController : MonoBehaviour
     {
         // Initialize variables and references
         rb = GetComponent<Rigidbody>();
-        speed = initialSpeed;
+        //change back to 1
+        speed = initialSpeed * 2;
         angleOfAttack = 0f;
         direction = 0f;
         stalling = false;
@@ -208,6 +210,19 @@ public class PlayerController : MonoBehaviour
             speed += fields.effect;
             Destroy(collision.gameObject);
         }
+        else if (collision.CompareTag("Ground"))
+        {
+            //change back to 0
+            if (spunkMultiplier == 1000) {
+                flying = false;
+                Player.instance.cameraController.SetDeadCam();
+                OnDeath?.Invoke();
+            }
+            else {
+                angleOfAttack *= -1;
+                velocity.y *= -1;
+            }
+        }
     }
 
     public void SyncUpgrades()
@@ -217,5 +232,6 @@ public class PlayerController : MonoBehaviour
         dipOverTimeMultiplier = upgrades[0].tiers[upgrades[0].activeTierIndex].value * designMultiplier;
         dragMultiplier = upgrades[1].tiers[upgrades[1].activeTierIndex].value * designMultiplier;
         scienceMultiplier = upgrades[4].tiers[upgrades[4].activeTierIndex].value * designMultiplier;
+        spunkMultiplier = upgrades[3].tiers[upgrades[3].activeTierIndex].value * designMultiplier;
     }
 }
