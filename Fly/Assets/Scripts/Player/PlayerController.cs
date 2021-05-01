@@ -193,7 +193,7 @@ public class PlayerController : MonoBehaviour
         {
             //GameManager.instance.runManager.StopRun();
             GameManager.instance.UnlockNextLevel();
-            SceneManager.instance.LoadScene(0);
+            GameManager.instance.runManager.CompleteRun();
         }
         else if (collision.CompareTag("PowerUp"))
         {

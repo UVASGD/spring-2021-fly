@@ -54,6 +54,7 @@ public class TerrainChunk
 		meshFilter = meshObject.AddComponent<MeshFilter>();
 		meshCollider = meshObject.AddComponent<MeshCollider>();
 		meshObject.isStatic = true;
+		meshObject.tag = "Ground";
 
         //meshObject.AddComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
         //meshObject.GetComponent<Rigidbody>().useGravity = false;

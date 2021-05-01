@@ -50,4 +50,9 @@ public class MoneyManager : MonoBehaviour, ISavable
         money = value;
         OnMoneyChanged?.Invoke(value);
     }
+
+    public void AddMoney(float value)
+    {
+        SetMoney(money + value);
+    }
 }
