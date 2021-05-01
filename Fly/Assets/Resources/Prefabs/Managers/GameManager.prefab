@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 1126914373}
   - component: {fileID: 1126914372}
   - component: {fileID: 261588599}
+  - component: {fileID: 9147770986769414105}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -405,6 +406,88 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &9147770986769414105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126914370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e46102d1f1f47da978d0ce8423f4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useDistance: 1
+  distanceGradient:
+    serializedVersion: 2
+    key0: {r: 0.05322181, g: 0.7591733, b: 0.8679245, a: 0}
+    key1: {r: 0.11764705, g: 0.5922135, b: 0.8352941, a: 1}
+    key2: {r: 0.18614274, g: 0.48639014, b: 0.8396226, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 14649
+    ctime1: 40478
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
+  near: 51.2
+  far: 653.5
+  distanceFogIntensity: 0.669
+  useDistanceFogOnSky: 0
+  useHeight: 0
+  heightGradient:
+    serializedVersion: 2
+    key0: {r: 0.074509785, g: 0.21259223, b: 0.83137256, a: 0}
+    key1: {r: 0, g: 0.27407372, b: 0.5943396, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 23901
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  low: 51.2
+  high: 135.7
+  heightFogIntensity: 0.6662
+  useHeightFogOnSky: 0
+  distanceHeightBlend: 0.5
+  material: {fileID: 0}
 --- !u!1 &1709025323
 GameObject:
   m_ObjectHideFlags: 0

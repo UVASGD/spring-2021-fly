@@ -111,7 +111,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4565884009001823619, guid: 3db33ae4e35195b4d9ad6771e5322ad8, type: 3}
+  - {fileID: 2100000, guid: fbe72a77039efef49852b18801989f09, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1467,8 +1467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f75da3215f7c8fa469dd7e357cb5bb53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshSettings: {fileID: 0}
-  heightMapSettings: {fileID: 0}
 --- !u!114 &867057531996664971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1997,7 +1995,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -840037777384891287, guid: 3db33ae4e35195b4d9ad6771e5322ad8, type: 3}
+  - {fileID: 2100000, guid: 092f8a04c456b45408d022f20f7d2445, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
