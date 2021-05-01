@@ -49,15 +49,16 @@ public class TerrainChunk
 		Vector2 position = coord * meshSettings.meshWorldSize;
 		bounds = new Bounds(position, Vector2.one * meshSettings.meshWorldSize);
 
-		meshObject = new GameObject("Terrain Chunk");
+		meshObject = new GameObject("Terrain Chunk " + coord.ToString());
 		meshRenderer = meshObject.AddComponent<MeshRenderer>();
 		meshFilter = meshObject.AddComponent<MeshFilter>();
 		meshCollider = meshObject.AddComponent<MeshCollider>();
+		meshObject.isStatic = true;
 
-		meshObject.AddComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-		meshObject.GetComponent<Rigidbody>().useGravity = false;
-		meshObject.GetComponent<Rigidbody>().isKinematic = true;
-		meshRenderer.material = material;
+        //meshObject.AddComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        //meshObject.GetComponent<Rigidbody>().useGravity = false;
+        //meshObject.GetComponent<Rigidbody>().isKinematic = true;
+        meshRenderer.material = material;
 
 		meshObject.transform.position = new Vector3(position.x, 0, position.y);
 		meshObject.transform.parent = parent;
@@ -76,6 +77,9 @@ public class TerrainChunk
 		}
 
 		maxViewDst = detailLevels[detailLevels.Length - 1].visibleDstThreshold;
+
+		// Don't create gameobjects on the starting chunk
+		if (coord.sqrMagnitude < Mathf.Epsilon * Mathf.Epsilon) return;
 
 		// Instantiate terrain objects
 		float size = meshSettings.meshWorldSize / 2f;
@@ -102,8 +106,6 @@ public class TerrainChunk
 				instance.transform.localPosition = positionToGen;
 				instance.transform.localEulerAngles = new Vector3(0f, Random.Range(0f, 360f), 0f);
 				gameObjectsInChunk.Add(instance);
-
-				//Debug.Log($"Created object at {instance.transform.localPosition}");
 			}
 		}
 
@@ -206,27 +208,40 @@ public class TerrainChunk
 
 	public void UpdateCollisionMesh()
 	{
-		if (!hasSetCollider)
-		{
-			float sqrDstFromViewerToEdge = bounds.SqrDistance(viewerPosition);
+        float sqrDstFromViewerToEdge = bounds.SqrDistance(viewerPosition);
+        if (sqrDstFromViewerToEdge < colliderGenerationDistanceThreshold * colliderGenerationDistanceThreshold)
+        {
+            if (lodMeshes[colliderLODIndex].hasMesh)
+            {
+                meshCollider.sharedMesh = lodMeshes[colliderLODIndex].mesh;
+                hasSetCollider = true;
+            }
+        }
+        else
+        {
+			meshCollider.sharedMesh = null;
+        }
+		//if (!hasSetCollider)
+		//{
+		//	float sqrDstFromViewerToEdge = bounds.SqrDistance(viewerPosition);
 
-			if (sqrDstFromViewerToEdge < detailLevels[colliderLODIndex].sqrVisibleDstThreshold)
-			{
-				if (!lodMeshes[colliderLODIndex].hasRequestedMesh)
-				{
-					lodMeshes[colliderLODIndex].RequestMesh(heightMap, meshSettings);
-				}
-			}
+		//	if (sqrDstFromViewerToEdge < detailLevels[colliderLODIndex].sqrVisibleDstThreshold)
+		//	{
+		//		if (!lodMeshes[colliderLODIndex].hasRequestedMesh)
+		//		{
+		//			lodMeshes[colliderLODIndex].RequestMesh(heightMap, meshSettings);
+		//		}
+		//	}
 
-			if (sqrDstFromViewerToEdge < colliderGenerationDistanceThreshold * colliderGenerationDistanceThreshold)
-			{
-				if (lodMeshes[colliderLODIndex].hasMesh)
-				{
-					meshCollider.sharedMesh = lodMeshes[colliderLODIndex].mesh;
-					hasSetCollider = true;
-				}
-			}
-		}
+		//	if (sqrDstFromViewerToEdge < colliderGenerationDistanceThreshold * colliderGenerationDistanceThreshold)
+		//	{
+		//		if (lodMeshes[colliderLODIndex].hasMesh)
+		//		{
+		//			meshCollider.sharedMesh = lodMeshes[colliderLODIndex].mesh;
+		//			hasSetCollider = true;
+		//		}
+		//	}
+		//}
 	}
 
 	public void SetVisible(bool visible)
@@ -274,6 +289,7 @@ class LODMesh
 	void OnMeshDataReceived(object meshDataObject)
 	{
 		mesh = ((MeshData)meshDataObject).CreateMesh();
+		mesh.name = $"Mesh{lod}";
 		hasMesh = true;
 
 		updateCallback();

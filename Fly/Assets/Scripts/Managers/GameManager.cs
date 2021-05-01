@@ -22,8 +22,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public TerrainGenerator currentTerrainGenerator;
 
-    [SerializeField]
-    private bool debugMode;
+    public bool debugMode;
 
     // Start is called before the first frame update
     void Awake()
@@ -58,7 +57,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 20; i++)
         {
             yield return new WaitForEndOfFrame();
         }
@@ -86,6 +85,20 @@ public class GameManager : MonoBehaviour
         // Get goal position from the map settings polar coordinates
         Vector3 goalPosition = Quaternion.Euler(0f, currentMapSettings.goalRotationFromForward, 0f) * new Vector3(0f, 0f, currentMapSettings.goalDistance);
         runManager.InitRun(goalPosition);
+
+        if (currentMapSettings.landmark != null)
+        {
+            GameObject landmark = Instantiate(currentMapSettings.landmark);
+            if (landmark.GetComponent<PutObjectOnTerrain>() == null)
+            {
+                landmark.AddComponent<PutObjectOnTerrain>();
+            }
+            Vector3 goalDirection = goalPosition.normalized;
+            Vector2 offset = Random.insideUnitCircle * 50f;
+            landmark.transform.position = goalPosition + goalDirection * 300f + new Vector3(offset.x, 0f, offset.y);
+            landmark.GetComponent<PutObjectOnTerrain>().SnapToTerrain(currentTerrainGenerator.meshSettings, currentTerrainGenerator.heightMapSettings);
+        }
+
         Invoke("StartLevel", 3f);
     }
 

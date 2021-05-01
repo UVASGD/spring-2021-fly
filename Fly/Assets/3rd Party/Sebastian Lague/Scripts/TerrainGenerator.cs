@@ -23,6 +23,7 @@ public class TerrainGenerator : MonoBehaviour
 	public Material mapMaterial;
 
 	public List<TerrainObject> terrainObjects;
+	public List<GameObject> goalLandmarks;
 
 	Vector2 viewerPosition;
 	Vector2 viewerPositionOld;

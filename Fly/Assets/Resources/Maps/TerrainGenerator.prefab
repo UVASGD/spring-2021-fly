@@ -142,12 +142,18 @@ MonoBehaviour:
   detailLevels:
   - lod: 0
     visibleDstThreshold: 256
+  - lod: 0
+    visibleDstThreshold: 512
+  - lod: 0
+    visibleDstThreshold: 1024
   meshSettings: {fileID: 11400000, guid: 46ff57af49f874fe2bd2a350a99d063c, type: 2}
   heightMapSettings: {fileID: 11400000, guid: 740a13ca91e454c51aeb1f625a396eca, type: 2}
   textureSettings: {fileID: 11400000, guid: addd6b0c4581e4f73b0395a4943b9f57, type: 2}
   powerUpManager: {fileID: 1146112099160845645}
   viewer: {fileID: 0}
   mapMaterial: {fileID: 2100000, guid: b0872f84cf3c7441d893168677410c73, type: 2}
+  terrainObjects: []
+  goalLandmarks: []
   generated: 0
   debugMode: 1
 --- !u!114 &1146112098501361431
