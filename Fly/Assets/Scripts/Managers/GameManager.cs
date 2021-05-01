@@ -22,8 +22,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public TerrainGenerator currentTerrainGenerator;
 
-    [SerializeField]
-    private bool debugMode;
+    public bool debugMode;
 
     // Start is called before the first frame update
     void Awake()

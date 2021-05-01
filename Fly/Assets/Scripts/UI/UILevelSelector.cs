@@ -31,7 +31,14 @@ public class UILevelSelector : MonoBehaviour, ISavable
         {
             levelCount++;
 
-            item.Load(); // load to remember if level is completed/locked
+            if (GameManager.instance.debugMode)
+            {
+                item.locked = false;
+            }
+            else
+            {
+                item.Load(); // load to remember if level is completed/locked
+            }
             if (!item.locked) unlockedCount++;
 
             GameObject element = Instantiate(UILevelPrefab, transform);

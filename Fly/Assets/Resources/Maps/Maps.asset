@@ -58,6 +58,6 @@ MonoBehaviour:
     completed: 0
     character: {fileID: 0}
     landmark: {fileID: 0}
-    scene: Level2
+    scene: 
     goalDistance: 16000
     goalRotationFromForward: 0
