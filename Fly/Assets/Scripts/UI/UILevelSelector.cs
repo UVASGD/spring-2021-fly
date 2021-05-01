@@ -81,7 +81,6 @@ public class UILevelSelector : MonoBehaviour, ISavable
             return;
         }
         GameManager.instance.currentMapSettings = settings;
-        GameManager.instance.LoadLevel(settings.scene);
     }
 
     public void OnInvalidLevel()

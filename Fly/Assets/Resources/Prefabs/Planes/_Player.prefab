@@ -178,7 +178,7 @@ MonoBehaviour:
   m_FocusTracking: 1
   m_FocusTarget: {fileID: 0}
   m_FocusOffset: 0
-  m_Profile: {fileID: 0}
+  m_Profile: {fileID: 11400000, guid: ec834561ed7d0314e8aff5cd3e826bf5, type: 2}
 --- !u!1 &1630304389465747208
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,7 +610,7 @@ MonoBehaviour:
   m_FocusTracking: 1
   m_FocusTarget: {fileID: 0}
   m_FocusOffset: 0
-  m_Profile: {fileID: 0}
+  m_Profile: {fileID: 11400000, guid: ec834561ed7d0314e8aff5cd3e826bf5, type: 2}
 --- !u!114 &4910495493376523092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,6 +685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 859173123155635830}
   - component: {fileID: 1233066607938340063}
+  - component: {fileID: 3299326026083906888}
   m_Layer: 0
   m_Name: DeadCam
   m_TagString: Untagged
@@ -699,7 +700,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5742941796211745190}
-  m_LocalRotation: {x: 0.61541224, y: 0.000000024213296, z: -0.000000018905173, w: 0.78820544}
+  m_LocalRotation: {x: 0.61541224, y: -0.000000013963054, z: 0.000000010902023, w: 0.78820544}
   m_LocalPosition: {x: 0, y: 20, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -742,3 +743,20 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 3272295432113510229}
+--- !u!114 &3299326026083906888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742941796211745190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusTracking: 1
+  m_FocusTarget: {fileID: 0}
+  m_FocusOffset: 0
+  m_Profile: {fileID: 11400000, guid: ec834561ed7d0314e8aff5cd3e826bf5, type: 2}
