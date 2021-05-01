@@ -1,64 +1,14 @@
 fileFormatVersion: 2
-guid: a22efa6e27cfa4df6ac9a18c22d21fc2
+guid: 5b3d6e3f57178574eaf7700e4ff364c4
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable:
-  - first:
-      1: 100000
-    second: //RootNode
-  - first:
-      1: 100002
-    second: Pine02-1-Leaves
-  - first:
-      1: 100004
-    second: Pine02-1-Trunk
-  - first:
-      4: 400000
-    second: //RootNode
-  - first:
-      4: 400002
-    second: Pine02-1-Leaves
-  - first:
-      4: 400004
-    second: Pine02-1-Trunk
-  - first:
-      21: 2100000
-    second: Pine-1-Trunk
-  - first:
-      21: 2100002
-    second: Pine-1-Leaves
-  - first:
-      23: 2300000
-    second: Pine02-1-Leaves
-  - first:
-      23: 2300002
-    second: Pine02-1-Trunk
-  - first:
-      33: 3300000
-    second: Pine02-1-Leaves
-  - first:
-      33: 3300002
-    second: Pine02-1-Trunk
-  - first:
-      43: 4300000
-    second: Pine02-1-Trunk
-  - first:
-      43: 4300002
-    second: Pine02-1-Leaves
-  - first:
-      41386430: 2186277476908879412
-    second: ImportLogs
+  internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Pine-1-Leaves
-    second: {fileID: 2100000, guid: 1a5c80493b7c60d4cbf325e98c47a2db, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Pine-1-Trunk
-    second: {fileID: 2100000, guid: 1a5c80493b7c60d4cbf325e98c47a2db, type: 2}
+    second: {fileID: 2100000, guid: 9c401f3b78c21624eb48b0b7f190544d, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -86,7 +36,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -98,7 +48,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
-    fileIdsGeneration: 1
+    fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -114,7 +64,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -124,7 +74,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 0
+  importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
@@ -143,7 +93,7 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
   additionalBone: 0
