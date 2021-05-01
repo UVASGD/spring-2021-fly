@@ -55,10 +55,13 @@ public class PlayerController : MonoBehaviour
     public float pitch; // turning
     public float velocityDecrease;
     public float fuel;
+    public float drag;
 
     #region UPGRADEABLE VARIABLES
     private float dipOverTimeMultiplier;
-
+    private float dragMultiplier;
+    private float scienceMultiplier;
+    private float designMultiplier;
 
     // YOUR CODE HERE
 
@@ -75,7 +78,9 @@ public class PlayerController : MonoBehaviour
         stalling = false;
         flying = true;
         velocityDecrease = 1f;
-        fuel = 100f;
+        //TODO find out if you can call before playing
+        fuel = 100f * scienceMultiplier;
+        drag = 0.02f;
     }
 
     private void FixedUpdate()
@@ -140,6 +145,8 @@ public class PlayerController : MonoBehaviour
         }
         speed = Mathf.Max(0.1f, speed); // Cap minimum speed in flight to 0.1f (very small forward speed), otherwise causes undefined behavior
 
+        speed -= drag * dragMultiplier;
+
         velocity = Quaternion.AngleAxis(angleOfAttack, localRight) * localForward * speed; // rotate target velocity (direction) by angle of attack
         rb.velocity = velocity; // apply velocity
 
@@ -193,7 +200,7 @@ public class PlayerController : MonoBehaviour
         {
             //GameManager.instance.runManager.StopRun();
             GameManager.instance.UnlockNextLevel();
-            SceneManager.instance.LoadScene(0);
+            GameManager.instance.runManager.CompleteRun();
         }
         else if (collision.CompareTag("PowerUp"))
         {
@@ -206,6 +213,9 @@ public class PlayerController : MonoBehaviour
     public void SyncUpgrades()
     {
         List<TieredUpgrade> upgrades = UpgradeManager.instance.tieredUpgradeList.upgrades;
-        dipOverTimeMultiplier = upgrades[0].tiers[upgrades[0].activeTierIndex].value;
+        designMultiplier = upgrades[5].tiers[upgrades[5].activeTierIndex].value;
+        dipOverTimeMultiplier = upgrades[0].tiers[upgrades[0].activeTierIndex].value * designMultiplier;
+        dragMultiplier = upgrades[1].tiers[upgrades[1].activeTierIndex].value * designMultiplier;
+        scienceMultiplier = upgrades[4].tiers[upgrades[4].activeTierIndex].value * designMultiplier;
     }
 }

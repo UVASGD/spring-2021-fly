@@ -29,11 +29,11 @@ MonoBehaviour:
     - upgradeType: 0
       value: 1
     - upgradeType: 0
-      value: 1.1
+      value: 0.8
     - upgradeType: 0
-      value: 1.2
+      value: 0.6
     - upgradeType: 0
-      value: 1.3
+      value: 0.4
     activeTierIndex: 0
   - type: 2
     tiers:

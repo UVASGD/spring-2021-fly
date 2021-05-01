@@ -20,10 +20,7 @@ public class RunManager : MonoBehaviour
     [Header("UI")]
     public Canvas runCanvas;
     public UITextNumber distanceTravelledUI;
-    public UITextNumber distanceFromGoalUI;
-    public UITextNumber maxHeightThisRunUI;
     public UITextNumber currentHeightUI;
-    public GameObject restartUI;
     public UITextNumber fuelUI;
 
     [Header("Stats")]
@@ -34,7 +31,6 @@ public class RunManager : MonoBehaviour
 
     private void Start()
     {
-        restartUI?.SetActive(false);
         runStarted = false;
         runEnded = false;
         runCanvas?.gameObject.SetActive(false);
@@ -65,8 +61,17 @@ public class RunManager : MonoBehaviour
     public void StopRun()
     {
         runEnded = true;
-        restartUI?.SetActive(true);
         runCanvas?.gameObject.SetActive(false);
+        MoneyManager.instance.AddMoney(Mathf.Floor(distanceTravelled / 100f));
+        SceneManager.instance.LoadScene(1);
+    }
+
+    public void CompleteRun()
+    {
+        runEnded = true;
+        runCanvas?.gameObject.SetActive(false);
+        MoneyManager.instance.AddMoney(Mathf.Floor(distanceTravelled / 100f * 2f));
+        SceneManager.instance.LoadScene(0);
     }
 
     private void Update()
@@ -75,25 +80,16 @@ public class RunManager : MonoBehaviour
         if (runStarted && !runEnded && GameManager.instance.playerManager.activePlayer != null)
         {
             currentHeight = GameManager.instance.playerManager.activePlayer.transform.position.y;
-            currentHeightUI?.SetNumber(currentHeight);
+            currentHeightUI?.SetNumber(currentHeight, 0);
 
-            maxHeightThisRun = Mathf.Max(maxHeightThisRun, currentHeight);
-            maxHeightThisRunUI?.SetNumber(maxHeightThisRun);
-
-            distanceFromGoal = (goalPosition - GameManager.instance.playerManager.activePlayer.transform.position).magnitude;
-            distanceFromGoalUI?.SetNumber(distanceFromGoal);
+            distanceTravelled = new Vector3(GameManager.instance.playerManager.activePlayer.transform.position.x,
+                0f,
+                GameManager.instance.playerManager.activePlayer.transform.position.z).magnitude;
+            distanceTravelledUI?.SetNumber(distanceTravelled, 0);
 
             fuelUI?.SetNumber(GameManager.instance.playerManager.activePlayer.playerController.fuel);
 
             return;
-        }
-        
-        if (runEnded)
-        {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                SceneManager.instance.LoadScene(0);
-            }
         }
     }
 }
