@@ -129,6 +129,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1126914371, guid: 3beda629157a9414fad297f61f9fb89d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 74.592094
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126914371, guid: 3beda629157a9414fad297f61f9fb89d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9931783
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126914371, guid: 3beda629157a9414fad297f61f9fb89d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.11660571
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126914371, guid: 3beda629157a9414fad297f61f9fb89d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126914371, guid: 3beda629157a9414fad297f61f9fb89d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709025327, guid: 3beda629157a9414fad297f61f9fb89d, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6868053362602513016, guid: 3beda629157a9414fad297f61f9fb89d,
         type: 3}
       propertyPath: m_Name
@@ -198,6 +222,165 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1146112098310332808, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9848078
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098310332808, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.17364816
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098310332808, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098310332808, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098310332808, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098310332808, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 7741471014841455225, guid: 7cb5e7c9bb79c3b4f89bf7dca262b62b,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[0].maxPerChunk
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[0].minPerChunk
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: mapMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: eac1812936e1d08408c737b6a74ab897, type: 2}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 7738549213155580187, guid: 063688a94d0a03e4eb24c974328b3d49,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[1].maxPerChunk
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 8937416976094438803, guid: 0d2dc2d3c8d95434b8c1bd7f5460ddbf,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[2].maxPerChunk
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[3].prefab
+      value: 
+      objectReference: {fileID: 7985776012891566386, guid: 5c92e243c7be3744a853b5e1a8b466ab,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[3].maxPerChunk
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[4].prefab
+      value: 
+      objectReference: {fileID: 2342957520442278604, guid: f3b8325c75f513f46a2c663ff5dbf56a,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[4].maxPerChunk
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[5].prefab
+      value: 
+      objectReference: {fileID: 8187482418079973064, guid: e5f3f61b58626c94c9df1b5d3cdce434,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[5].maxPerChunk
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[6].prefab
+      value: 
+      objectReference: {fileID: 2239416174442992542, guid: 7448c9de82b40ae4eb89ad27514b25d5,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[6].maxPerChunk
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[7].prefab
+      value: 
+      objectReference: {fileID: 1183481147851711096, guid: 6252c4e4cdb2d78459f85500ee0fed2e,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[7].maxPerChunk
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[6].minPerChunk
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[5].minPerChunk
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[8].prefab
+      value: 
+      objectReference: {fileID: 1728561329119033487, guid: 89234a3feccbd1b409600d6e5ab6a099,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[8].maxPerChunk
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[8].minPerChunk
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1146112098501361429, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
       propertyPath: m_RootOrder
