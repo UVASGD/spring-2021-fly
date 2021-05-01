@@ -22,29 +22,29 @@ MonoBehaviour:
     blendStrength: 0.005
     textureScale: 36
   - name: Oasis Water's Edge
-    texture: {fileID: 2800000, guid: 78c40a2f18561480eab11b27ad5713aa, type: 3}
-    tint: {r: 0.7794118, g: 0.7556975, b: 0.43555364, a: 0}
+    texture: {fileID: 2800000, guid: e36d15b65ccd248c19a846616a6767f9, type: 3}
+    tint: {r: 0.25882354, g: 0.427451, b: 0.121568635, a: 0}
     tintStrength: 0.8
     startHeight: 0.002
     blendStrength: 0.005
     textureScale: 0
   - name: Oasis Grass
-    texture: {fileID: 2800000, guid: e36d15b65ccd248c19a846616a6767f9, type: 3}
-    tint: {r: 0.2586505, g: 0.42647058, b: 0.1222967, a: 0}
+    texture: {fileID: 2800000, guid: 78c40a2f18561480eab11b27ad5713aa, type: 3}
+    tint: {r: 0.40392157, g: 0.43529412, b: 0.20392157, a: 0}
     tintStrength: 0.8
     startHeight: 0.006
     blendStrength: 0.005
     textureScale: 8.7
   - name: Sand
-    texture: {fileID: 2800000, guid: f4a6c81d2197db442908356b04ff1564, type: 3}
+    texture: {fileID: 2800000, guid: 78c40a2f18561480eab11b27ad5713aa, type: 3}
     tint: {r: 0.4044118, g: 0.34945115, b: 0.20517951, a: 0}
     tintStrength: 0.8
-    startHeight: 0.015
+    startHeight: 0.008
     blendStrength: 0.002
     textureScale: 11.25
   - name: Rocks 1
     texture: {fileID: 2800000, guid: 37ad0d4d757814f44ba3bc82d824e4fa, type: 3}
-    tint: {r: 0.5955882, g: 0.4138915, b: 0.18393165, a: 0}
+    tint: {r: 0.4039216, g: 0.34901962, b: 0.20392159, a: 0}
     tintStrength: 0.8
     startHeight: 0.8
     blendStrength: 0.005

@@ -549,56 +549,20 @@ PrefabInstance:
         type: 3}
       propertyPath: meshSettings
       value: 
-      objectReference: {fileID: 11400000, guid: fca05f23e8fe16f4687e5bb4393c1e14,
+      objectReference: {fileID: 11400000, guid: 8f79695506e03df4ab823cc6dfa703cf,
         type: 2}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
       propertyPath: textureSettings
       value: 
-      objectReference: {fileID: 11400000, guid: f4c5c3c30f3cf5149b368785f94135d0,
+      objectReference: {fileID: 11400000, guid: c0f31db793a0a4f4184ee8fdd1346c2a,
         type: 2}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
       propertyPath: heightMapSettings
       value: 
-      objectReference: {fileID: 11400000, guid: 37a72540514ec4a43a6f88ffa55c032e,
+      objectReference: {fileID: 11400000, guid: c778fb37970b06b43a92521a17f0e684,
         type: 2}
-    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
-        type: 3}
-      propertyPath: terrainObjects.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
-        type: 3}
-      propertyPath: terrainObjects.Array.data[0].prefab
-      value: 
-      objectReference: {fileID: 1183481147851711096, guid: 6252c4e4cdb2d78459f85500ee0fed2e,
-        type: 3}
-    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
-        type: 3}
-      propertyPath: terrainObjects.Array.data[0].maxYSpawn
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
-        type: 3}
-      propertyPath: terrainObjects.Array.data[0].minYSpawn
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
-        type: 3}
-      propertyPath: terrainObjects.Array.data[0].maxPerChunk
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
-        type: 3}
-      propertyPath: terrainObjects.Array.data[0].minPerChunk
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
-        type: 3}
-      propertyPath: terrainObjects.Array.data[0].restrictYSpawn
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1146112098501361429, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
       propertyPath: m_RootOrder

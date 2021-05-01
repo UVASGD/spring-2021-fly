@@ -10,5 +10,12 @@ public class TerrainObject
     public int maxPerChunk;
     public int minPerChunk;
 
+    public float defaultYPosition = 0;
 
+    public bool SnapToGround = false;
+    public bool restrictYSpawn = false;
+    public float minYSpawn = 0.0f;
+    public float maxYSpawn = 0.0f;
+
+    public bool spawnInMiddle = false;
 }

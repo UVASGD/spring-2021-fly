@@ -44,8 +44,8 @@ MonoBehaviour:
     goalDistance: 4000
     goalRotationFromForward: 0
   - name: Giza
-    image: {fileID: 21300000, guid: 8d008eda34fd76a4a890d490e760c6fa, type: 3}
-    locked: 1
+    image: {fileID: 21300000, guid: 4b09b56fc5a958f46b3e8b768c94a31f, type: 3}
+    locked: 0
     completed: 0
     character: {fileID: 0}
     landmark: {fileID: 0}
@@ -53,11 +53,12 @@ MonoBehaviour:
     goalDistance: 8000
     goalRotationFromForward: 0
   - name: Athens
-    image: {fileID: 21300000, guid: 75ed4202e662ddf41ab4eaa1d6a79dd7, type: 3}
-    locked: 1
+    image: {fileID: 21300000, guid: 05f05158f439b254da3c65328c06464c, type: 3}
+    locked: 0
     completed: 0
-    character: {fileID: 0}
+    character: {fileID: 6751569644906231479, guid: 30c7a79b94b19b34baa80d09c2ba3cc8,
+      type: 3}
     landmark: {fileID: 0}
-    scene: 
+    scene: Level5
     goalDistance: 16000
     goalRotationFromForward: 0
