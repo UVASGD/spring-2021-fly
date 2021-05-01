@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c050193a035ca7d47a10b70e8cd72f78, type: 3}
+  m_Name: Model List
+  m_EditorClassIdentifier: 
+  models:
+  - type: 0
+    stats:
+      weightMultiplier: 0
+      initialVelocityMultiplier: 0
+      dragMultiplier: 0
+      fuelMultiplier: 0
+      bounceHeightMultiplier: 0
+    prefab: {fileID: 2292457183050106209, guid: f6e0bace8e8d9d643853a3900c3d0275,
+      type: 3}
+  - type: 2
+    stats:
+      weightMultiplier: 0
+      initialVelocityMultiplier: 0
+      dragMultiplier: 0
+      fuelMultiplier: 0
+      bounceHeightMultiplier: 0
+    prefab: {fileID: 6786728190690648850, guid: 0e5aaef2983e1f14b8a557dc457e5f2a,
+      type: 3}
+  - type: 1
+    stats:
+      weightMultiplier: 0
+      initialVelocityMultiplier: 0
+      dragMultiplier: 0
+      fuelMultiplier: 0
+      bounceHeightMultiplier: 0
+    prefab: {fileID: 6656977092365810600, guid: f1d7a79c9610fcc488df52bcf992576e,
+      type: 3}
+  - type: 4
+    stats:
+      weightMultiplier: 0
+      initialVelocityMultiplier: 0
+      dragMultiplier: 0
+      fuelMultiplier: 0
+      bounceHeightMultiplier: 0
+    prefab: {fileID: 2252014251743139468, guid: 1f67528abca835c4eaf08c4de00efe07,
+      type: 3}
+  - type: 3
+    stats:
+      weightMultiplier: 0
+      initialVelocityMultiplier: 0
+      dragMultiplier: 0
+      fuelMultiplier: 0
+      bounceHeightMultiplier: 0
+    prefab: {fileID: 8368785223524642513, guid: e2da0e4ab331ab843a71b4048180f736,
+      type: 3}
