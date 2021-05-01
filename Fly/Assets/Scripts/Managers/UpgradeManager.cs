@@ -2,35 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneyManager : MonoBehaviour, ISavable
+public class UpgradeManager : MonoBehaviour, ISavable
 {
-    public static MoneyManager instance;
+    public static UpgradeManager instance;
 
-    public float startingMoney;
-    private float money;
+    public TieredUpgradeList tieredUpgradeList;
 
     public void Load()
     {
-        if (PlayerPrefs.HasKey("Money"))
+        foreach (var item in tieredUpgradeList.upgrades)
         {
-            money = PlayerPrefs.GetFloat("Money");
-        }
-        else
-        {
-            money = startingMoney;
-            Save();
+            string key = item.type.ToString();
+            if (PlayerPrefs.HasKey(key))
+            {
+                
+            }
         }
     }
 
     public void Save()
     {
-        PlayerPrefs.SetFloat("Money", money);
+
     }
 
-
-
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);

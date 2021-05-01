@@ -56,6 +56,15 @@ public class PlayerController : MonoBehaviour
     public float velocityDecrease;
     public float fuel;
 
+    #region UPGRADEABLE VARIABLES
+    private float dipOverTimeMultiplier;
+
+
+    // YOUR CODE HERE
+
+
+    #endregion
+
     private void Start()
     {
         // Initialize variables and references
@@ -116,7 +125,7 @@ public class PlayerController : MonoBehaviour
         localForward = Quaternion.AngleAxis(direction, Vector3.up) * Vector3.forward; // update nose
         localRight = Vector3.Cross(localForward, Vector3.up); // update wings
 
-        angleOfAttack -= 5f * Time.fixedDeltaTime * (stalling ? 20f : 1f); // automatically dip plane's nose over time. Increased if stalling.
+        angleOfAttack -= 5f * dipOverTimeMultiplier * Time.fixedDeltaTime * (stalling ? 20f : 1f); // automatically dip plane's nose over time. Increased if stalling.
         angleOfAttack -= pitch * pitchSpeed * Time.fixedDeltaTime; // adjust angle of attack based on user input
         angleOfAttack = Mathf.Clamp(angleOfAttack, -80f, 80f); // clamp plane so they cant go straight up or down (causes camera glitches otherwise)
 
@@ -192,5 +201,11 @@ public class PlayerController : MonoBehaviour
             speed += fields.effect;
             Destroy(collision.gameObject);
         }
+    }
+
+    public void SyncUpgrades()
+    {
+        List<TieredUpgrade> upgrades = UpgradeManager.instance.tieredUpgradeList.upgrades;
+        dipOverTimeMultiplier = upgrades[0].tiers[upgrades[0].activeTierIndex].value;
     }
 }
