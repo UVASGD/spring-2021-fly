@@ -170,39 +170,36 @@ public class PlayerController : MonoBehaviour
     {
         // Might need more advanced logic later, but for now, if you hit anything solid, you die.
 
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Obstacle"))
         {
             flying = false;
             Player.instance.cameraController.SetDeadCam();
             OnDeath?.Invoke();
-            //Debug.Log("hi");
         }
     }
     private void OnTriggerEnter(Collider collision)
     {
-        //Debug.Log("Collided With: " + collision.gameObject.tag);
-        //make these generic later :)
-        //if (collision.gameObject.name == "PowerUp(Clone)")
-        //{
-        //    Destroy(collision.gameObject);
-        //    speed += 10;
-        //}
-        //if (collision.gameObject.name == "PowerDown(Clone)")
-        //{
-        //    Destroy(collision.gameObject);
-        //    speed -= 5;
-        //}
         if (collision.CompareTag("Finish"))
         {
-            //GameManager.instance.runManager.StopRun();
             GameManager.instance.UnlockNextLevel();
             GameManager.instance.runManager.CompleteRun();
         }
         else if (collision.CompareTag("PowerUp"))
         {
             PowerUpFields fields = collision.gameObject.GetComponent<PowerUpFields>();
-            speed += fields.effect;
-            Destroy(collision.gameObject);
+
+            if (fields)
+            {
+                if (fields.persistent)
+                {
+                    speed += fields.effect * Time.deltaTime;
+                }
+                else
+                {
+                    speed += fields.effect;
+                    Destroy(collision.gameObject);
+                }
+            }
         }
         else if (collision.CompareTag("Ground"))
         {

@@ -209,41 +209,41 @@ public class TerrainChunk
 
 	public void UpdateCollisionMesh()
 	{
-        float sqrDstFromViewerToEdge = bounds.SqrDistance(viewerPosition);
-        if (sqrDstFromViewerToEdge < colliderGenerationDistanceThreshold * colliderGenerationDistanceThreshold)
+   //     float sqrDstFromViewerToEdge = bounds.SqrDistance(viewerPosition);
+   //     if (sqrDstFromViewerToEdge < colliderGenerationDistanceThreshold * colliderGenerationDistanceThreshold)
+   //     {
+   //         if (lodMeshes[colliderLODIndex].hasMesh)
+   //         {
+   //             meshCollider.sharedMesh = lodMeshes[colliderLODIndex].mesh;
+   //             hasSetCollider = true;
+   //         }
+   //     }
+   //     else
+   //     {
+			//meshCollider.sharedMesh = null;
+   //     }
+        if (!hasSetCollider)
         {
-            if (lodMeshes[colliderLODIndex].hasMesh)
+            float sqrDstFromViewerToEdge = bounds.SqrDistance(viewerPosition);
+
+            if (sqrDstFromViewerToEdge < detailLevels[colliderLODIndex].sqrVisibleDstThreshold)
             {
-                meshCollider.sharedMesh = lodMeshes[colliderLODIndex].mesh;
-                hasSetCollider = true;
+                if (!lodMeshes[colliderLODIndex].hasRequestedMesh)
+                {
+                    lodMeshes[colliderLODIndex].RequestMesh(heightMap, meshSettings);
+                }
+            }
+
+            if (sqrDstFromViewerToEdge < colliderGenerationDistanceThreshold * colliderGenerationDistanceThreshold)
+            {
+                if (lodMeshes[colliderLODIndex].hasMesh)
+                {
+                    meshCollider.sharedMesh = lodMeshes[colliderLODIndex].mesh;
+                    hasSetCollider = true;
+                }
             }
         }
-        else
-        {
-			meshCollider.sharedMesh = null;
-        }
-		//if (!hasSetCollider)
-		//{
-		//	float sqrDstFromViewerToEdge = bounds.SqrDistance(viewerPosition);
-
-		//	if (sqrDstFromViewerToEdge < detailLevels[colliderLODIndex].sqrVisibleDstThreshold)
-		//	{
-		//		if (!lodMeshes[colliderLODIndex].hasRequestedMesh)
-		//		{
-		//			lodMeshes[colliderLODIndex].RequestMesh(heightMap, meshSettings);
-		//		}
-		//	}
-
-		//	if (sqrDstFromViewerToEdge < colliderGenerationDistanceThreshold * colliderGenerationDistanceThreshold)
-		//	{
-		//		if (lodMeshes[colliderLODIndex].hasMesh)
-		//		{
-		//			meshCollider.sharedMesh = lodMeshes[colliderLODIndex].mesh;
-		//			hasSetCollider = true;
-		//		}
-		//	}
-		//}
-	}
+    }
 
 	public void SetVisible(bool visible)
 	{

@@ -6,6 +6,8 @@ using TMPro;
 public class Tooltip : MonoBehaviour
 {
     public TMP_Text textField;
+    private RectTransform rectTransform;
+    private Vector2 size;
 
     public void SetText(string text)
     {
@@ -26,23 +28,31 @@ public class Tooltip : MonoBehaviour
 
     private void Start()
     {
+        rectTransform = GetComponent<RectTransform>();
+        size = rectTransform.rect.size;
         DisableTooltip();
     }
 
     private void Update()
     {
-        Vector3 mousePosition = Input.mousePosition;
+        Vector2 mousePosition = Input.mousePosition;
+        Vector2 mouseScreenPosition = MouseToScreenSpace(mousePosition);
+        
+        float rightBoundX = mouseScreenPosition.x + size.x;
+        float leftBoundX = mouseScreenPosition.x - size.x;
+        float offsetMaxX = Mathf.Max(0f, rightBoundX - Screen.width / 2f);
+        float offsetMinX = Mathf.Min(0f, Screen.width / 2f - leftBoundX);
+        float offsetX = offsetMinX + offsetMaxX;
+        float pivotOffset = offsetX / size.x / 2f;
+
         transform.position = mousePosition;
-        Vector3 rightBound = new Vector3(mousePosition.x + 200f, mousePosition.y, mousePosition.z);
-        Vector3 leftBound = new Vector3(mousePosition.x - 200f, mousePosition.y, mousePosition.z);
-        float xOffsetMax = Mathf.Max(rightBound.x - Screen.width, 0f);
-        float xOffsetMin = Mathf.Min(leftBound.x, 0f);
-        float normalizedXOffset = (xOffsetMin + xOffsetMax) / 400f + 0.5f;
-        GetComponent<RectTransform>().pivot = new Vector2(normalizedXOffset, 2);
+        rectTransform.pivot = new Vector2(0.5f + pivotOffset, 2f);
     }
 
-    private Vector2 NormalizeScreenPosition(Vector2 position)
+    private Vector2 MouseToScreenSpace(Vector2 mousePosition)
     {
-        return new Vector2(position.x / Screen.width, position.y / Screen.height);
+        mousePosition.x -= Screen.width / 2f;
+        mousePosition.y -= Screen.height / 2f;
+        return mousePosition;
     }
 }

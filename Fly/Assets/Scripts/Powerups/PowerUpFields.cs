@@ -6,6 +6,8 @@ public class PowerUpFields : MonoBehaviour
 {
     private string powerUpName;
     public int effect;
+    public bool persistent;
+
     // Start is called before the first frame update
     void Start()
     {

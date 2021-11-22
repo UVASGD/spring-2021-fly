@@ -36,8 +36,8 @@ public class UICloud : MonoBehaviour
     {
         rectTransform.anchoredPosition += Vector2.right * (750f * (leftToRight ? 1 : -1) / screenPeriod * Time.deltaTime);
 
-        float paddedWidthExtents = 750f / 2f * 1.2f;
-        float paddedHeightExtents = 600f / 2f * 0.8f;
+        float paddedWidthExtents = Screen.width / 2f + 256f;
+        float paddedHeightExtents = Screen.height / 2f - 50f;
         if (leftToRight)
         {
             if (rectTransform.anchoredPosition.x > paddedWidthExtents)
