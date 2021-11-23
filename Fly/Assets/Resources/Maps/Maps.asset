@@ -17,7 +17,7 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: ac8606eeeca33014c81433b32d9266d9, type: 3}
     locked: 0
     completed: 1
-    character: {fileID: 6751569644906231479, guid: 30c7a79b94b19b34baa80d09c2ba3cc8,
+    character: {fileID: 5959611101887537538, guid: 20b1eb57810cc6045a2422fef4a78418,
       type: 3}
     landmark: {fileID: 919132149155446097, guid: 14fad4c3cc4c0f54fb7054caddf5226c,
       type: 3}
@@ -28,7 +28,7 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 2c99aca275a13ef4994afdf1baf0f9cd, type: 3}
     locked: 0
     completed: 1
-    character: {fileID: 6751569644906231479, guid: 30c7a79b94b19b34baa80d09c2ba3cc8,
+    character: {fileID: 5959611101887537538, guid: 20b1eb57810cc6045a2422fef4a78418,
       type: 3}
     landmark: {fileID: 0}
     scene: Level2
