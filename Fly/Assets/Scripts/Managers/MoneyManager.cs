@@ -35,7 +35,7 @@ public class MoneyManager : MonoBehaviour, ISavable
 
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
@@ -43,6 +43,11 @@ public class MoneyManager : MonoBehaviour, ISavable
         OnMoneyChanged = new FloatEvent();
 
         Load();
+
+        if (GameManager.instance.debugMode)
+        {
+            SetMoney(999999f);
+        }
     }
 
     public void SetMoney(float value)

@@ -11,13 +11,12 @@ public class TieredUpgrade
         Dynamics,
         Grit,
         Spunk,
-        Science,
+        RocketScience,
         Design
     }
 
     public Type type;
     public List<UpgradeTier> tiers;
-    public int activeTierIndex;
 }
 
 [System.Serializable]

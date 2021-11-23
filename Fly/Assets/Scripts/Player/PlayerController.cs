@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     // Parent handles actual left-right rotation, while child/model visualizes angle of attack and banking
     // Separation of these important to handle gimbal lock, and overall makes it easier to program.
     public Transform model; 
-    // need initialized plane Type
 
     [Header("Init")]
     public float initialSpeed = 10f;
@@ -56,35 +55,36 @@ public class PlayerController : MonoBehaviour
     public float velocityDecrease;
     public float fuel;
     public float drag;
+    public int bounceCount;
 
     #region UPGRADEABLE VARIABLES
-    private float dipOverTimeMultiplier;
-    private float dragMultiplier;
-    private float scienceMultiplier;
-    private float designMultiplier;
+    private float chonkMultiplier;
+    private float dynamicsMultiplier;
+    private float rocketScienceMultiplier;
     private float gritMultiplier;
     private float spunkMultiplier;
+    private float designMultiplier;
     #endregion
 
     private void Awake()
     {
-        Init();
+        rb = GetComponent<Rigidbody>();
     }
 
-    void Init()
+    // Initialize variables and references
+    public void Init()
     {
-        // Initialize variables and references
-        rb = GetComponent<Rigidbody>();
         //change back to 1
         speed = initialSpeed * designMultiplier;
         angleOfAttack = 0f;
         direction = 0f;
         stalling = false;
         flying = true;
-        velocityDecrease = 1f * dragMultiplier;
-        //TODO find out if you can call before playing
+        velocityDecrease = 1f * dynamicsMultiplier * designMultiplier;
         fuel = 100f;
-        drag = 0.02f;
+        drag = 0.02f * dynamicsMultiplier / designMultiplier;
+        bounceCount = Mathf.RoundToInt(spunkMultiplier);
+
     }
 
     private void FixedUpdate()
@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
         localForward = Quaternion.AngleAxis(direction, Vector3.up) * Vector3.forward; // update nose
         localRight = Vector3.Cross(localForward, Vector3.up); // update wings
 
-        angleOfAttack -= 5f * dipOverTimeMultiplier * Time.fixedDeltaTime * (stalling ? 20f : 1f); // automatically dip plane's nose over time. Increased if stalling.
+        angleOfAttack -= 5f * chonkMultiplier * Time.fixedDeltaTime * (stalling ? 20f : 1f); // automatically dip plane's nose over time. Increased if stalling.
         angleOfAttack -= pitch * pitchSpeed * Time.fixedDeltaTime; // adjust angle of attack based on user input
         angleOfAttack = Mathf.Clamp(angleOfAttack, -80f, 80f); // clamp plane so they cant go straight up or down (causes camera glitches otherwise)
 
@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
         }
         speed = Mathf.Max(0.1f, speed); // Cap minimum speed in flight to 0.1f (very small forward speed), otherwise causes undefined behavior
 
-        speed -= drag * dragMultiplier;
+        speed -= drag;
 
         velocity = Quaternion.AngleAxis(angleOfAttack, localRight) * localForward * speed; // rotate target velocity (direction) by angle of attack
 
@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
         {
             if (fuel > 0f)
             {
-                fuel -= 25f / scienceMultiplier * Time.deltaTime;
+                fuel -= 25f / rocketScienceMultiplier * Time.deltaTime;
                 velocity += velocity.normalized * thrustSpeed * Time.fixedDeltaTime;
             }
             else
@@ -168,9 +168,27 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Might need more advanced logic later, but for now, if you hit anything solid, you die.
-
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Obstacle"))
+        print($"Collision with {collision.gameObject.name} ({collision.gameObject.tag})");
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            if (bounceCount == 0)
+            {
+                flying = false;
+                Player.instance.cameraController.SetDeadCam();
+                OnDeath?.Invoke();
+            }
+            else
+            {
+                angleOfAttack *= -1;
+                velocity.y *= -1;
+                if (velocity.magnitude < 10f)
+                {
+                    velocity = velocity.normalized * 10f;
+                }
+                bounceCount--;
+            }
+        }
+        else if (collision.gameObject.CompareTag("Obstacle"))
         {
             flying = false;
             Player.instance.cameraController.SetDeadCam();
@@ -188,11 +206,12 @@ public class PlayerController : MonoBehaviour
         {
             PowerUpFields fields = collision.gameObject.GetComponent<PowerUpFields>();
 
-            if (fields)
+            if (fields && !fields.persistent)
             {
+                speed += fields.effect;
+                Destroy(collision.gameObject);
                 if (fields.persistent)
                 {
-                    speed += fields.effect * Time.deltaTime;
                 }
                 else
                 {
@@ -201,40 +220,28 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        else if (collision.CompareTag("Ground"))
-        {
-            //change back to 0
-            if (spunkMultiplier == 1000)
-            {
-                flying = false;
-                Player.instance.cameraController.SetDeadCam();
-                OnDeath?.Invoke();
-            }
-            else
-            {
-                angleOfAttack *= -1;
-                velocity.y *= -1;
-            }
-        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.name.Contains("cloud"))
+        if (other.CompareTag("PowerUp"))
         {
-            rb.velocity -= rb.velocity.normalized * 5 / gritMultiplier * Time.deltaTime;
+            PowerUpFields fields = other.gameObject.GetComponent<PowerUpFields>();
+            if (fields && fields.persistent)
+            {
+                speed -= fields.effect / gritMultiplier * Time.deltaTime;
+
+            }
         }
     }
 
     public void SyncUpgrades()
     {
-        List<TieredUpgrade> upgrades = UpgradeManager.instance.tieredUpgradeList.upgrades;
-        designMultiplier = upgrades[5].tiers[upgrades[5].activeTierIndex].value;
-        dipOverTimeMultiplier = upgrades[0].tiers[upgrades[0].activeTierIndex].value * designMultiplier;
-        dragMultiplier = upgrades[1].tiers[upgrades[1].activeTierIndex].value * designMultiplier;
-        scienceMultiplier = upgrades[4].tiers[upgrades[4].activeTierIndex].value * designMultiplier;
-        gritMultiplier = upgrades[2].tiers[upgrades[2].activeTierIndex].value * designMultiplier;
-        spunkMultiplier = upgrades[3].tiers[upgrades[3].activeTierIndex].value * designMultiplier;
-        Init();
-    }
+        chonkMultiplier = UpgradeManager.instance.GetUpgradeValue(TieredUpgrade.Type.Chonk);
+        rocketScienceMultiplier = UpgradeManager.instance.GetUpgradeValue(TieredUpgrade.Type.RocketScience);
+        gritMultiplier = UpgradeManager.instance.GetUpgradeValue(TieredUpgrade.Type.Grit);
+        spunkMultiplier = UpgradeManager.instance.GetUpgradeValue(TieredUpgrade.Type.Spunk);
+        dynamicsMultiplier = UpgradeManager.instance.GetUpgradeValue(TieredUpgrade.Type.Dynamics);
+        designMultiplier = UpgradeManager.instance.GetUpgradeValue(TieredUpgrade.Type.Design);
+    } 
 }

@@ -58,6 +58,7 @@ public class RunManager : MonoBehaviour
         player.transform.rotation = Quaternion.identity;
         player.cameraController.SetAliveCam();
         player.playerController.SyncUpgrades();
+        player.playerController.Init();
         runStarted = true;
     }
 

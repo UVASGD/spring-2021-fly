@@ -70,6 +70,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pine01
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ac9a1a48def3a405ea9b3539c345b482, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ac9a1a48def3a405ea9b3539c345b482, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: ac9a1a48def3a405ea9b3539c345b482, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ac9a1a48def3a405ea9b3539c345b482, type: 3}
       propertyPath: m_RootOrder
       value: 0

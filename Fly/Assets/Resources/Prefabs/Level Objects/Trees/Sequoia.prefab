@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8473841877288785518}
   m_Layer: 0
   m_Name: Sequoia1_LOD3
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 1462098308444887917}
   m_Layer: 0
   m_Name: Sequoia1_LOD4
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 1536622777981284978}
   m_Layer: 0
   m_Name: Sequoia1_LOD0
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

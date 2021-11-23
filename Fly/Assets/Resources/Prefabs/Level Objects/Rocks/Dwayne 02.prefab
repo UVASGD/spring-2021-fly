@@ -70,6 +70,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock02
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f2cd0d0a72aab4d959efe6b4f77a9c78, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f2cd0d0a72aab4d959efe6b4f77a9c78, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -4,28 +4,14 @@ using UnityEngine;
 
 public class PowerUpFields : MonoBehaviour
 {
-    private string powerUpName;
-    public int effect;
+    public float effect;
     public bool persistent;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Use()
     {
-        
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    string getPowerUpName()
-    {
-        return this.powerUpName;
-    }
-    int getEffect()
-    {
-        return this.effect;
+        if (!persistent)
+        {
+            Destroy(gameObject);
+        }
     }
 }   

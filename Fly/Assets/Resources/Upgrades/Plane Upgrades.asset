@@ -23,7 +23,6 @@ MonoBehaviour:
       value: 0.8
     - upgradeType: 0
       value: 0.7
-    activeTierIndex: 0
   - type: 1
     tiers:
     - upgradeType: 0
@@ -34,7 +33,6 @@ MonoBehaviour:
       value: 0.6
     - upgradeType: 0
       value: 0.4
-    activeTierIndex: 0
   - type: 2
     tiers:
     - upgradeType: 0
@@ -45,18 +43,16 @@ MonoBehaviour:
       value: 1.2
     - upgradeType: 0
       value: 1.3
-    activeTierIndex: 0
   - type: 3
     tiers:
     - upgradeType: 0
+      value: 0
+    - upgradeType: 0
+      value: 0.33
+    - upgradeType: 0
+      value: 0.66
+    - upgradeType: 0
       value: 1
-    - upgradeType: 0
-      value: 1.1
-    - upgradeType: 0
-      value: 1.2
-    - upgradeType: 0
-      value: 1.3
-    activeTierIndex: 0
   - type: 4
     tiers:
     - upgradeType: 0
@@ -67,7 +63,6 @@ MonoBehaviour:
       value: 1.25
     - upgradeType: 0
       value: 1.5
-    activeTierIndex: 0
   - type: 5
     tiers:
     - upgradeType: 0
@@ -80,4 +75,3 @@ MonoBehaviour:
       value: 1.6
     - upgradeType: 0
       value: 2
-    activeTierIndex: 0
