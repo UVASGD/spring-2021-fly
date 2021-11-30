@@ -10,7 +10,7 @@ public class ThreadedDataRequester : MonoBehaviour {
 	Queue<ThreadInfo> dataQueue = new Queue<ThreadInfo>();
 
 	void Awake() {
-		instance = this;
+		instance = FindObjectOfType<ThreadedDataRequester> ();
 	}
 
 	public static void RequestData(Func<object> generateData, Action<object> callback) {

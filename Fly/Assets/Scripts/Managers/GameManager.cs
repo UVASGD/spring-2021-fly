@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System.Linq;
 
 public class GameManager : MonoBehaviour
@@ -13,19 +14,20 @@ public class GameManager : MonoBehaviour
     public PlayerManager playerManager;
     public RunManager runManager;
     public SceneManager sceneManager;
+    public MoneyManager moneyManager;
+    public UpgradeManager upgradeManager;
     #endregion
 
     [HideInInspector]
     public List<MapSettings> mapSettingsList;
     [HideInInspector]
     public MapSettings currentMapSettings;
-    [HideInInspector]
-    public TerrainGenerator currentTerrainGenerator;
+    public TerrainGenerator currentTerrainGenerator { get; private set; }
 
     public bool debugMode;
 
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -38,6 +40,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.Save();
+    }
+
     public void LoadLevel()
     {
         LoadLevel(currentMapSettings.scene);
@@ -45,31 +52,16 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(string name)
     {
-        if (SceneManager.instance.transitioning) return;
-        SceneManager.instance.LoadScene(name);
-        StartCoroutine(LoadLevelCR());
+        sceneManager.LoadScene(name);
     }
 
-    private IEnumerator LoadLevelCR()
+    public void InitLevel(TerrainGenerator terrainGenerator)
     {
-        yield return new WaitForEndOfFrame();
-        while (!SceneManager.instance.sceneLoaded && SceneManager.instance.transitioning)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        for (int i = 0; i < 20; i++)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        InitLevel();
-    }
+        currentTerrainGenerator = terrainGenerator;
 
-    public void InitLevel()
-    {
-        currentTerrainGenerator = FindObjectOfType<TerrainGenerator>();
         GameObject thrower = Instantiate(currentMapSettings.character, Vector3.up * 100f, Quaternion.identity);
         PutObjectOnTerrain putter = thrower.GetComponent<PutObjectOnTerrain>();
-        putter.SnapToTerrain(currentTerrainGenerator.meshSettings, currentTerrainGenerator.heightMapSettings);
+        putter.SnapToTerrain(terrainGenerator.meshSettings, terrainGenerator.heightMapSettings);
 
         GameObject throwPoint = GameObject.FindWithTag("ThrowPoint");
 
@@ -80,7 +72,8 @@ public class GameManager : MonoBehaviour
         player.cameraController.SetThrowCam(thrower.transform);
         player.modelController.Init();
         player.modelController.SyncActiveModel();
-        currentTerrainGenerator.viewer = player.transform;
+
+        terrainGenerator.Init(player.transform);
 
         // Get goal position from the map settings polar coordinates
         Vector3 goalPosition = Quaternion.Euler(0f, currentMapSettings.goalRotationFromForward, 0f) * new Vector3(0f, 0f, currentMapSettings.goalDistance);
@@ -96,7 +89,7 @@ public class GameManager : MonoBehaviour
             Vector3 goalDirection = goalPosition.normalized;
             Vector2 offset = Random.insideUnitCircle * 50f;
             landmark.transform.position = goalPosition + goalDirection * 300f + new Vector3(offset.x, 0f, offset.y);
-            landmark.GetComponent<PutObjectOnTerrain>().SnapToTerrain(currentTerrainGenerator.meshSettings, currentTerrainGenerator.heightMapSettings);
+            landmark.GetComponent<PutObjectOnTerrain>().SnapToTerrain(terrainGenerator.meshSettings, terrainGenerator.heightMapSettings);
         }
 
         Invoke("StartLevel", 3f);
@@ -144,10 +137,5 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         print("ALL LEVELS COMPLETED!");
-    }
-
-    private void OnApplicationQuit()
-    {
-        PlayerPrefs.Save();
     }
 }

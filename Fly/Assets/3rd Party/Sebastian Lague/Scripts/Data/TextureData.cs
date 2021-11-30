@@ -46,7 +46,6 @@ public class TextureData : UpdatableData {
 
 	[System.Serializable]
 	public class Layer {
-		public string name;
 		public Texture2D texture;
 		public Color tint;
 		[Range(0,1)]
