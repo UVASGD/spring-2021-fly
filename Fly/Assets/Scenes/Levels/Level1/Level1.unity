@@ -124,7 +124,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!21 &594140756
+--- !u!21 &372435059
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -283,6 +283,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
+      propertyPath: debugMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
       propertyPath: mapMaterial
       value: 
       objectReference: {fileID: 2100000, guid: eac1812936e1d08408c737b6a74ab897, type: 2}
@@ -302,6 +307,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6302647432567200435, guid: a79a8418cf584b947abe3b7f83763071,
         type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: detailLevels.Array.data[0].lod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
       propertyPath: terrainObjects.Array.data[0].prefab

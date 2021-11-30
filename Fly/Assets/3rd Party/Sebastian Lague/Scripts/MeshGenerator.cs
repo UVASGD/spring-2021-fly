@@ -75,6 +75,7 @@ public static class MeshGenerator {
 				}
 			}
 		}
+
 		meshData.ProcessMesh ();
 
 		return meshData;

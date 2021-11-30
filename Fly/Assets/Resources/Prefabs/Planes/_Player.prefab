@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0.22882742, y: 0.059244033, z: -0.013951649, w: -0.97156245}
   m_LocalPosition: {x: -120.681206, y: -123.08501, z: -44.699688}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 816809908}
   m_RootOrder: 0
@@ -94,6 +95,7 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+  m_HideOffsetInInspector: 0
 --- !u!1 &816809907
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,6 +124,7 @@ Transform:
   m_LocalRotation: {x: 0.11660571, y: -0, z: -0, w: 0.9931783}
   m_LocalPosition: {x: 0, y: 10, z: -32}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 38616235}
   m_Father: {fileID: 511157337334114955}
@@ -153,7 +156,10 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
+    ModeOverride: 0
     LensShift: {x: 0, y: 0}
+    GateFit: 2
+    m_SensorSize: {x: 1.7785234, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -208,6 +214,7 @@ Transform:
   m_LocalRotation: {x: 0.22882742, y: 0.059244033, z: -0.013951649, w: -0.97156245}
   m_LocalPosition: {x: -120.681206, y: -123.08501, z: -44.699688}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 859173123155635830}
   m_RootOrder: 0
@@ -273,6 +280,7 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+  m_HideOffsetInInspector: 0
 --- !u!1 &2292457183050106209
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +292,7 @@ GameObject:
   - component: {fileID: 2292457183050106214}
   - component: {fileID: 2292457183050106212}
   - component: {fileID: 8492066562181973951}
-  - component: {fileID: 2292457183050106215}
+  - component: {fileID: 7440834519466917783}
   m_Layer: 0
   m_Name: _Player
   m_TagString: Player
@@ -302,6 +310,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 50, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6383834361887190245}
   - {fileID: 511157337334114955}
@@ -336,10 +345,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 223fb7d49b956a943875462b716b769f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 2292457183050106215}
+  playerController: {fileID: 7440834519466917783}
   cameraController: {fileID: 4045462679489988341}
   modelController: {fileID: 1957895328867279527}
---- !u!114 &2292457183050106215
+--- !u!114 &7440834519466917783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -348,37 +357,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 2292457183050106209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71deaeaa41066fe4cb1f1ebe5c993ec8, type: 3}
+  m_Script: {fileID: 11500000, guid: aaacf69b2f161f94fa263be8e94b75c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 0}
-  initialSpeed: 40
-  rollSpeed: 30
-  maxRollDeg: 30
-  pitchSpeed: 30
+  initialSpeed: 20
+  rollSpeed: 15
+  maxRollDeg: 45
+  pitchSpeed: 15
   maxPitchDeg: 45
-  stallStartSpeed: 1
+  pitchLostPerSecond: 5
+  stallStartSpeed: 5
   stallStopSpeed: 10
-  stallPitchModifier: 2
+  stallPitchModifier: 15
   stallGravityModifier: 2
-  stalling: 0
+  OnStall:
+    m_PersistentCalls:
+      m_Calls: []
   flying: 1
-  OnDeath:
+  stalling: 0
+  OnCrash:
     m_PersistentCalls:
       m_Calls: []
   velocity: {x: 0, y: 0, z: 0}
-  localForward: {x: 0, y: 0, z: 0}
-  localRight: {x: 0, y: 0, z: 0}
-  localUp: {x: 0, y: 0, z: 0}
   speed: 0
-  thrustSpeed: 0
-  direction: 0
-  angleOfAttack: 0
   roll: 0
   pitch: 0
-  velocityDecrease: 0
-  fuel: 0
+  angleOfAttack: 0
+  direction: 0
   drag: 0
+  fuel: 0
+  bounceCount: 0
 --- !u!1 &2629335270665272754
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,6 +417,7 @@ Transform:
   m_LocalRotation: {x: 0.22882742, y: 0.059244033, z: -0.013951649, w: -0.97156245}
   m_LocalPosition: {x: -120.681206, y: -123.08501, z: -44.699688}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8847080713811918242}
   m_RootOrder: 0
@@ -473,6 +483,7 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+  m_HideOffsetInInspector: 0
 --- !u!1 &2980911640707528182
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +511,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2292457183050106214}
   m_RootOrder: 0
@@ -555,6 +567,7 @@ Transform:
   m_LocalRotation: {x: 0.11660571, y: -0, z: -0, w: 0.9931783}
   m_LocalPosition: {x: 0, y: 10, z: -32}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 276975335012147059}
   m_Father: {fileID: 511157337334114955}
@@ -586,7 +599,10 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
+    ModeOverride: 0
     LensShift: {x: 0, y: 0}
+    GateFit: 2
+    m_SensorSize: {x: 1.7785234, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -654,6 +670,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8847080713811918242}
   - {fileID: 816809908}
@@ -701,9 +718,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5742941796211745190}
-  m_LocalRotation: {x: 0.61541224, y: -0.000000013963054, z: 0.000000010902023, w: 0.78820544}
+  m_LocalRotation: {x: 0.61541224, y: 0.000000013981617, z: -0.000000010916516, w: 0.78820544}
   m_LocalPosition: {x: 0, y: 20, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3272295432113510229}
   m_Father: {fileID: 511157337334114955}
@@ -735,7 +753,10 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
+    ModeOverride: 0
     LensShift: {x: 0, y: 0}
+    GateFit: 2
+    m_SensorSize: {x: 1.7785234, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

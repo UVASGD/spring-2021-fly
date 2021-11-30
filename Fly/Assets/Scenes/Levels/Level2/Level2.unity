@@ -43,7 +43,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 8d79eea91b576f6459ad46c89bb7efcd,
     type: 2}
-  m_UseShadowmask: 1
+  m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -119,6 +119,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
@@ -150,6 +152,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1776756701}
   m_RootOrder: 5
@@ -174,6 +177,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -256,31 +260,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682624588}
   m_CullTransparentMesh: 0
---- !u!21 &992991004
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Hidden/FogPlus
-  m_Shader: {fileID: 4800000, guid: 39ef0b8c9be96494d9f8b2f2c54a28c5, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!1 &1221765058
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +306,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -419,6 +399,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1776756701}
   m_RootOrder: 6
@@ -428,6 +409,33 @@ RectTransform:
   m_AnchoredPosition: {x: -328.7, y: 71.7}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0, y: 1}
+--- !u!21 &1265729991
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hidden/FogPlus
+  m_Shader: {fileID: 4800000, guid: 39ef0b8c9be96494d9f8b2f2c54a28c5, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats: []
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1001 &1749082255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -435,6 +443,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6167622459660419555, guid: 0ca6241ecb0a4e54b8f5ff0b58b5deb9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6167622459660419555, guid: 0ca6241ecb0a4e54b8f5ff0b58b5deb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -452,6 +465,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6167622459660419555, guid: 0ca6241ecb0a4e54b8f5ff0b58b5deb9,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9888563
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167622459660419555, guid: 0ca6241ecb0a4e54b8f5ff0b58b5deb9,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -464,16 +482,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6167622459660419555, guid: 0ca6241ecb0a4e54b8f5ff0b58b5deb9,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9888563
-      objectReference: {fileID: 0}
-    - target: {fileID: 6167622459660419555, guid: 0ca6241ecb0a4e54b8f5ff0b58b5deb9,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6167622459660419555, guid: 0ca6241ecb0a4e54b8f5ff0b58b5deb9,
         type: 3}
@@ -509,6 +517,10 @@ PrefabInstance:
       value: 74.592094
       objectReference: {fileID: 0}
     - target: {fileID: 1126914371, guid: 3beda629157a9414fad297f61f9fb89d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -28.525692
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126914371, guid: 3beda629157a9414fad297f61f9fb89d, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9931783
       objectReference: {fileID: 0}
@@ -523,10 +535,6 @@ PrefabInstance:
     - target: {fileID: 1126914371, guid: 3beda629157a9414fad297f61f9fb89d, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1126914371, guid: 3beda629157a9414fad297f61f9fb89d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -28.525692
       objectReference: {fileID: 0}
     - target: {fileID: 1709025327, guid: 3beda629157a9414fad297f61f9fb89d, type: 3}
       propertyPath: m_RootOrder
@@ -644,14 +652,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
-      propertyPath: terrainObjects.Array.size
-      value: 8
+      propertyPath: debugMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
-      propertyPath: debugMode
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: mapMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d474fcfdb4a1f694283d8f0006684c79, type: 2}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
       propertyPath: meshSettings
@@ -672,15 +680,9 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
-      propertyPath: mapMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: d474fcfdb4a1f694283d8f0006684c79, type: 2}
-    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
-        type: 3}
-      propertyPath: terrainObjects.Array.data[1].prefab
-      value: 
-      objectReference: {fileID: 8080097615299795585, guid: 811063b1e58a5334aba8a1498f9b8e53,
-        type: 3}
+      propertyPath: terrainObjects.Array.size
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
       propertyPath: terrainObjects.Array.data[0].prefab
@@ -689,9 +691,45 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
+      propertyPath: terrainObjects.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 8080097615299795585, guid: 811063b1e58a5334aba8a1498f9b8e53,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
       propertyPath: terrainObjects.Array.data[2].prefab
       value: 
       objectReference: {fileID: 4004130024325411651, guid: 22d4b09622bf2cd4da56fd8354a24681,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[3].prefab
+      value: 
+      objectReference: {fileID: 7096585285345112620, guid: 1919f890ec544ff46a94fa0a2aa87364,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[4].prefab
+      value: 
+      objectReference: {fileID: 8536803988915520773, guid: 51ae7530fd7647b4191e4172ce8e25f5,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[5].prefab
+      value: 
+      objectReference: {fileID: 5004381420575264347, guid: eb0531f8012a8f9479e275e1007e2fa7,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[6].prefab
+      value: 
+      objectReference: {fileID: 3118300890447905460, guid: 756f97e9f0a9320498ea48008c35e21b,
+        type: 3}
+    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
+        type: 3}
+      propertyPath: terrainObjects.Array.data[7].prefab
+      value: 
+      objectReference: {fileID: 1183481147851711096, guid: 6252c4e4cdb2d78459f85500ee0fed2e,
         type: 3}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
@@ -725,12 +763,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
-      propertyPath: terrainObjects.Array.data[3].prefab
-      value: 
-      objectReference: {fileID: 7096585285345112620, guid: 1919f890ec544ff46a94fa0a2aa87364,
-        type: 3}
-    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
-        type: 3}
       propertyPath: terrainObjects.Array.data[3].maxPerChunk
       value: 5
       objectReference: {fileID: 0}
@@ -739,12 +771,6 @@ PrefabInstance:
       propertyPath: terrainObjects.Array.data[3].minPerChunk
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
-        type: 3}
-      propertyPath: terrainObjects.Array.data[4].prefab
-      value: 
-      objectReference: {fileID: 8536803988915520773, guid: 51ae7530fd7647b4191e4172ce8e25f5,
-        type: 3}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
       propertyPath: terrainObjects.Array.data[4].maxPerChunk
@@ -757,12 +783,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
-      propertyPath: terrainObjects.Array.data[5].prefab
-      value: 
-      objectReference: {fileID: 5004381420575264347, guid: eb0531f8012a8f9479e275e1007e2fa7,
-        type: 3}
-    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
-        type: 3}
       propertyPath: terrainObjects.Array.data[5].maxPerChunk
       value: 5
       objectReference: {fileID: 0}
@@ -773,21 +793,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
-      propertyPath: terrainObjects.Array.data[6].prefab
-      value: 
-      objectReference: {fileID: 3118300890447905460, guid: 756f97e9f0a9320498ea48008c35e21b,
-        type: 3}
-    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
-        type: 3}
       propertyPath: terrainObjects.Array.data[6].maxPerChunk
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
-        type: 3}
-      propertyPath: terrainObjects.Array.data[7].prefab
-      value: 
-      objectReference: {fileID: 1183481147851711096, guid: 6252c4e4cdb2d78459f85500ee0fed2e,
-        type: 3}
     - target: {fileID: 1146112098501361428, guid: 6fced151d21a07a469a8e436f2f38e75,
         type: 3}
       propertyPath: terrainObjects.Array.data[7].maxPerChunk

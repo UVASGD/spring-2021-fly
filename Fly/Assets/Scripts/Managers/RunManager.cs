@@ -44,9 +44,10 @@ public class RunManager : MonoBehaviour
         runStarted = false;
         runEnded = false;
         runCanvas?.gameObject.SetActive(true);
+        fuelUI?.gameObject.SetActive(UpgradeManager.instance.GetUpgradeTier(TieredUpgrade.Type.RocketScience) > 0);
         goal = Instantiate(goalPrefab, goalPosition, Quaternion.identity).GetComponent<Goal>();
         this.goalPosition = goalPosition;
-        GameManager.instance.playerManager.activePlayer.playerController.OnDeath.AddListener(StopRun);
+        GameManager.instance.playerManager.activePlayer.playerController.OnCrash.AddListener(StopRun);
     }
 
     public void StartRun()
